@@ -1,0 +1,17 @@
+CREATE TABLE `usuario` (
+  `id_usuario` int(6) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(60) NOT NULL,
+  `usuario` varchar(30) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(30) NOT NULL,
+  `sexo` enum('H','M') DEFAULT NULL,
+  `peso` decimal(5,2) DEFAULT NULL,
+  `altura` decimal(3,2) DEFAULT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `data_cadastro` date NOT NULL,
+  `perfil` enum('U','A') NOT NULL,
+  `situacao` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `usuario` (`usuario`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
