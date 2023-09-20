@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="../css/login.css">
+        <title>Glico - Login</title>
+    </head>
+    <body>
+        <!--Container do conteúdo principal-->
+        <main>
+            <!--Mensagem de boas-vindas-->
+            <section>
+                <h1>Glico</h1>
+                <h2>Bem-vindo!</h2>
+                <p>Glico é um site de monitoramento de dados de controle glicêmico para pessoas com diabetes.</p>
+            </section>
+            <!--Formulário de login-->
+            <aside>
+                <div class="container-form-login">
+                    <h1>Login</h1>
+
+                    <form class="form-login" action="../../controller/autenticaUsuario.php" method="POST">
+
+                        <input type="text" id="usuario" name="usuario" placeholder="Nome de usuário" required>
+                        <input type="password" id="senha" name="senha" placeholder="Senha" required>
+                        <input type="submit" class="btn-login" value="Entrar">
+
+                        <div class="links-uteis">
+                            <p><a href="#">Não possui cadastro?</a></p>
+                            <p><a href="#">Esqueci meu nome de usuário.</a></p>
+                            <p><a href="#">Esqueci minha senha.</a></p> 
+                        </div>
+                        
+                    </form>
+                </div>
+            </aside>
+        </main>
+    </body>
+</html>
