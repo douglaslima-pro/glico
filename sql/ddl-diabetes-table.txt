@@ -1,0 +1,10 @@
+CREATE TABLE `diabetes` (
+  `id_usuario` int(11) NOT NULL,
+  `tipo_diabetes` tinyint(1) DEFAULT NULL,
+  `terapia` enum('caneta','seringa','bomba de insulina') DEFAULT NULL,
+  `data_diagnostico` date DEFAULT NULL,
+  `meta_max` int(3) DEFAULT NULL,
+  `meta_min` int(3) DEFAULT NULL,
+  KEY `fk_diabetes_usuario_id_usuario` (`id_usuario`),
+  CONSTRAINT `fk_diabetes_usuario_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci

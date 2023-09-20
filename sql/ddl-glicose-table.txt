@@ -1,0 +1,10 @@
+CREATE TABLE `glicose` (
+  `id_usuario` int(6) NOT NULL,
+  `valor` int(3) NOT NULL,
+  `data` date NOT NULL,
+  `hora` time NOT NULL,
+  `condicao` enum('Jejum','Antes da refeição','2h após a refeição','Antes de dormir') DEFAULT NULL,
+  `comentario` text DEFAULT NULL,
+  KEY `fk_glicose_usuario_id_usuario` (`id_usuario`),
+  CONSTRAINT `fk_glicose_usuario_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
