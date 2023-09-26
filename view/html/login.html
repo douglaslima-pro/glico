@@ -1,40 +1,56 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="../css/login.css">
-        <title>Glico - Login</title>
+        <link rel="stylesheet" href="../css/font.css">
+        <title>Glico</title>
     </head>
+
     <body>
-        <!--Container do conteúdo principal-->
+
+        <div class="prompt-recuperar-senha">
+            
+        </div>
+        
         <main>
-            <!--Mensagem de boas-vindas-->
-            <section>
+
+            <div class="background-circle"></div>
+
+            <section class="descricao">
                 <h1>Glico</h1>
-                <h2>Bem-vindo!</h2>
-                <p>Glico é um site de monitoramento de dados de controle glicêmico para pessoas com diabetes.</p>
+                <p>Glico é uma aplicação web para registro e monitoramento de dados de controle glicêmico para pessoas com <span>Diabetes</span>.</p>
+                <a href="#">Não possui cadastro?</a>
             </section>
-            <!--Formulário de login-->
-            <aside>
-                <div class="container-form-login">
-                    <h1>Login</h1>
 
-                    <form class="form-login" action="../../controller/autenticaUsuario.php" method="POST">
+            <section class="login-container">
+                <h2>Faça login</h2>
+                <form action="../../controller/realizarLogin.php" method="POST">
+                    <label for="email-usuario">E-mail ou nome de usuário</label>
+                    <input type="text" id="email-usuario" name="email-usuario" maxlength="100" required>
+                    <label for="senha">
+                        Senha
+                        <div class="input-senha" id="esconde-senha">
+                            <input type="password" id="senha" name="senha" maxlength="30" required>
+                            <div class="icone-senha"></div>
+                            </div>
+                    </label>
+                    <div class="esqueceu-senha">
+                        <a href="#">Esqueceu sua senha?</a>
+                    </div>
+                    <div class="login-btn-container">
+                        <input type="submit" value="ENTRAR" class="login-btn">
+                    </div>
+                </form>
+            </section>
 
-                        <input type="text" id="usuario" name="usuario" placeholder="Nome de usuário" required>
-                        <input type="password" id="senha" name="senha" placeholder="Senha" required>
-                        <input type="submit" class="btn-login" value="Entrar">
-
-                        <div class="links-uteis">
-                            <p><a href="#">Não possui cadastro?</a></p>
-                            <p><a href="#">Esqueci meu nome de usuário.</a></p>
-                            <p><a href="#">Esqueci minha senha.</a></p> 
-                        </div>
-                        
-                    </form>
-                </div>
-            </aside>
         </main>
+
+        <script src="../js/mostrar-esconder-senha.js"></script>
+
     </body>
+
 </html>
