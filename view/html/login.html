@@ -13,7 +13,20 @@
     <body>
 
         <div class="prompt-recuperar-senha">
-            
+
+            <div class="background-prompt"></div>
+
+            <form action="../../controller/recuperarSenha.php" method="POST" class="recuperar-senha-form">
+                <div class="fechar-btn">X</div>
+                <h2>Recuperar senha</h2>
+                <p>Informe o e-mail ou nome de usuário associado à sua conta para alterar sua senha.</p>
+                <label for="email-usuario">E-mail ou nome de usuário</label>
+                <div class="input-verificar-container">
+                    <input type="text" id="email-usuario" name="email-usuario" maxlength="100" required>
+                    <input type="submit" value="Verificar" class="verificar-btn">
+                </div>
+            </form>
+
         </div>
         
         <main>
@@ -23,7 +36,7 @@
             <section class="descricao">
                 <h1>Glico</h1>
                 <p>Glico é uma aplicação web para registro e monitoramento de dados de controle glicêmico para pessoas com <span>Diabetes</span>.</p>
-                <a href="#">Não possui cadastro?</a>
+                <a href="cadastro.html">Não possui cadastro?</a>
             </section>
 
             <section class="login-container">
@@ -36,7 +49,7 @@
                         <div class="input-senha" id="esconde-senha">
                             <input type="password" id="senha" name="senha" maxlength="30" required>
                             <div class="icone-senha"></div>
-                            </div>
+                        </div>
                     </label>
                     <div class="esqueceu-senha">
                         <a href="#">Esqueceu sua senha?</a>
@@ -50,6 +63,26 @@
         </main>
 
         <script src="../js/mostrar-esconder-senha.js"></script>
+        <script>
+            //ABRE O PROMPT RECUPERAR SENHA QUANDO CLICA EM "ESQUECEU SUA SENHA?"
+            promptRecuperarSenha = document.querySelector(".prompt-recuperar-senha");
+            
+            esqueceuSenhaBTN = document.querySelector(".esqueceu-senha");
+            esqueceuSenhaBTN.addEventListener('click',() => {
+                promptRecuperarSenha.style = "display: flex";
+            });
+
+            backgroundPrompt = document.querySelector(".background-prompt");
+            backgroundPrompt.addEventListener('click', () => {
+                promptRecuperarSenha.style = "display: none";
+            });
+            
+            fecharPromptBTN = document.querySelector(".fechar-btn");
+            fecharPromptBTN.addEventListener('click', () => {
+                promptRecuperarSenha.style = "display: none";
+            });
+
+        </script>
 
     </body>
 
