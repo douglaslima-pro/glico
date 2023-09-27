@@ -1,27 +1,33 @@
 @import url(color.css);
 
-html,body{
+html{
     height: 100%;
+    width: 100%;
+    display: table;
 }
-
 body{
-    background-image: url(../img/png/diabetes.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: table-cell;
+}
+main{
     display: flex;
-    overflow: hidden;
+    height: 100%;
+    flex-wrap: wrap;
 }
 
 /*SECTION E DESCRIÇÃO DO SITE*/
-body > section{
+main > section{
+    background-image: url(../img/png/diabetes.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
     flex: 3;
-    position: relative;
+    min-width: 300px;
+    display: flex;
+    align-items: end;
 }
 section .descricao{
     background: rgba(0,0,0,0.5);
     padding: 10px 20px 40px 20px;
-    position: absolute;
-    bottom: 0;
     width: 100%;
 }
 section .descricao h1,section .descricao p{
@@ -41,7 +47,7 @@ section .descricao h1{
 }
 
 /*ASIDE - FORMULARIO DE CADASTRO*/
-body > aside{
+main > aside{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,9 +55,9 @@ body > aside{
     background: white;
     box-shadow: -4px 0 10px 0 rgba(0,0,0,0.25);
     padding: 10px 40px;
-    overflow-y: scroll;
+    min-width: 300px;
 }
-body > aside > a{
+main > aside > a{
     text-align: left;
     display: inline;
     width: 100%;
@@ -62,7 +68,7 @@ body > aside > a{
 .cadastro-form h2,.cadastro-form h3,.cadastro-form label,.cadastro-form input:not(input[type="submit"]){
     color: var(--cinza);
 }
-.cadastro-form input:not(input[type="submit"],input[type="password"]),.input-senha{
+.cadastro-form > input,.cpf-nascimento-container input,.input-senha{
     width: 100%;
     border: 1px solid var(--cinza-claro);
     border-radius: 2px;
@@ -88,11 +94,13 @@ body > aside > a{
 }
 .flex-input-container{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 10px;
 }
 .flex-input-container > *{
     flex: 1;
+    min-width: 155px;
 }
 
 /*INPUT DE SENHA COM OPÇÃO DE MOSTRAR/ESCONDER SENHA*/
@@ -117,6 +125,11 @@ body > aside > a{
 }
 #mostra-senha .icone-senha{
     background-image: url(../img/svg/eye.svg);
+}
+.aviso-senhas-nao-coincidem{
+    color: red;
+    font-size: 14px;
+    display: none;
 }
 
 /*BOTÃO SUBMIT CADASTRAR-SE*/
