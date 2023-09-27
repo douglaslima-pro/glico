@@ -1,6 +1,6 @@
 # Glico
 
-<img width="650" src="view/img/png/tela-login.png" alt="Foto da tela inicial do projeto">
+<img src="view/img/png/tela-login.png" alt="Foto da tela inicial do projeto">
 
 Glico é uma aplicação web para registro e monitoramento de dados de controle glicêmico para pessoas com **Diabetes**.
 
