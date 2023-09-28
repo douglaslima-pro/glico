@@ -19,7 +19,6 @@
                     <p>O Glico fornece insights úteis para tomar decisões no tratamento da sua diabetes.</p>
                     <p>Descubra um jeito fácil de manter o controle da sua glicemia!</p>
                 </div>
-
             </section>
 
             <aside>
@@ -36,7 +35,7 @@
                     <div class="cpf-nascimento-container flex-input-container">
                         <div class="input-cpf">    
                             <label for="cpf">CPF (opcional)</label>
-                            <input type="text" id="cpf" name="cpf" maxlength="14" placeholder="xxx.xxx.xxx-xx">
+                            <input type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" oninput="mascaraCPF('cpf')">
                         </div>
                         <div class="input-nascimento">
                             <label for="nascimento">Data de nascimento</label>
@@ -79,12 +78,11 @@
                     <div class="submit-container">
                         <input type="submit" id="cadastrar-btn" value="CADASTRAR-SE" class="cadastrar-btn">
                     </div>
-
                 </form>
-
             </aside>
         </main>
 
+        <script src="../js/mascara-cpf.js"></script>
         <script src="../js/compara-senhas.js"></script>
         <script src="../js/mostrar-esconder-senha.js"></script>
         
