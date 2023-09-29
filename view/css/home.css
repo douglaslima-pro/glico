@@ -10,6 +10,11 @@ body{
     display: table-cell;
 }
 
+.aviso-na-tela{
+    bottom: 2px;
+    top: unset;
+}
+
 *{
     margin: 0;
     padding: 0;

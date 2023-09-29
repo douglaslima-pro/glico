@@ -23,8 +23,6 @@ class usuarioDAO{
             $stmt->bindValue(7,$usuarioDTO->getCpf());
             $retorno = $stmt->execute();
             return $retorno;
-            
-            return gettype(self::$conn);
         }catch(PDOException $e){
             echo $e->getMessage();
         }
@@ -32,7 +30,8 @@ class usuarioDAO{
 
     public function realizarLogin($usuarioDTO){
         try{
-            $stmt = self::$conn->prepare("SELECT * FROM usuario WHERE email = ? OR usuario = ? AND situacao = 1");
+            $sql = "SELECT * FROM usuario WHERE email = ? OR usuario = ? AND situacao = 1";
+            $stmt = self::$conn->prepare($sql);
             $stmt->bindValue(1,$usuarioDTO->getEmail());
             $stmt->bindValue(2,$usuarioDTO->getUsuario());
             $stmt->execute();
@@ -46,6 +45,25 @@ class usuarioDAO{
             }
         }catch(PDOException $e){
             echo $e->getMessage();
+        }
+    }
+
+    //Verifica se o e-mail que o usuário inseriu existe e se existir retorna true
+    public function emailExiste($email){
+        try{
+            $sql = "SELECT * FROM usuario WHERE email = ?";
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindValue(1,$email);
+            $retorno = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if($retorno == NULL){
+                return false;
+            }else{
+                return true;
+            }
+            
+        }catch(PDOException $e){
+            return $e->getMessage();
         }
     }
 

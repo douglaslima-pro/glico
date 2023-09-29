@@ -8,10 +8,9 @@ if(isset($_POST["submit"])){
     $nome = $_POST["nome"];
     $email = $_POST["email"];
     $usuario = $_POST["usuario"];
-
     //CRIA UM HASH DA SENHA ANTES DE ARMAZENAR NO BANCO
     $senha = password_hash($_POST["senha"],PASSWORD_DEFAULT);
-
+    //PEGA A DATA ATUAL E COLOCA NA VARIÁVEL DATA_CADASTRO
     date_default_timezone_set("America/Sao_Paulo");
     $data_cadastro = date("Y-m-d");
     $data_nascimento = $_POST["data_nascimento"];
@@ -22,26 +21,17 @@ if(isset($_POST["submit"])){
     $usuarioDTO->setData_nascimento($data_nascimento);
     $usuarioDTO->setCpf($cpf);
 
-    echo $usuarioDTO->getNome();
-    echo "<br>".$usuarioDTO->getUsuario();
-    echo "<br>".$usuarioDTO->getEmail();
-    echo "<br>".$usuarioDTO->getSenha();
-    echo "<br>".$usuarioDTO->getData_cadastro();
-    echo "<br>".$usuarioDTO->getData_nascimento();
-    echo "<br>".$usuarioDTO->getCpf();
-
-
     $usuarioDAO = new usuarioDAO();
     $retorno = $usuarioDAO->cadastrarUsuario($usuarioDTO);
 
     if(empty($retorno) || $retorno == NULL || $retorno == 0){
-        header("location:../view/html/login.php?msg=ERRO no cadastro!");
+        header("location:../view/html/cadastro.php?msg=erro:<b>Erro</b><br>Não foi possível finalizar o cadastro!");
     }else{
-        header("location:../view/html/login.php?msg=Cadastro criado com sucesso!");
+        header("location:../view/html/login.php?msg=sucesso:<b>Sucesso</b><br>Cadastro criado com sucesso!");
     }
 
 }else{
-    header("location:../view/html/login.php?msg=ERRO no formulário ou no controller!");
+    header("location:../view/html/cadastro.php?msg=info:<b>O site informa</b><br>Alguma coisa deu errado no formulário!");
 }
 
 ?>

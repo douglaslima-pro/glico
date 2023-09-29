@@ -1,0 +1,39 @@
+@import url(color.css);
+
+/*Caixa que mostra as mensagens de alerta do site*/
+.aviso-na-tela{
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    position: fixed;
+    top: 2px;
+    right: 2px;
+    padding: 10px 20px;
+    font-size:14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 2px;
+    opacity: 0;
+    transition: all 1.5s ease-in;
+    cursor:default;
+}
+.aviso-na-tela svg{
+    display: none;
+    fill: white;
+}
+.aviso-na-tela#sucesso .success-icon{
+    display: inline;
+}
+.aviso-na-tela#erro .error-icon{
+    display: inline;
+}
+.aviso-na-tela#info .info-icon{
+    display: inline;
+}
+
+/*Atributos globais*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

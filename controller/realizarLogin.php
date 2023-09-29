@@ -14,7 +14,7 @@ if(isset($_POST["submit"])){
     $retorno = $usuarioDAO->realizarLogin($usuarioDTO);
 
     if(empty($retorno) || $retorno == NULL || $retorno == 0){
-        header("location:../view/html/login.php?msg=Credenciais inválidas!");
+        header("location:../view/html/login.php?msg=erro:<b>Erro</b><br>Credenciais inválidas!");
     }else{
         session_start();
         $_SESSION["id_usuario"] = $retorno["id_usuario"];
@@ -29,11 +29,11 @@ if(isset($_POST["submit"])){
         $_SESSION["data_nascimento"] = $retorno["data_nascimento"];
         $_SESSION["data_cadastro"] = $retorno["data_cadastro"];
         $_SESSION["perfil"] = $retorno["perfil"];
-        header("location:../view/html/home.php?msg=Login efetuado com sucesso!");
+        header("location:../view/html/home.php?msg=sucesso:<b>Sucesso</b><br>Login efetuado com sucesso!");
     }
 
 }else{
-    header("location:../view/html/login.php?msg=Alguma coisa deu errado no formulário!");
+    header("location:../view/html/login.php?msg=info:<b>O site informa</b><br>Alguma coisa deu errado no formulário!");
 }
 
 

@@ -17,3 +17,8 @@ function mascaraCPF(inputID){
     }
 
 }
+
+function colarFalse(){
+    event.preventDefault();
+    console.log("prevent paste");
+}

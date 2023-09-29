@@ -94,18 +94,15 @@ h2{
     border: none;
 }
 .input-senha .icone-senha{
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    height: 20px;
-    width: 20px;
     cursor:pointer;
+    display: none;
+    fill: var(--cinza);
 }
-#esconde-senha .icone-senha{
-    background-image: url(../img/svg/eye-slash.svg);
+#esconde-senha .olho-fechado{
+    display: inline;
 }
-#mostra-senha .icone-senha{
-    background-image: url(../img/svg/eye.svg);
+#mostra-senha .olho-aberto{
+    display: inline;
 }
 .esqueceu-senha-login{
     display: flex;
