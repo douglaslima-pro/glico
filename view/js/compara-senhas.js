@@ -9,7 +9,7 @@ function comparaSenhas(senhaID,confirmaSenhaID,submitID){
         inputSubmit.disabled = false;
         //console.log(inputSubmit.disabled);
     }else{
-        aviso.style = "display: inline";
+        aviso.style = "display: inline-block";
         inputSubmit.disabled = true;
         //console.log(inputSubmit.disabled);
     }

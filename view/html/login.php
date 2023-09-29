@@ -11,7 +11,7 @@
         <title>Glico</title>
     </head>
 
-    <body onload="aviso('<?=$_GET['msg']?>')">
+    <body onload="aviso('<?php if(isset($_GET['msg'])){echo $_GET['msg'];}else{echo null;}?>')">
 
         <!--MENSAGEM DE AVISO QUE SURGE NO TOPO DA TELA-->
         <div class="aviso-na-tela" id="sucesso" onclick="fechaAviso()">

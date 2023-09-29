@@ -1,26 +1,31 @@
-function emailExiste(url){
-    let email = document.getElementById("email").value;
+function usuarioExiste(url){
+
+    let usuario = document.getElementById("usuario").value;
     let inputSubmit = document.getElementById("submit");
-    let aviso = document.querySelector(".aviso-email-em-uso");
+    let aviso = document.querySelector(".aviso-usuario-em-uso");
 
     //CRIA O OBJETO XMLHTTPREQUEST
     let xhr = new XMLHttpRequest();
     xhr.open("POST",url,true);
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    xhr.onreadystatechange = () => {
-        if(xhr.status == 200 && xhr.readyState == 4){
-            console.log(xhr.response);
-            xhr.responseText == 'true' ? emailExisteTrue() : emailExisteFalse();
+    xhr.onload = () => {
+        if(xhr.status != 200){
+            inputSubmit.disabled = true;
         }
     };
-    xhr.send(`email=${email}`);
+    xhr.onreadystatechange = () => {
+        if(xhr.status == 200 && xhr.readyState == 4){
+            console.log(xhr.responseText);
+            xhr.responseText == "true" ? usuarioExisteTrue() : usuarioExisteFalse();
+        }
+    };
+    xhr.send(`usuario=${usuario}`);
 
-    //FUNÇÕES DE RESPOSTA PARA O XMLHTTPREQUEST
-    function emailExisteTrue(){
+    function usuarioExisteTrue(){
         inputSubmit.disabled = true;
         aviso.style = "display: inline-block";
     }
-    function emailExisteFalse(){
+    function usuarioExisteFalse(){
         inputSubmit.disabled = false;
         aviso.style = "display: none";
     }

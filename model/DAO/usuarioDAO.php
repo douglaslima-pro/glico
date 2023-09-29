@@ -54,16 +54,32 @@ class usuarioDAO{
             $sql = "SELECT * FROM usuario WHERE email = ?";
             $stmt = self::$conn->prepare($sql);
             $stmt->bindValue(1,$email);
+            $stmt->execute();
             $retorno = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if($retorno == NULL){
+            if($retorno == NULL || empty($retorno) || $retorno == 0){
                 return false;
             }else{
                 return true;
             }
-            
         }catch(PDOException $e){
-            return $e->getMessage();
+            echo $e->getMessage();
+        }
+    }
+
+    public function usuarioExiste($usuario){
+        try{
+            $sql = "SELECT * FROM usuario WHERE usuario = ?";
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindValue(1,$usuario);
+            $stmt->execute();
+            $retorno = $stmt->fetch(PDO::FETCH_ASSOC);
+            if($retorno == NULL || empty($retorno) || $retorno == 0){
+                return false;
+            }else{
+                return true;
+            }
+        }catch(PDOException $e){
+            echo $e->getMessage();
         }
     }
 

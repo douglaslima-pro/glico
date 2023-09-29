@@ -11,7 +11,7 @@
         <title>Glico - Cadastro</title>
     </head>
 
-    <body onload="aviso('<?=$_GET['msg']?>')">
+    <body onload="aviso('<?php if(isset($_GET['msg'])){echo $_GET['msg'];}else{echo null;}?>')">
 
         <!--MENSAGEM DE AVISO QUE SURGE NO TOPO DA TELA-->
         <div class="aviso-na-tela" id="sucesso" onclick="fechaAviso()">
@@ -57,12 +57,12 @@
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" maxlength="100" oninput="emailExiste('../../controller/emailExiste.php')" required>
                     <!--Em uma implementação futura, o sistema deve verificar de forma assíncrona se o endereço de e-mail já está em uso-->
-                    <span class="aviso-email-em-uso" hidden>* E-mail já está em uso!</span>
+                    <p class="aviso-email-em-uso">* E-mail já está em uso!<br></p>
                     
                     <label for="usuario">Nome de usuário</label>
-                    <input type="usuario" id="usuario" name="usuario" maxlength="30" required>
+                    <input type="text" id="usuario" name="usuario" maxlength="30" oninput="usuarioExiste('../../controller/usuarioExiste.php')" required>
                     <!--Em uma implementação futura, o sistema deve verificar de forma assíncrona se o nome de usuário já existe no banco de dados-->
-                    <span class="aviso-usuario-existe" hidden>* Nome de usuário já está em uso!</span>
+                    <p class="aviso-usuario-em-uso">* Nome de usuário já está em uso!<br></p>
                     
                     <div class="senha-container">
                         <div class="flex-input-container">   
@@ -83,11 +83,11 @@
                                 </div>
                             </label>
                         </div>
-                        <span class="aviso-senhas-nao-coincidem">* As senhas não coincidem!</span>
+                        <p class="aviso-senhas-nao-coincidem">* As senhas não coincidem!</p>
                     </div>
 
                     <div class="submit-container">
-                        <input type="submit" name="submit" id="cadastrar-btn" value="CADASTRAR-SE" class="cadastrar-btn">
+                        <input type="submit" id="submit" name="submit" id="cadastrar-btn" value="CADASTRAR-SE" class="cadastrar-btn">
                     </div>
                 </form>
             </aside>
@@ -95,6 +95,7 @@
 
         <!--ÁREA DE SCRIPS EM JS-->
         <script src="../js/emailExiste.js"></script>
+        <script src="../js/usuarioExiste.js"></script>
         <script src="../js/aviso-na-tela.js"></script>
         <script src="../js/mascara-cpf.js"></script>
         <script src="../js/compara-senhas.js"></script>

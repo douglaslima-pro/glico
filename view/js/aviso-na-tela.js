@@ -1,7 +1,7 @@
 
 function aviso(msg){
 
-    if(msg != null){
+    if(msg != null && msg != ""){
 
     const aviso = document.querySelector(".aviso-na-tela");
     const mensagem = document.querySelector(".aviso-na-tela #mensagem");
@@ -13,7 +13,7 @@ function aviso(msg){
 
     setTimeout(() => {
         aviso.style = "opacity: 0";
-    },10000);
+    },8000);
 
     }
 

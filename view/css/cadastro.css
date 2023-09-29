@@ -123,10 +123,12 @@ main > aside > a{
 #mostra-senha .olho-aberto{
     display: inline;
 }
-.aviso-senhas-nao-coincidem{
+.aviso-senhas-nao-coincidem,.aviso-email-em-uso,.aviso-usuario-em-uso{
     color: red;
     font-size: 14px;
     display: none;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 /*BOTÃO SUBMIT CADASTRAR-SE*/

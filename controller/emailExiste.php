@@ -7,9 +7,6 @@ $email = $_POST["email"];
 $usuarioDAO = new usuarioDAO();
 $emailExiste = $usuarioDAO->emailExiste($email);
 
-echo "teste";
-echo $emailExiste ? "\ntrue" : "\nfalse";
-echo "\n".gettype($emailExiste);
-echo "\n".isset($emailExiste);
+echo $emailExiste ? 'true' : 'false';
 
 ?>
