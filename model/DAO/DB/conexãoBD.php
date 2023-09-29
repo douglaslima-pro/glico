@@ -10,7 +10,8 @@ class conexaoBD{
         try{
 
             //Cria um objeto PDO
-            self::$instance = new PDO("mysql:host=localhost;dbname=glico","root","");
+            //Pode ser necessário passar a PORTA como parâmetro, caso contrário dá erro de ACESSO NEGADO
+            self::$instance = new PDO("mysql:host=localhost;port=3312;dbname=glico","root","");
             self::$instance->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
             return self::$instance;

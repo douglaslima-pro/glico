@@ -23,9 +23,9 @@
 
             <aside>
 
-                <a href="login.html">Voltar para login</a>
+                <a href="login.php">Voltar para login</a>
 
-                <form action="" method="POST" class="cadastro-form">
+                <form action="../../controller/cadastrarUsuario.php" method="POST" class="cadastro-form">
 
                     <h2>Cadastre-se</h2>
 
@@ -39,7 +39,7 @@
                         </div>
                         <div class="input-nascimento">
                             <label for="nascimento">Data de nascimento</label>
-                            <input type="date" id="nascimento" name="nascimento">
+                            <input type="date" id="nascimento" name="data_nascimento">
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="submit-container">
-                        <input type="submit" id="cadastrar-btn" value="CADASTRAR-SE" class="cadastrar-btn">
+                        <input type="submit" name="submit" id="cadastrar-btn" value="CADASTRAR-SE" class="cadastrar-btn">
                     </div>
                 </form>
             </aside>

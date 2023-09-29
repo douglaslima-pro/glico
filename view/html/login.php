@@ -36,7 +36,7 @@
             <section class="descricao">
                 <h1>Glico</h1>
                 <p>Glico é uma aplicação web para registro e monitoramento de dados de controle glicêmico para pessoas com <span>Diabetes</span>.</p>
-                <a href="cadastro.html">Não possui cadastro?</a>
+                <a href="cadastro.php">Não possui cadastro?</a>
             </section>
 
             <section class="login-container">
@@ -55,7 +55,7 @@
                         <a href="#">Esqueceu sua senha?</a>
                     </div>
                     <div class="login-btn-container">
-                        <input type="submit" value="ENTRAR" class="login-btn">
+                        <input type="submit" name="submit" value="ENTRAR" class="login-btn">
                     </div>
                 </form>
             </section>

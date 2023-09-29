@@ -12,7 +12,8 @@ class usuarioDAO{
 
     public function cadastrarUsuario($usuarioDTO){
         try{
-            $stmt = self::$conn->prepare("INSERT INTO usuario(nome,usuario,email,senha,data_nascimento,data_cadastro,cpf) VALUES(?,?,?,?,?,?,?)");
+            $sql = "INSERT INTO usuario(nome,usuario,email,senha,data_nascimento,data_cadastro,cpf) VALUES(?,?,?,?,?,?,?)";
+            $stmt = self::$conn->prepare($sql);
             $stmt->bindValue(1,$usuarioDTO->getNome());
             $stmt->bindValue(2,$usuarioDTO->getUsuario());
             $stmt->bindValue(3,$usuarioDTO->getEmail());
@@ -22,6 +23,8 @@ class usuarioDAO{
             $stmt->bindValue(7,$usuarioDTO->getCpf());
             $retorno = $stmt->execute();
             return $retorno;
+            
+            return gettype(self::$conn);
         }catch(PDOException $e){
             echo $e->getMessage();
         }
@@ -29,7 +32,7 @@ class usuarioDAO{
 
     public function realizarLogin($usuarioDTO){
         try{
-            $stmt = self::$conn->prepare("SELECT * FROM usuario WHERE email = ? OR usuario = ?");
+            $stmt = self::$conn->prepare("SELECT * FROM usuario WHERE email = ? OR usuario = ? AND situacao = 1");
             $stmt->bindValue(1,$usuarioDTO->getEmail());
             $stmt->bindValue(2,$usuarioDTO->getUsuario());
             $stmt->execute();

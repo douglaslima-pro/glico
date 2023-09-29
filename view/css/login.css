@@ -7,7 +7,7 @@ html{
     display: table;
 }
 body{
-    background: #F0F2F5;
+    background: var(--cor-de-fundo);
     position: relative;
     display: table-cell;
 }
