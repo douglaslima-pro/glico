@@ -63,18 +63,12 @@
                     <div class="esqueceu-senha">
                         <a href="#">Esqueceu sua senha?</a>
                     </div>
-                    <div class="login-btn-container" onclick="teste()">
+                    <div class="login-btn-container">
                         <input type="submit" name="submit" value="ENTRAR" class="login-btn">
                     </div>
                 </form>
             </section>
         </main>
-
-        <!--ÁREA DE ÁUDIOS-->
-        <audio id="audio-notificacao" preload="auto"> 
-            <source src="../audio/notificacao.mp3" type="audio/mp3">
-            Seu navegador não suporta a reprodução de áudio.
-        </audio>
 
         <!--ÁREA DE SCRIPTS EM JS-->
         <script src="../js/recuperar-senha.js"></script>

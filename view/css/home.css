@@ -8,6 +8,48 @@ html{
 body{
     background: var(--cor-de-fundo);
     display: table-cell;
+    height: 100%;
+}
+main{
+    display: flex;
+    height: 100%;
+}
+h1{
+    font-size: 32px;
+}
+h3{
+    font-size: 16px;
+}
+main > aside{
+    background: var(--cinza-btn);
+    padding: 40px 30px;
+    min-width: 250px;
+    box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+aside ul li a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: black;
+}
+aside ul li a:hover{
+    opacity: 0.75;
+}
+aside ul li svg{
+    fill: black;
+}
+
+main > section{
+    width: 100%;
+    overflow-y: scroll;
+}
+section nav{
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
+    padding: 8px 50px;
+}
+section nav h1{
+    color: var(--azul);
 }
 
 .aviso-na-tela{
@@ -16,6 +58,8 @@ body{
 }
 
 *{
+    text-decoration: none;
+    list-style: none;
     margin: 0;
     padding: 0;
     box-sizing: border-box;

@@ -31,6 +31,7 @@ function enviarEmail($destinario,$nome,$assunto,$corpo){
         //Conteúdo da mensagem
         $mail->isHTML(true); //mensagem no formato HTML
         $mail->Subject = $assunto; //assunto da mensagem
+        $mail->CharSet = $mail::CHARSET_UTF8; // charset utf-8
         $mail->Body = $corpo; //corpo da mensagem em formato HTML
         $mail->AltBody = $corpo; //corpo da mensagem para clientes de e-mail que não suportam formato HTML
 
