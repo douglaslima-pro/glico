@@ -10,6 +10,7 @@ body{
     background: var(--cor-de-fundo);
     position: relative;
     display: table-cell;
+    height: 100%;
 }
 main{
     display: flex;

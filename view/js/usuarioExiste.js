@@ -8,11 +8,6 @@ function usuarioExiste(url){
     let xhr = new XMLHttpRequest();
     xhr.open("POST",url,true);
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    xhr.onload = () => {
-        if(xhr.status != 200){
-            inputSubmit.disabled = true;
-        }
-    };
     xhr.onreadystatechange = () => {
         if(xhr.status == 200 && xhr.readyState == 4){
             console.log(xhr.responseText);
@@ -26,7 +21,9 @@ function usuarioExiste(url){
         aviso.style = "display: inline-block";
     }
     function usuarioExisteFalse(){
-        inputSubmit.disabled = false;
+        if(document.querySelector(".aviso-email-em-uso").style["display"] != "inline-block" && document.querySelector(".aviso-senhas-nao-coincidem").style["display"] != "inline-block"){
+            inputSubmit.disabled = false;
+        }
         aviso.style = "display: none";
     }
 }

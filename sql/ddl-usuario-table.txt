@@ -4,7 +4,7 @@ CREATE TABLE `usuario` (
   `usuario` varchar(30) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `cpf` char(11) DEFAULT NULL,
+  `cpf` char(14) DEFAULT NULL,
   `foto` text DEFAULT NULL,
   `sexo` enum('H','M') DEFAULT NULL,
   `peso` decimal(5,2) DEFAULT NULL,

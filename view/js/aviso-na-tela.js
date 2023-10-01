@@ -1,4 +1,3 @@
-
 function aviso(msg){
 
     if(msg != null && msg != ""){

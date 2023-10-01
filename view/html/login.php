@@ -24,14 +24,14 @@
         <!--PROMPT QUE ABRE PARA RECUPERAR SENHA-->
         <div class="prompt-recuperar-senha">
             <div class="background-prompt"></div>
-            <form action="../../controller/recuperarSenha.php" method="POST" class="recuperar-senha-form">
+            <form action="" class="recuperar-senha-form" onsubmit="recuperarSenha('email-usuario2','verificar-btn')">
                 <div class="fechar-btn">X</div>
                 <h2>Recuperar senha</h2>
                 <p>Informe o e-mail ou nome de usuário associado à sua conta para alterar sua senha.</p>
                 <label for="email-usuario2">E-mail ou nome de usuário</label>
                 <div class="input-verificar-container">
                     <input type="text" id="email-usuario2" name="email-usuario" maxlength="100" required>
-                    <input type="submit" value="Verificar" class="verificar-btn">
+                    <input type="submit" value="Verificar" id="verificar-btn" class="verificar-btn">
                 </div>
             </form>
         </div>
@@ -77,6 +77,7 @@
         </audio>
 
         <!--ÁREA DE SCRIPTS EM JS-->
+        <script src="../js/recuperar-senha.js"></script>
         <script src="../js/aviso-na-tela.js"></script>
         <script src="../js/mostrar-esconder-senha.js"></script>
         <script>
@@ -96,6 +97,16 @@
             fecharPromptBTN = document.querySelector(".fechar-btn");
             fecharPromptBTN.addEventListener('click', () => {
                 promptRecuperarSenha.style = "display: none";
+            });
+
+            //DESABILITA O SUBMIT DO FORMULÁRIO DE RECUPERAR SENHA
+            //POIS O FORMULÁRIO USA AJAX - REQUISIÇÃO ASSÍNCRONA
+            document.querySelector(".recuperar-senha-form").addEventListener('submit', () => {
+                event.preventDefault();
+                console.log("submit");
+                setTimeout(() => {
+                    document.getElementById("email-usuario2").value = "";
+                }, 100);
             });
         </script>
 

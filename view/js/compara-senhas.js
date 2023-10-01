@@ -5,8 +5,10 @@ function comparaSenhas(senhaID,confirmaSenhaID,submitID){
     let aviso = document.querySelector(".aviso-senhas-nao-coincidem");
 
     if(senha == confirmaSenha){
+        if(document.querySelector(".aviso-email-em-uso").style["display"] != "inline-block" && document.querySelector(".aviso-usuario-em-uso").style["display"] != "inline-block"){
+            inputSubmit.disabled = false;
+        }
         aviso.style = "display: none";
-        inputSubmit.disabled = false;
         //console.log(inputSubmit.disabled);
     }else{
         aviso.style = "display: inline-block";

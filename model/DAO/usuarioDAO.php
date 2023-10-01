@@ -48,6 +48,20 @@ class usuarioDAO{
         }
     }
 
+    public function pesquisarUsuarioPeloEmailUsuario($emailusuario){
+        try{
+            $sql = "SELECT * FROM usuario WHERE email =? OR usuario = ?";
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindValue(1,$emailusuario);
+            $stmt->bindValue(2,$emailusuario);
+            $stmt->execute();
+            $retorno = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $retorno;
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
     //Verifica se o e-mail que o usuário inseriu existe e se existir retorna true
     public function emailExiste($email){
         try{

@@ -1,0 +1,13 @@
+{
+    "name": "douglaslima-pro/glico",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    },
+    "authors": [
+        {
+            "name": "douglaslima-pro",
+            "email": "douglaslima-pro@outlook.com"
+        }
+    ]
+}

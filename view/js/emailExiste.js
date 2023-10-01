@@ -21,7 +21,9 @@ function emailExiste(url){
         aviso.style = "display: inline-block";
     }
     function emailExisteFalse(){
-        inputSubmit.disabled = false;
+        if(document.querySelector(".aviso-usuario-em-uso").style["display"] != "inline-block" && document.querySelector(".aviso-senhas-nao-coincidem").style["display"] != "inline-block"){
+            inputSubmit.disabled = false;
+        }
         aviso.style = "display: none";
     }
 }

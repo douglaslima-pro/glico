@@ -11,7 +11,7 @@
         <title>Glico - Home</title>
     </head>
 
-    <body onload="aviso('<?=$_GET['msg']?>')">
+    <body onload="aviso('<?php if(isset($_GET['msg'])){echo $_GET['msg'];}else{echo null;}?>')">
         
         <?php
             session_start();
