@@ -4,15 +4,15 @@ html{
     height: 100%;
     width: 100%;
     display: table;
+    overflow: hidden;
 }
 body{
-    background: var(--cor-de-fundo);
     display: table-cell;
     height: 100%;
 }
 main{
     display: flex;
-    height: 100%;
+    height: 100vh;
 }
 h1{
     font-size: 32px;
@@ -23,8 +23,9 @@ h3{
 main > aside{
     background: var(--cinza-btn);
     padding: 40px 30px;
-    min-width: 250px;
     box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.25);
+    text-wrap: nowrap;
+    z-index: 2;
 }
 aside ul li a{
     display: flex;
@@ -41,18 +42,58 @@ aside ul li svg{
 }
 
 main > section{
+    background: var(--cor-de-fundo2);
     width: 100%;
-    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 }
 section nav{
+    background: var(--cor-de-fundo2);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
     padding: 8px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
 }
 section nav h1{
     color: var(--azul);
+    cursor: default;
+}
+section nav .user-options-container{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+section nav .user-options-container img{
+    width: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid var(--cinza);
+}
+section nav .user-options-container .hamburguer-btn{
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    display: none;
+}
+section nav .user-options-container .hamburguer-btn div{
+    width: 35px;
+    height: 5px;
+    background: var(--cinza);
+}
+section nav .user-options-container img:hover,section nav .user-options-container .hamburguer-btn:hover{
+    opacity: 0.9;
+}
+section > div{
+    position: relative;
+    overflow-y: scroll;
+    padding: 20px 10px;
 }
 
 .aviso-na-tela{
+    background: black;
     bottom: 2px;
     top: unset;
 }
@@ -63,4 +104,15 @@ section nav h1{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+@media screen and (width <= 700px){
+
+    main > aside{
+        display: none;
+    }
+    section nav .user-options-container .hamburguer-btn{
+        display: flex;
+    }
+
 }

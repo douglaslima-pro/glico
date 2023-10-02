@@ -50,12 +50,30 @@
             <section>
 
                 <nav>
-
                     <h1>Glico</h1>
-
-                    <div class="opcoes-usuario"></div>
-
+                    <div class="user-options-container">
+                        <div class="hamburguer-btn">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <img src="../img/png/anonymous-profile.png" alt="Foto de perfil do usuário" class="profile-picture" title="<?=$_SESSION['nome']?>">
+                    </div>
                 </nav>
+
+                <div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quo, alias libero voluptatibus voluptatum mollitia recusandae obcaecati, nemo quibusdam doloremque repudiandae! Saepe rem ducimus facilis fugiat officia dolorum. Voluptates, officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quo, alias libero voluptatibus voluptatum mollitia recusandae obcaecati, nemo quibusdam doloremque repudiandae! Saepe rem ducimus facilis fugiat officia dolorum. Voluptates, officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quo, alias libero voluptatibus voluptatum mollitia recusandae obcaecati, nemo quibusdam doloremque repudiandae! Saepe rem ducimus facilis fugiat officia dolorum. Voluptates, officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quo, alias libero voluptatibus voluptatum mollitia recusandae obcaecati, nemo quibusdam doloremque repudiandae! Saepe rem ducimus facilis fugiat officia dolorum. Voluptates, officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quo, alias libero voluptatibus voluptatum mollitia recusandae obcaecati, nemo quibusdam doloremque repudiandae! Saepe rem ducimus facilis fugiat officia dolorum. Voluptates, officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quo, alias libero voluptatibus voluptatum mollitia recusandae obcaecati, nemo quibusdam doloremque repudiandae! Saepe rem ducimus facilis fugiat officia dolorum. Voluptates, officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quo, alias libero voluptatibus voluptatum mollitia recusandae obcaecati, nemo quibusdam doloremque repudiandae! Saepe rem ducimus facilis fugiat officia dolorum. Voluptates, officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quo, alias libero voluptatibus voluptatum mollitia recusandae obcaecati, nemo quibusdam doloremque repudiandae! Saepe rem ducimus facilis fugiat officia dolorum. Voluptates, officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quo, alias libero voluptatibus voluptatum mollitia recusandae obcaecati, nemo quibusdam doloremque repudiandae! Saepe rem ducimus facilis fugiat officia dolorum. Voluptates, officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quo, alias libero voluptatibus voluptatum mollitia recusandae obcaecati, nemo quibusdam doloremque repudiandae! Saepe rem ducimus facilis fugiat officia dolorum. Voluptates, officia.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quo, alias libero voluptatibus voluptatum mollitia recusandae obcaecati, nemo quibusdam doloremque repudiandae! Saepe rem ducimus facilis fugiat officia dolorum. Voluptates, officia.</p>
+                </div>
 
             </section>
 

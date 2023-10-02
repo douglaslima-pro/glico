@@ -1,2 +1,2 @@
-#Ignora a pasta vendor que está na raiz do diretório
+#Ignora a pasta vendor que está na raiz do repositório
 /vendor/
