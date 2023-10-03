@@ -1,18 +1,12 @@
 @import url(color.css);
 
-html{
+html,body{
     height: 100%;
-    width: 100%;
-    display: table;
     overflow: hidden;
-}
-body{
-    display: table-cell;
-    height: 100%;
 }
 main{
     display: flex;
-    height: 100vh;
+    height: 100%;
 }
 h1{
     font-size: 32px;
@@ -44,8 +38,7 @@ aside ul li svg{
 main > section{
     background: var(--cor-de-fundo2);
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    overflow-y: auto;
 }
 section nav{
     background: var(--cor-de-fundo2);
@@ -66,12 +59,57 @@ section nav .user-options-container{
     align-items: center;
     gap: 20px;
 }
-section nav .user-options-container img{
+section nav .user-options-container .profile-picture-container{
     width: 35px;
-    border-radius: 50%;
+    height: 35px;
     cursor: pointer;
+    position: relative;
+}
+.profile-picture-container .profile-picture{
+    height: 100%;
+    border-radius: 50%;
     border: 1px solid var(--cinza);
 }
+
+.user-options{
+    background: white;
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    min-width: 130px;
+    font-size: 14px;
+    text-align: center;
+    transition: all .5s ease-in;
+}
+.user-options h4{
+    margin-bottom: 15px;
+    cursor: default;
+}
+.user-options ul li:not(:last-child){
+    margin-bottom: 5px;
+}
+.user-options ul li:hover a{
+    color: black;
+}
+.user-options ul li a{
+    color: var(--cinza);
+    text-wrap: nowrap;
+    width: 100%;
+    display: inline-block;
+}
+#esconde-user-options .user-options{
+    visibility: hidden;
+    opacity: 0;
+}
+#mostra-user-options .user-options{
+    visibility: visible;
+    opacity: 1;
+}
+
 section nav .user-options-container .hamburguer-btn{
     flex-direction: column;
     gap: 5px;
@@ -87,9 +125,17 @@ section nav .user-options-container img:hover,section nav .user-options-containe
     opacity: 0.9;
 }
 section > div{
-    position: relative;
-    overflow-y: scroll;
     padding: 20px 10px;
+}
+section::-webkit-scrollbar{
+    width: 8px;
+}
+section::-webkit-scrollbar-track{
+    background-color: var(--cinza-btn);
+}
+section::-webkit-scrollbar-thumb{
+    border-radius: 30px;
+    background: var(--cinza);
 }
 
 .aviso-na-tela{

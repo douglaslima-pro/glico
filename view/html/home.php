@@ -52,12 +52,21 @@
                 <nav>
                     <h1>Glico</h1>
                     <div class="user-options-container">
+                        <div class="profile-picture-container" id="esconde-user-options">
+                            <img src="../img/png/anonymous-profile.png" alt="Foto de perfil do usuário" class="profile-picture" title="<?=$_SESSION['nome']?>">
+                            <div class="user-options">
+                                <h4><?=explode(" ",$_SESSION['nome'])[0]?></h4>
+                                <ul>
+                                    <li><a href="perfil.php">Editar perfil</a></li>
+                                    <li><a href="../../controller/sair.php">Sair</a></li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="hamburguer-btn">
                             <div></div>
                             <div></div>
                             <div></div>
                         </div>
-                        <img src="../img/png/anonymous-profile.png" alt="Foto de perfil do usuário" class="profile-picture" title="<?=$_SESSION['nome']?>">
                     </div>
                 </nav>
 
@@ -81,6 +90,32 @@
 
         <!--ÁREA DE SCRIPS EM JS-->
         <script src="../js/aviso-na-tela.js"></script>
+        <script>
+            let profilePictureContainer = document.querySelector(".profile-picture-container");
+            let profilePicture = document.querySelector(".profile-picture");
+            let userOptions = document.querySelector(".user-options");
+
+            window.addEventListener('click', () => {
+                if(!profilePictureContainer.contains(event.target)){
+                    profilePictureContainer.id = "esconde-user-options";
+                    console.log("clique fora");
+                }
+            });
+
+            document.querySelector("main > section").onscroll = () => {
+                profilePictureContainer.id = "esconde-user-options";
+                console.log("scrolling...");
+            };
+
+            profilePicture.addEventListener('click', () => {
+                if(profilePictureContainer.id == "esconde-user-options"){
+                    profilePictureContainer.id = "mostra-user-options";
+                }else{
+                    profilePictureContainer.id = "esconde-user-options";
+                }
+            });
+
+        </script>
 
     </body>
 

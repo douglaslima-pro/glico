@@ -3,6 +3,7 @@ function aviso(msg){
     if(msg != null && msg != ""){
 
     const aviso = document.querySelector(".aviso-na-tela");
+    aviso.style = "display: flex";
     const mensagem = document.querySelector(".aviso-na-tela #mensagem");
     
     aviso.id = msg.split(':')[0];
@@ -13,6 +14,10 @@ function aviso(msg){
     setTimeout(() => {
         aviso.style = "opacity: 0";
     },8000);
+
+    setTimeout(() => {
+        aviso.style = "display: none";
+    },9500);
 
     }
 
@@ -29,4 +34,7 @@ function fechaAviso(){
         audioNofiticacao();
     }
     aviso.style = "opacity: 0";
+    setTimeout(() => {
+        aviso.style = "display: none";
+    },1500);
 }
