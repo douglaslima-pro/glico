@@ -5,7 +5,7 @@ CREATE TABLE `usuario` (
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `cpf` char(14) DEFAULT NULL,
-  `foto` text DEFAULT NULL,
+  `foto` text DEFAULT '../img/png/anonymous-profile.png',
   `sexo` enum('H','M') DEFAULT NULL,
   `peso` decimal(5,2) DEFAULT NULL,
   `altura` decimal(3,2) DEFAULT NULL,
@@ -16,4 +16,4 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `usuario` (`usuario`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4
