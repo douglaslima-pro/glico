@@ -8,12 +8,7 @@ main{
     display: flex;
     height: 100%;
 }
-h1{
-    font-size: 32px;
-}
-h3{
-    font-size: 16px;
-}
+/*BARRA LATERAL DO SITE COM LINKS PARA OUTRAS PÁGINAS*/
 main > aside{
     background: var(--cinza-btn);
     padding: 40px 30px;
@@ -21,26 +16,31 @@ main > aside{
     text-wrap: nowrap;
     z-index: 2;
 }
-aside ul li a{
+aside nav ul li a{
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
     color: black;
 }
-aside ul li a:hover{
+aside nav ul li a:hover{
     opacity: 0.75;
 }
-aside ul li svg{
+aside nav ul li svg{
     fill: black;
 }
-
+aside nav ul li a h3{
+    font-size: 16px;
+}
+/*SECTION COM CONTEÚDO CENTRAL DA PÁGINA*/
 main > section{
     background: var(--cor-de-fundo2);
     width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
 }
-section nav{
+/*CABEÇALHO*/
+section header{
     background: var(--cor-de-fundo2);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
     padding: 8px 50px;
@@ -50,16 +50,19 @@ section nav{
     position: sticky;
     top: 0;
 }
-section nav h1{
+/*TÍTULO DO CABEÇALHO*/
+header h1{
+    font-size: 32px;
     color: var(--azul);
     cursor: default;
 }
-section nav .user-options-container{
+/*CONTÊINER COM A FOTO DE PERFIL*/
+header .user-options-container{
     display: flex;
     align-items: center;
     gap: 20px;
 }
-section nav .user-options-container .profile-picture-container{
+header .user-options-container .profile-picture-container{
     width: 35px;
     height: 35px;
     cursor: pointer;
@@ -70,7 +73,6 @@ section nav .user-options-container .profile-picture-container{
     border-radius: 50%;
     border: 1px solid var(--cinza);
 }
-
 .user-options{
     background: white;
     padding: 12px;
@@ -109,23 +111,20 @@ section nav .user-options-container .profile-picture-container{
     visibility: visible;
     opacity: 1;
 }
-
-section nav .user-options-container .hamburguer-btn{
+/*BOTÃO HAMBÚRGUER QUE APARECE EM TELAS PEQUENAS*/
+header .user-options-container .hamburguer-btn{
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
     display: none;
 }
-section nav .user-options-container .hamburguer-btn div{
+header .user-options-container .hamburguer-btn div{
     width: 35px;
     height: 5px;
     background: var(--cinza);
 }
-section nav .user-options-container img:hover,section nav .user-options-container .hamburguer-btn:hover{
+header .user-options-container img:hover,header .user-options-container .hamburguer-btn:hover{
     opacity: 0.9;
-}
-section > div{
-    padding: 20px 10px;
 }
 section::-webkit-scrollbar{
     width: 8px;
@@ -137,7 +136,164 @@ section::-webkit-scrollbar-thumb{
     border-radius: 30px;
     background: var(--cinza);
 }
+/*CONTEÚDO PRINCIPAL DA PÁGINA*/
+section .conteudo-principal-container{
+    padding: 60px 30px;
+}
+/*CARD REGISTRAR GLICEMIA*/
+.registrar-glicemia-card{
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+    cursor: default;
+}
+.registrar-glicemia-card h3{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.registrar-glicemia-card h3 span{
+    color: var(--vermelho);
+}
+.registrar-glicemia-card p{
+    font-size: 14px;
+    color: var(--cinza);
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+.registrar-glicemia-card > div.registrar-btn-container{
+    display: flex;
+    justify-content: center;
+}
+.registrar-glicemia-card button{
+    background-color: var(--vermelho);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.registrar-glicemia-card button:hover{
+    opacity: 0.9;
+}
+/*TÓPICOS DA PÁGINA*/
+.topico{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 60px 0;
+    cursor: default;
+}
+.topico svg{
+    fill: black;
+    width: 25px;
+    height: 25px;
+}
+.topico h3{
+    font-size: 24px;
+}
 
+/*DADOS IMPORTANTES CARDS*/
+.dados-importantes-container .dados-importantes-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 1100px;
+}
+.dados-importantes-container .dados-importantes-cards .card{
+    background-color: white;
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 20px 30px;
+    min-width: 224px;
+    flex: 1;
+    cursor: default;
+}
+.dados-importantes-container .dados-importantes-cards .card > *{
+    display: inline-block;
+    width: 100%;
+}
+.dados-importantes-container .dados-importantes-cards .card p{
+    color: var(--cinza);
+    font-weight: 600;
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+.dados-importantes-container .dados-importantes-cards .card span{
+    font-weight: bold;
+    text-align: right;
+    font-size: 30px;
+    cursor: pointer;
+}
+.dados-importantes-container .dados-importantes-cards .card span:hover{
+    opacity: 0.9;
+}
+/*TABELA DE HISTÓRICO DE GLICEMIAS*/
+.tableless{
+    background-color: white;
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 100%;
+    display: table;
+    max-width: 1300px;
+    cursor: default;
+}
+.tableless svg{
+    fill: var(--cinza);
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+.tableless svg:hover{
+    fill: #585858;
+}
+.tableless .tableless-th{
+    display: table-row;
+    cursor: default;
+}
+.tableless .tableless-th .tableless-td{
+    color: black;
+    font-weight: bold;
+}
+.tableless .tableless-tr{
+    display: table-row;
+}
+.tableless .tableless-td{
+    padding: 10px;
+    display: table-cell;
+    text-align: center;
+    color: var(--cinza);
+    border-bottom: 1px solid var(--cinza-claro);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.tableless .tableless-td span{
+    background-color: var(--cinza);
+    color: white;
+    display: inline-block;
+    width: 100%;
+    border-radius: 10px;
+}
+.tableless .tableless-tr .tableless-td.comentario{
+    max-width: 6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.tableless .tableless-tr .tableless-td.comentario:hover{
+    white-space: inherit;
+}
+.tableless .tableless-tr .tableless-td.valor{
+    font-weight: bold;
+}
+
+/*AVISO NA TELA*/
 .aviso-na-tela{
     background: black;
     bottom: 2px;
@@ -152,13 +308,23 @@ section::-webkit-scrollbar-thumb{
     box-sizing: border-box;
 }
 
-@media screen and (width <= 700px){
+@media screen and (width < 830px){
+    .tableless .condicao{
+        display: none;
+    }
+}
 
+@media screen and (width <= 700px){
     main > aside{
         display: none;
     }
-    section nav .user-options-container .hamburguer-btn{
+    section header .user-options-container .hamburguer-btn{
         display: flex;
     }
+}
 
+@media screen and (width < 500px){
+    .tableless .comentario{
+        display: none;
+    }
 }
