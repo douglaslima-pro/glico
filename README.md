@@ -14,7 +14,7 @@ Além disso, o sistema irá gerar relatórios e visualizações automáticas de 
 ## ⚙ Funções a serem desenvolvidas
 Abaixo eu listo as principais funções a serem desenvolvidas nesse projeto:
 
-- [ ] Registrar valor de glicemia
+- [X] Registrar valor de glicemia
 > Permite inserir o valor da glicemia do momento atual ou do passado com dia-horas.
 - [ ] Visualizar controle diário
 > Fornece uma visualização em tabela, organizada em dia-horas e também mostra a média de controle do dia.

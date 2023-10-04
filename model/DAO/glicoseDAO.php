@@ -1,13 +1,13 @@
 <?php
 
-require_once "DB/conexãoDB.php";
+require_once "DB/conexãoBD.php";
 
 class glicoseDAO{
 
     private static $conn;
 
     public function __construct(){
-        self::$conn = conexaoDB::criarConexao();
+        self::$conn = conexaoBD::criarConexao();
     }
 
     public function registrarGlicose($glicoseDTO){

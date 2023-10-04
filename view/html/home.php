@@ -30,16 +30,15 @@
         </div>
 
         <main>
-
+            <!--TELA REGISTRAR GLICEMIA-->
             <section class="tela-registrar-glicemia">
-                <div class="transparent-background"></div>
                 <div class="registrar-glicemia-form-container">
                     <span class="fechar-btn">X</span>
                     <h2>Registrar glicemia</h2>
-                    <p>Preencha os campos obrigatórios e clique em "Registrar".</p>
-                    <form action="" class="registrar-glicemia-form">
-                        <div>
-                            <label for="condicao">Condição</label>
+                    <p class="observacao">* Preencha os campos obrigatórios e clique em "Registrar".</p>
+                    <form action="" class="registrar-glicemia-form" onsubmit="registrarGlicose(<?=$_SESSION['id_usuario']?>)">
+                        <div class="select-condicao-container">
+                            <label for="condicao">Condição:</label>
                             <select name="condicao" id="condicao">
                                 <option value="">Nenhum</option>
                                 <option value="Jejum">Jejum</option>
@@ -49,17 +48,18 @@
                             </select>
                         </div>
 
-                        <p>Você pode editar a data e a hora do registro.</p>
-
                         <div class="input-data-hora-container">
-                            <div class="input-data-container">
-                                <label for="data">Data</label>
-                                <input type="date" id="data" name="data" required>
+                            <div class="flex-container">
+                                <div class="input-data-container">
+                                    <label for="data">Data</label>
+                                    <input type="date" id="data" name="data" required>
+                                </div>
+                                <div class="input-hora-container">
+                                    <label for="hora">Hora</label>
+                                    <input type="time" id="hora" name="hora" required>
+                                </div>
                             </div>
-                            <div class="input-hora-container">
-                                <label for="hora">Hora</label>
-                                <input type="time" id="hora" name="hora" required>
-                            </div>
+                            <p class="observacao">* Você pode mudar a data e a hora do registro!</p>
                         </div>
 
                         <div>
@@ -75,7 +75,7 @@
                         <input type="submit" value="Registrar">
                     </form>
                 </div>
-            </section>
+            </section><!--fim da tela registrar glicemia-->
 
             <!--BARRA LATERAL COM LINKS PARA OUTRAS PÁGINAS DO SITE-->
             <aside>
@@ -180,15 +180,17 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
-
         </main><!--fim do main-->
 
+
         <!--ÁREA DE SCRIPS EM JS-->
+        <script src="../js/registrar-glicose.js"></script>
         <script src="../js/aviso-na-tela.js"></script>
         <script>
+            //SCRIPT DA FOTO DE PERFIL
+            //QUANDO CLICA ABRE AS OPÇÕES DO USUÁRIO: EDITAR PERFIL E SAIR
             let profilePictureContainer = document.querySelector(".profile-picture-container");
             let profilePicture = document.querySelector(".profile-picture");
             let userOptions = document.querySelector(".user-options");
@@ -197,14 +199,12 @@
             window.addEventListener('click', () => {
                 if(!profilePictureContainer.contains(event.target)){
                     profilePictureContainer.id = "esconde-user-options";
-                    console.log("clique fora");
                 }
             });
 
             //Esconde as opções de usuário quando gira o scroll da section
-            document.querySelector("main > section").onscroll = () => {
+            document.querySelector("main > section.conteudo-principal").onscroll = () => {
                 profilePictureContainer.id = "esconde-user-options";
-                console.log("scrolling...");
             };
 
             //mostra e esconde as opções de usuário quando clica na foto de perfil
@@ -215,6 +215,49 @@
                     profilePictureContainer.id = "esconde-user-options";
                 }
             });
+
+            //SCRIPT DA TELA DE REGISTRAR GLICEMIA
+            let registrarBTN = document.querySelector(".registrar-btn");
+            let telaRegGlicemia = document.querySelector(".tela-registrar-glicemia");
+            let regGlicemiaForm = document.querySelector(".registrar-glicemia-form-container");
+            let fecharBTN = document.querySelector(".fechar-btn");
+
+            //quando clica em "Registrar glicemia" abre o formulário
+            registrarBTN.addEventListener('click', () => {
+                telaRegGlicemia.style["display"] = "grid";
+                atualizaDataHora(); //insere a data e hora atuais nos inputs de forma automática
+            });
+
+            //fecha o formulário quando clica fora
+            telaRegGlicemia.addEventListener('click', () => {
+                if(!regGlicemiaForm.contains(event.target)){
+                    telaRegGlicemia.style["display"] = "none";
+                }
+            });
+
+            //fecha o formulário quando clica no botão
+            fecharBTN.addEventListener('click', () => {
+                telaRegGlicemia.style["display"] = "none";
+            });
+
+            //FUNÇÃO QUE INSERE A DATA E HORA ATUAL NOS INPUTS
+            function atualizaDataHora(){
+                let agora = new Date();
+                let inputData = document.getElementById("data");
+                let inputHora = document.getElementById("hora");
+                
+                let mes;
+                agora.getUTCMonth()+1 < 10 ? mes = "0"+(agora.getUTCMonth()+1) : mes = agora.getUTCMonth()+1; //date.getUTCMonth() retorna um número entre 0 e 11
+
+                let dia;
+                agora.getUTCDate() < 10 ? dia = "0"+agora.getUTCDate() : dia = agora.getUTCDate(); //date.getUTCDate() retorna um número entre 1 e 31
+
+                let data = agora.getUTCFullYear() /*date.getUTCFullYear retorna o ano completo, exemplo 2023*/+ "-" + mes + "-" + dia ; // YYYY-MM-DD
+                let hora = agora.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});
+
+                inputData.value = data;
+                inputHora.value = hora;
+            }
 
         </script>
 

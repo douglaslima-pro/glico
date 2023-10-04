@@ -297,75 +297,118 @@ section .conteudo-principal-container{
 
 /*TELA DE REGISTRAR GLICEMIA*/
 .tela-registrar-glicemia{
+    background: rgba(0, 0, 0, 0.5);
     position: absolute;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     z-index: 10;
-    display: flex;
     align-items: center;
     justify-content: center;
-}
-.tela-registrar-glicemia .transparent-background{
-    position: absolute;
-    background: rgba(0, 0, 0, 0.5);
-    height: 100%;
-    width: 100%;
+    overflow: auto;
+    padding: 20px 10px;
+    display: none;
 }
 .tela-registrar-glicemia .registrar-glicemia-form-container{
     background-color: white;
     padding: 30px;
     border-radius: 10px;
-    z-index: 11;
     color: var(--cinza);
+    position: relative;
 }
-.tela-registrar-glicemia .registrar-glicemia-form-container h2{
+.registrar-glicemia-form-container .fechar-btn{
     font-size: 30px;
+    font-weight: bold;
+    color: var(--cinza);
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+.registrar-glicemia-form-container .fechar-btn:hover{
+    opacity: 0.9;
+}
+.registrar-glicemia-form-container h2{
+    font-size: 30px;
+}
+.registrar-glicemia-form-container .observacao{
+    font-size: 14px;
+    color: var(--azul);
 }
 .registrar-glicemia-form{
     font-size: 16px;
     color: var(--cinza);
+    margin-top: 30px;
 }
 .registrar-glicemia-form label{
+    font-size: 16px;
     font-weight: 600;
     display: inline-block;
     width: 100%;
 }
 .registrar-glicemia-form textarea{
+    padding: 5px 10px;
     width: 100%;
     resize: none;
     outline: none;
+    border: 1px solid var(--cinza);
+    border-radius: 5px;
+    font-size: 14px;
+    color: var(--cinza);
+}
+.registrar-glicemia-form > div{
+    margin: 20px 0;
+}
+.registrar-glicemia-form input{
+    font-size: 14px;
+    border: 1px solid var(--cinza);
+    color: var(--cinza);
+    border-radius: 5px;
+    width: 100%;
+}
+.registrar-glicemia-form input[type="submit"]{
+    background-color: var(--vermelho);
+    color: white;
+    border: 1px solid var(--cinza);
+    padding: 2px 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+.registrar-glicemia-form input[type="submit"]:hover{
+    opacity: 0.9;
+}
+.select-condicao-container{
+    display: flex;
+    gap: 10px;
+}
+.select-condicao-container label{
+    display: inline;
+    width: unset;
+}
+.select-condicao-container select{
+    text-align: center;
+    color: var(--cinza);
     border-radius: 5px;
     border: 1px solid var(--cinza);
 }
-.registrar-glicemia-form input{
-    border: 1px solid var(--cinza);
-}
-.input-data-hora-container{
+.input-data-hora-container .flex-container{
     display: flex;
     gap: 10px;
     max-width: 300px;
 }
-.input-data-hora-container > div{
+.input-data-hora-container .flex-container > div{
     flex: 1;
 }
-.input-data-hora-container > div input{
+.input-data-hora-container input{
     width: 100%;
 }
 .input-valor-container label{
     display: inline;
+    width: unset;
 }
 .input-valor-container input{
     width: 100px;
     text-align: right;
     outline: none;
-}
-.registrar-glicemia-form .fechar-btn{
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--cinza);
-    position: absolute;
-    top: 10px;
-    right: 10px;
 }
 
 
