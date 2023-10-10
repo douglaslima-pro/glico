@@ -1,0 +1,15 @@
+.topic {
+    margin: 4rem 0;
+
+    //.topic__icon
+    &__icon {
+        height: 1.5rem;
+        margin-right: 1rem;
+    }
+
+    //.topic__title
+    &__title {
+        font-size: 1.75rem;
+        display: inline;
+    }
+}
