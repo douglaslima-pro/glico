@@ -1,0 +1,38 @@
+.description {
+    max-width: 500px;
+
+    //.description__title
+    &__title {
+        color: $vermelho;
+        font-size: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    &__text {
+        line-height: 1.5;
+        margin-bottom: 3rem;
+
+        //.description__text span
+        span {
+            color: $vermelho;
+            font-weight: bold;
+        }
+    }
+
+    //.description__cadastrar-link
+    &__cadastrar-link {
+        background: $cinza-btn;
+        border-radius: 5px;
+        color: black;
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 20px 30px;
+
+        //.description__cadastrar-link:hover
+        &:hover {
+            background: $cinza-btn-hover;
+        }
+    }
+    
+}

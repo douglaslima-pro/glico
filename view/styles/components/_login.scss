@@ -1,0 +1,90 @@
+.login {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px 0 $sombra;
+    padding: 2.5rem;
+    max-width: 450px;
+
+    //.login__title
+    &__title {
+        color: $cinza;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    //.login__label
+    &__label {
+        color: $cinza;
+        font-weight: 600;
+    }
+
+    //.login__input
+    &__input {
+        color: $cinza;
+        font-size: 1rem;
+        font-weight: 300;
+        padding: 4px;
+        width: 100%;
+    }
+
+    //.login__input,
+    //.login__password-container
+    &__input,
+    &__password-container {
+        border: 1px solid $cinza;
+        border-radius: 2px;
+        margin-bottom: 1rem;
+    }
+
+    &__password-container {
+        padding: 0 4px;
+    }
+
+    //.login__input--password
+    &__input--password {
+        border: none;
+        margin: 0;
+    }
+
+    //.login__forgot-password
+    &__forgot-password {
+        color: black;
+        display: block;
+        font-size: .9rem;
+        margin: 2rem 0;
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    //.login__btn
+    &__btn {
+        background: $azul;
+        border: none;
+        border-radius: 10px;
+        color: $cinza-muito-claro;
+        cursor: pointer;
+        display: block;
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin: 0 auto;
+        padding: 0.3rem 1.5rem;
+
+        //.login__btn:hover
+        &:hover {
+            opacity: .9;
+        }
+    }
+
+    //.login__eye-icon
+    &__eye-icon {
+        cursor: pointer;
+        fill: $cinza;
+        height: 1.3rem;
+        width: 1.3rem;
+        &:hover {
+            opacity: .9;
+        }
+    }
+
+}

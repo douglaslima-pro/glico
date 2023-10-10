@@ -1,11 +1,17 @@
-function emailExiste(url){
+var inputEmail = document.getElementById("email");
+
+inputEmail.addEventListener('input', () => {
+    emailExiste();
+});
+
+function emailExiste(){
     let email = document.getElementById("email").value;
     let inputSubmit = document.getElementById("submit");
-    let aviso = document.querySelector(".aviso-email-em-uso");
+    let aviso = document.getElementById("aviso-email");
 
     //CRIA O OBJETO XMLHTTPREQUEST
     let xhr = new XMLHttpRequest();
-    xhr.open("POST",url,true);
+    xhr.open("POST","../../controller/emailExiste.php",true);
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xhr.onreadystatechange = () => {
         if(xhr.status == 200 && xhr.readyState == 4){
@@ -18,12 +24,12 @@ function emailExiste(url){
     //FUNÇÕES DE RESPOSTA PARA O XMLHTTPREQUEST
     function emailExisteTrue(){
         inputSubmit.disabled = true;
-        aviso.style = "display: inline-block";
+        aviso.classList.remove('is-none');
     }
     function emailExisteFalse(){
-        if(document.querySelector(".aviso-usuario-em-uso").style["display"] != "inline-block" && document.querySelector(".aviso-senhas-nao-coincidem").style["display"] != "inline-block"){
+        if(document.getElementById("aviso-usuario").classList.contains('is-none') && document.getElementById("aviso-senhas").classList.contains('is-none')){
             inputSubmit.disabled = false;
         }
-        aviso.style = "display: none";
+        aviso.classList.add('is-none');
     }
 }

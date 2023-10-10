@@ -1,5 +1,6 @@
 <?php
 
+require_once "./alertMessage.php";
 require_once "../model/DTO/usuarioDTO.php";
 require_once "../model/DAO/usuarioDAO.php";
 
@@ -25,13 +26,16 @@ if(isset($_POST["submit"])){
     $retorno = $usuarioDAO->cadastrarUsuario($usuarioDTO);
 
     if(empty($retorno) || $retorno == NULL || $retorno == 0){
-        header("location:../view/html/cadastro.php?msg=erro:<b>Erro</b><br>Não foi possível finalizar o cadastro!");
+        $msg = alertMessage("alert--error","fa-xmark","Erro","Não foi possível finalizar o cadastro!");
+        header("location:../view/html/cadastro.php?msg=$msg");
     }else{
-        header("location:../view/html/login.php?msg=sucesso:<b>Sucesso</b><br>Cadastro criado com sucesso!");
+        $msg = alertMessage("alert--success","fa-check","Sucesso","Cadastro criado com sucesso!");
+        header("location:../view/html/login.php?msg=$msg");
     }
 
 }else{
-    header("location:../view/html/cadastro.php?msg=info:<b>O site informa</b><br>Alguma coisa deu errado no formulário!");
+    $msg = alertMessage("alert--info","fa-info","O site informa","Alguma coisa deu errado no formulário!");
+    header("location:../view/html/cadastro.php?msg=$msg");
 }
 
 ?>

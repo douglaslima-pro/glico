@@ -1,0 +1,35 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body, ul, li, p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: $cor-de-fundo;
+    line-height: 1;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+
+svg {
+    fill: #000000;
+}
+
+* {
+    box-sizing: border-box;
+}

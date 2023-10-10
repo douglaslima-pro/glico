@@ -1,10 +1,16 @@
-importScripts("aviso-na-tela.js");
+importScripts("alert.js");
 
 function recuperarSenha(inputID,submitID){
 
-    let emailusuario = document.getElementById(inputID).value;
+    event.preventDefault(); // evita o submit do formulário
+
+    let input = document.getElementById(inputID);
+    let emailusuario = input.value;
     let submit = document.getElementById(submitID);
-    //desabilita o submit até processar toda a solicitação
+
+    //limpa o input
+    input.value = '';
+    //desabilita o submit
     submit.disabled = true;
 
     let xhr = new XMLHttpRequest();
@@ -14,11 +20,15 @@ function recuperarSenha(inputID,submitID){
         if(xhr.status === 200 && xhr.readyState === 4){
             console.log(xhr.responseText);
             if(xhr.responseText == "true"){
-                aviso(`sucesso:<b>Sucesso</b><br>Enviamos um link para alterar a senha no seu e-mail!`);
+                console.log("sucesso");
+                //habilita o submit
                 submit.disabled = false;
+                mostrarAlerta('alert--success','fa-check','Sucesso','Enviamos um link para alterar a senha no seu e-mail!');
             }else{
-                aviso(`erro:<b>Erro</b><br>Não encontramos uma conta ativa para <b>${emailusuario}</b>!`);
+                console.log("erro");
+                //habilita o submit
                 submit.disabled = false;
+                mostrarAlerta('alert--error','fa-xmark','Erro',`Não encontramos uma conta ativa para <strong>${emailusuario}</strong>!`);
             }
         }
     };

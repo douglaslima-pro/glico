@@ -1,5 +1,6 @@
 <?php
 
+require_once "./alertMessage.php";
 require_once "../model/DTO/usuarioDTO.php";
 require_once "../model/DAO/usuarioDAO.php";
 
@@ -14,7 +15,8 @@ if(isset($_POST["submit"])){
     $retorno = $usuarioDAO->realizarLogin($usuarioDTO);
 
     if(empty($retorno) || $retorno == NULL || $retorno == 0){
-        header("location:../view/html/login.php?msg=erro:<b>Erro</b><br>Credenciais inválidas!");
+        $msg = alertMessage("alert--error","fa-xmark","Erro","Credenciais inválidas!");
+        header("location:../view/html/login.php?msg=$msg");
     }else{
         session_start();
         $_SESSION["id_usuario"] = $retorno["id_usuario"];
@@ -29,7 +31,8 @@ if(isset($_POST["submit"])){
         $_SESSION["data_nascimento"] = $retorno["data_nascimento"];
         $_SESSION["data_cadastro"] = $retorno["data_cadastro"];
         $_SESSION["perfil"] = $retorno["perfil"];
-        header("location:../view/html/home.php?msg=sucesso:<b>Sucesso</b><br>Login efetuado com sucesso!");
+        $msg = alertMessage("alert--success","fa-check","Sucesso","Login efetuado com sucesso!");
+        header("location:../view/html/home.php?msg=$msg");
     }
 
 }else{

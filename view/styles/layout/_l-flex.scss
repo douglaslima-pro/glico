@@ -1,0 +1,40 @@
+.l-flex {
+    display: flex;
+}
+
+.l-flex-center {
+    align-items: center;
+    justify-content: space-around;
+}
+
+.l-flex-align-center {
+    align-items: center;
+}
+
+.l-flex-align-end {
+    align-items: end;
+}
+
+.l-flex-column {
+    flex-direction: column;
+}
+
+.l-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.l-flex-gap-60 {
+    gap: 3rem;
+}
+
+.l-flex-1 {
+    flex: 1;
+}
+
+.l-flex-2 {
+    flex: 2;
+}
+
+.l-flex-3 {
+    flex: 3;
+}

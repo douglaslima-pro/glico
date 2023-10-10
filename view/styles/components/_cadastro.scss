@@ -1,0 +1,103 @@
+.cadastro {
+    background-color: white;
+    box-shadow: -4px 0 10px 0 $sombra;
+    color: $cinza;
+    padding: .75rem 2.5rem;
+    min-width: 320px;
+    
+    //.cadastro__voltar-link
+    &__voltar-link {
+        color: $vermelho;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1;
+        text-decoration: underline;
+    }
+
+    //.cadastro__form
+    &__form {
+        max-width: 600px;
+    }
+
+    //.cadastro__title
+    &__title {
+        font-size: 2.5rem;
+        margin: 2rem 0;
+    }
+
+    //.cadastro__subtitle
+    &__subtitle {
+        font-size: 1.75rem;
+        margin: 2rem 0;
+    }
+
+    //.cadastro__label
+    &__label {
+        font-weight: 600;
+    }
+
+    //.cadastro__input
+    &__input {
+        border: 1px solid $cinza;
+        border-radius: 2px;
+        color: $cinza;
+        margin-bottom: 1rem;
+        min-width: 155px;
+        padding: 4px;
+        width: 100%;
+
+        //.cadastro__input--senha
+        &--senha {
+            border: none;
+            margin: 0;
+            min-width: unset;
+            padding: 0;
+        }
+        
+        //.cadastro__input-container
+        &-container {
+            width: 100%;
+            gap: 10px;
+        }
+    }
+
+    //.cadastro__eye-icon
+    &__eye-icon {
+        cursor: pointer;
+        fill: $cinza;
+        height: 1.3rem;
+        width: 1.3rem;
+
+        //.cadastro__eye-icon:hover
+        &:hover {
+            opacity: .9;
+        }
+    }
+
+    //.cadastro__aviso
+    &__aviso {
+        color: red;
+        font-size: .75rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+    }
+
+    //.cadastro__btn
+    &__btn {
+        background-color: $azul;
+        border: none;
+        border-radius: 10px;
+        color: $cinza-muito-claro;
+        cursor: pointer;
+        display: block;
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin: 2rem auto;
+        padding: 5px 2rem;
+
+        //cadastro__btn:hover
+        &:hover {
+            opacity: .9;
+        }
+    }
+}

@@ -1,12 +1,17 @@
-function usuarioExiste(url){
+var inputUsuario = document.getElementById("usuario");
 
+inputUsuario.addEventListener('input', () => {
+    usuarioExiste();
+});
+
+function usuarioExiste(){
     let usuario = document.getElementById("usuario").value;
     let inputSubmit = document.getElementById("submit");
-    let aviso = document.querySelector(".aviso-usuario-em-uso");
+    let aviso = document.getElementById("aviso-usuario");
 
     //CRIA O OBJETO XMLHTTPREQUEST
     let xhr = new XMLHttpRequest();
-    xhr.open("POST",url,true);
+    xhr.open("POST","../../controller/usuarioExiste.php",true);
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xhr.onreadystatechange = () => {
         if(xhr.status == 200 && xhr.readyState == 4){
@@ -18,12 +23,12 @@ function usuarioExiste(url){
 
     function usuarioExisteTrue(){
         inputSubmit.disabled = true;
-        aviso.style = "display: inline-block";
+        aviso.classList.remove('is-none')
     }
     function usuarioExisteFalse(){
-        if(document.querySelector(".aviso-email-em-uso").style["display"] != "inline-block" && document.querySelector(".aviso-senhas-nao-coincidem").style["display"] != "inline-block"){
+        if(document.getElementById("aviso-email").classList.contains('is-none') && document.getElementById("aviso-senhas").classList.contains('is-none')){
             inputSubmit.disabled = false;
         }
-        aviso.style = "display: none";
+        aviso.classList.add('is-none');
     }
 }
