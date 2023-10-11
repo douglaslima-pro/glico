@@ -1,0 +1,38 @@
+.sidebar {
+
+    //.sidebar__list-item
+    &__list-item {
+        margin-bottom: 1.5rem;
+    }
+
+    //.sidebar__link
+    &__link {
+        align-items: center;
+        color: black;
+        gap: 10px;
+        margin-bottom: 10px;
+
+        //.sidebar__link:hover
+        &:hover {
+            opacity: .8;
+        }
+    }
+
+    //.sidebar__icon
+    &__icon {
+        fill: black;
+        height: 1rem;
+        width: 1rem;
+    }
+
+    //.sidebar__guide
+    &__guide {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (width <= 700px) {
+    .sidebar {
+        display: none;
+    }
+}

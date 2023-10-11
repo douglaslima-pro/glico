@@ -1,0 +1,61 @@
+.header {
+
+    //.header__logo
+    &__logo {
+        color: $azul;
+        cursor: default;
+        font-size: 2rem;
+
+        //.header__logo:hover
+        &:hover {
+            opacity: .9;
+        }
+    }
+
+    //.header__user-container
+    &__user-container {
+        height: 35px;
+        width: 35px;
+        position: relative;
+    }
+
+    //.header__profile-picture
+    &__profile-picture {
+        border: 1px solid $cinza;
+        border-radius: 50%;
+        cursor: pointer;
+        height: 100%;
+
+        //.header__profile-picture:hover
+        &:hover {
+            opacity: .9;
+        }
+    }
+
+    //.header__hamburger-btn
+    &__hamburger-btn {
+        cursor: pointer;
+        display: none;
+        gap: 5px;
+
+        //.header__hamburger-btn:hover
+        &:hover {
+            opacity: .9;
+        }
+    }
+
+    //.header__hamburger-dash
+    &__hamburger-dash {
+        width: 35px;
+        height: 5px;
+        background: $cinza;
+    }
+
+}
+
+
+@media screen and (width <= 700px) {
+    .header__hamburger-btn {
+        display: flex;
+    }
+}

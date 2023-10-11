@@ -1,0 +1,10 @@
+.content {
+    overflow-y: auto;
+    position: relative;
+    width: 100%;
+
+    //.content__main
+    &__main {
+        padding: 3rem 2rem;
+    }
+}
