@@ -1,19 +1,21 @@
 .cards {
     gap: 1rem;
+    max-width: 1100px;
 }
 
 .card {
     background-color: white;
-    border-radius: 1.3rem;
-    box-shadow: 2px 2px 5px 0 $sombra;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 5px 0 $sombra;
     color: $cinza;
-    max-width: 400px;
+    cursor: default;
+    min-width: 224px;
     padding: 2rem 1.5rem;
 
     //.card--register
     &--register {
         display: inline-block;
-        padding: 2.5rem 1.75rem;
+        padding: 1.75rem 2rem;
     }
 
     //.card__title
@@ -42,6 +44,11 @@
         font-size: 2rem;
         font-weight: bold;
         text-align: right;
+
+        //.card__import:hover
+        &:hover {
+            opacity: .9;
+        }
     }
 
     //.card__btn
@@ -55,7 +62,7 @@
         font-size: 1rem;
         font-weight: bold;
         margin: 1rem auto 0;
-        padding: 5px 2.5rem;
+        padding: 5px 2rem;
 
         //.card__btn:hover
         &:hover {

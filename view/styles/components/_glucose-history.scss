@@ -1,0 +1,85 @@
+.glucose-history {
+
+    //.glucose-history__table
+    &__table {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px 0 $sombra;
+        max-width: 1300px;
+        width: 100%;
+        cursor: default;
+    }
+
+    //.glucose-history__table-cell
+    &__table-cell {
+        border-bottom: 1px solid $cinza-claro;
+        color: $cinza;
+        font-size: .75rem;
+        font-weight: 600;
+        padding: 10px;
+        text-align: center;
+        white-space: nowrap;
+
+        //.glucose-history__table-cell--header
+        &--header {
+            color: black;
+            font-weight: bold;
+        }
+
+        //.glucose-history__table-cell--value
+        &--value {
+            font-weight: bold;
+        }
+
+        //.glucose-history__table-cell--condition
+        &--condition {
+            span {
+                background-color: $azul;
+                border-radius: 10px;
+                color: white;
+                display: inline-block;
+                width: 100%;
+                padding: 3px 0;
+            }
+        }
+
+        //.glucose-history__table-cell--comment
+        &--comment {
+            max-width: 6rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            //.glucose-history__table-cell--comment:hover
+            &:hover {
+                white-space: inherit;
+            }
+        }
+    }
+
+    //.glucose-history__table-icon
+    &__table-icon {
+        cursor: pointer;
+        fill: $cinza;
+        height: 15px;
+        width: 15px;
+        transition: .3s all ease-in;
+
+        //.glucose-history__table-icon:hover
+        &:hover {
+            fill: $azul;
+        }
+    }
+}
+
+
+@media screen and (width < 830px){
+    .glucose-history__table-cell--condition{
+        display: none;
+    }
+}
+
+@media screen and (width < 500px){
+    .glucose-history__table-cell--comment{
+        display: none;
+    }
+}

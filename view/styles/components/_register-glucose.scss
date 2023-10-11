@@ -1,0 +1,34 @@
+.register-glucose {
+    background-color: white;
+    border-radius: 10px;
+    color: $cinza;
+    padding: 30px;
+    position: relative;
+
+    //.register-glucose__close-btn
+    &__close-btn {
+        color: $cinza;
+        cursor: pointer;
+        font-size: 30px;
+        font-weight: bold;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+
+        //.register-glucose__close-btn:hover
+        &:hover {
+            opacity: .9;
+        }
+    }
+
+    //.register-glucose__title
+    &__title {
+        font-size: 2rem;
+    }
+
+    //.register-glucose__text
+    &__text {
+        font-size: 14px;
+        color: var(--azul);
+    }
+}
