@@ -1,5 +1,7 @@
 <?php
 
+require_once "alertMessage.php";
+
 session_start();
 
 unset(
@@ -19,6 +21,7 @@ $_SESSION["perfil"]
 
 session_destroy();
 
-header("location:../view/html/login.php?msg=info:<b>O site informa</b><br>Você saiu da sua conta!");
+$msg = alertMessage("alert--info","fa-info","O site informa","Você saiu da sua conta!");
+header("location:../view/html/login.php?msg=$msg");
 
 ?>

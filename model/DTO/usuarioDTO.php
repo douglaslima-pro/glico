@@ -2,7 +2,7 @@
 
 class usuarioDTO{
 
-    private $idusuario;
+    private $id_usuario;
     private $nome;
     private $usuario;
     private $email;
@@ -25,9 +25,9 @@ class usuarioDTO{
     }
 
     //GETTERS
-    public function getIdusuario()
+    public function getId_usuario()
     {
-        return $this->idusuario;
+        return $this->id_usuario;
     }
 
     public function getNome()
@@ -96,9 +96,9 @@ class usuarioDTO{
     }
 
     //SETTERS
-    public function setIdusuario($idusuario)
+    public function setId_usuario($id_usuario)
     {
-        $this->idusuario = $idusuario;
+        $this->id_usuario = $id_usuario;
     }
 
     public function setNome($nome)

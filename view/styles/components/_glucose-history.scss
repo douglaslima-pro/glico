@@ -1,5 +1,6 @@
 .glucose-history {
 
+
     //.glucose-history__table
     &__table {
         background-color: white;
@@ -8,6 +9,12 @@
         max-width: 1300px;
         width: 100%;
         cursor: default;
+
+        //.glucose-history__table-container
+        &-container {
+            padding: 2px;
+            overflow-x: auto;
+        }
     }
 
     //.glucose-history__table-cell
@@ -28,7 +35,13 @@
 
         //.glucose-history__table-cell--value
         &--value {
+            color: $vermelho;
             font-weight: bold;
+            
+            //.glucose-history__table-cell--value.glucose-history__table-cell--header
+            &.glucose-history__table-cell--header {
+                color: black;
+            }
         }
 
         //.glucose-history__table-cell--condition
@@ -58,15 +71,45 @@
 
     //.glucose-history__table-icon
     &__table-icon {
+        background: url("../../../img/png/folder.png") no-repeat center / cover;
         cursor: pointer;
-        fill: $cinza;
         height: 15px;
+        margin: 0 auto;
         width: 15px;
-        transition: .3s all ease-in;
 
         //.glucose-history__table-icon:hover
         &:hover {
-            fill: $azul;
+            background: url("../../../img/png/folder_hover.png") no-repeat center / cover;
+        }
+    }
+
+    //.glucose-history__text
+    &__text {
+        color: $cinza;
+        text-align: center;
+    }
+
+    //.glucose-history__pagination
+    &__pagination {
+        margin: 1rem 0;
+        gap: 5px;
+
+        //.glucose-history__pagination-btn
+        &-btn {
+            background-color: $cinza-btn;
+            border: 1px solid;
+            border-radius: 2px;
+            cursor: pointer;
+
+            //.glucose-history__pagination-btn:hover
+            &:hover {
+                background-color: $cinza-btn-hover;
+            }
+        }
+
+        //.glucose-history__pagination-span
+        &-span {
+            cursor: default;
         }
     }
 }

@@ -36,7 +36,8 @@ if(isset($_POST["submit"])){
     }
 
 }else{
-    header("location:../view/html/login.php?msg=info:<b>O site informa</b><br>Alguma coisa deu errado no formulário!");
+    $msg = alertMessage("alert--info","fa-info","O site informa","Alguma coisa deu errado no formulário!");
+    header("location:../view/html/login.php?msg=$msg");
 }
 
 

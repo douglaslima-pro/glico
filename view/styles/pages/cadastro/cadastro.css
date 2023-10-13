@@ -77,6 +77,14 @@ a {
   justify-content: space-around;
 }
 
+.l-flex-justify-between {
+  justify-content: space-between;
+}
+
+.l-flex-justify-end {
+  justify-content: end;
+}
+
 .l-flex-align-center {
   align-items: center;
 }
@@ -125,6 +133,10 @@ a {
   display: table-row;
 }
 
+.l-table-row-group {
+  display: table-row-group;
+}
+
 .l-table-cell {
   display: table-cell;
 }
@@ -149,6 +161,7 @@ a {
 }
 .alerts--bottom-right {
   bottom: 5px;
+  flex-direction: column-reverse;
   top: unset;
 }
 .alerts .alert {

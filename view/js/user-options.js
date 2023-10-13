@@ -3,12 +3,14 @@ var userOptions = document.querySelector(".user-options");
 
 userContainer.addEventListener('click', () => {
     console.log('user-container');
-    if(userOptions.classList.contains('is-hidden')){
-        userOptions.classList.remove('is-hidden');
-        userOptions.classList.add('is-visible');
-    }else{
-        userOptions.classList.remove('is-visible');
-        userOptions.classList.add('is-hidden');
+    if(!userOptions.contains(event.target)){
+        if(userOptions.classList.contains('is-hidden')){
+            userOptions.classList.remove('is-hidden');
+            userOptions.classList.add('is-visible');
+        }else{
+            userOptions.classList.remove('is-visible');
+            userOptions.classList.add('is-hidden');
+        }
     }
 });
 

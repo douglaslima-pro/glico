@@ -1,6 +1,6 @@
 <?php
 
-require_once "DB/conexãoBD.php";
+require_once "DB/conn.php";
 
 class usuarioDAO{
 

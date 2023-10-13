@@ -1,19 +1,26 @@
-importScripts("aviso-na-tela.js");
+importScripts("alert.js");
+importScripts("overlay-backdrop.js");
+importScripts("atualiza-pagina-home.js");
 
 function registrarGlicose(id_usuario){
+    //prevent submit event
     event.preventDefault();
+
     let valor = document.getElementById("valor").value;
     let data = document.getElementById("data").value;
     let hora = document.getElementById("hora").value;
     let comentario = document.getElementById("comentario").value;
     let condicao = document.getElementById("condicao").value;
-    console.clear();
-    console.log(valor);
-    console.log(data);
-    console.log(hora);
-    console.log(comentario);
-    console.log(condicao);
-    console.log(id_usuario);
+
+    //clear inputs
+    document.getElementById("valor").value = "";
+    document.getElementById("data").value = "";
+    document.getElementById("hora").value = "";
+    document.getElementById("comentario").value = "";
+    document.getElementById("condicao").value = "";
+    
+    //fecha o overlay-backdrop
+    fecharOverlay();
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST","../../controller/registrarGlicose.php",true);
@@ -21,9 +28,10 @@ function registrarGlicose(id_usuario){
     xhr.onreadystatechange = () => {
         if(xhr.status === 200 && xhr.readyState === 4){
             if(xhr.responseText == "true"){
-                aviso(`sucesso:<b>Sucesso</b><br>Glicemia registrada com sucesso!`);
+                mostrarAlerta("alert--success","fa-check","Sucesso","Glicemia registrada com sucesso!");
+                atualizaPaginaHome(id_usuario);
             }else{
-                aviso(`erro:<b>Erro</b><br>Erro ao registrar glicemia!`);
+                mostrarAlerta("alert--error","fa-xmark","Erro","Erro ao registrar glicemia!");
             }
         }
     };

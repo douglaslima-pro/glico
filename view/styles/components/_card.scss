@@ -21,8 +21,8 @@
     //.card__title
     &__title {
         color: black;
-        font-size: 1.2rem;
-        font-weight: 600;
+        font-size: 1.25rem;
+        font-weight: bold;
         margin-bottom: 1rem;
 
         //.card__title--red
@@ -33,7 +33,7 @@
 
     //.card__description
     &__description {
-        font-weight: 600;
+        font-weight: 500;
         margin-bottom: 2rem;
     }
 
@@ -44,10 +44,11 @@
         font-size: 2rem;
         font-weight: bold;
         text-align: right;
+        transition: .2s all ease-in;
 
         //.card__import:hover
         &:hover {
-            opacity: .9;
+            color: $azul;
         }
     }
 
@@ -55,13 +56,13 @@
     &__btn {
         background-color: $vermelho;
         border: none;
-        border-radius: 20px;
+        border-radius: 1rem;
         color: $cinza-muito-claro;
         cursor: pointer;
         display: block;
         font-size: 1rem;
         font-weight: bold;
-        margin: 1rem auto 0;
+        margin: 2rem auto 0;
         padding: 5px 2rem;
 
         //.card__btn:hover

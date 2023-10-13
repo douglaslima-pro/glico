@@ -11,6 +11,7 @@
     //.alerts--bottom-right
     &--bottom-right {
         bottom: 5px;
+        flex-direction: column-reverse;
         top: unset;
     }
 

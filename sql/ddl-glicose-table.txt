@@ -6,7 +6,9 @@ CREATE TABLE `glicose` (
   `hora` time NOT NULL,
   `condicao` enum('Jejum','Antes da refeição','2h após a refeição','Antes de dormir') DEFAULT NULL,
   `comentario` text DEFAULT NULL,
+  `data_registro` date NOT NULL DEFAULT curdate(),
+  `hora_registro` time NOT NULL DEFAULT curtime(),
   PRIMARY KEY (`id_glicose`),
   KEY `fk_glicose_usuario_id_usuario` (`id_usuario`),
   CONSTRAINT `fk_glicose_usuario_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci

@@ -1,5 +1,50 @@
 .sidebar {
 
+    //.sidebar--mobile
+    &--mobile {
+        bottom: 0;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        width: 100%;
+
+        //.sidebar--mobile.sidebar
+        &.sidebar {
+            display: block;
+        }
+
+        //.sidebar--mobile__close-btn
+        &__close-btn {
+            cursor: pointer;
+            font-size: 2rem;
+            font-weight: bold;
+            left: calc(100% - 2rem);
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .sidebar__list {
+            align-items: center;
+            margin-top: 1rem;
+
+            //.sidebar__list-item
+            &-item {
+                width: 100%;
+                border-bottom: 1px solid $cinza;
+                margin: 0;
+            }
+        }
+
+        .sidebar__link {
+            justify-content: center;
+            padding: 1rem 0;
+        }
+
+        .sidebar__guide {
+            font-size: 1.2rem;
+        }
+    }
+
     //.sidebar__list-item
     &__list-item {
         margin-bottom: 1.5rem;
@@ -10,7 +55,6 @@
         align-items: center;
         color: black;
         gap: 10px;
-        margin-bottom: 10px;
 
         //.sidebar__link:hover
         &:hover {
