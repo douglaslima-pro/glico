@@ -91,12 +91,12 @@
         </main>
 
         <!--ÁREA DE SCRIPS EM JS-->
-        <script src="../js/alert.js"></script>
-        <script src="../js/emailExiste.js"></script>
-        <script src="../js/usuarioExiste.js"></script>
-        <script src="../js/mascara-cpf.js"></script>
-        <script src="../js/compara-senhas.js"></script>
+        <script src="../js/pages/cadastro/compara-senhas.js"></script>
+        <script src="../js/pages/cadastro/email-existe.js"></script>
+        <script src="../js/pages/cadastro/mascara-cpf.js"></script>
+        <script src="../js/pages/cadastro/usuario-existe.js"></script>
         <script src="../js/mostrar-esconder-senha.js"></script>
+        <script src="../js/alerta.js"></script>
         
     </body>
 

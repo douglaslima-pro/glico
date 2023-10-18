@@ -1,7 +1,3 @@
-importScripts("alert.js");
-importScripts("overlay-backdrop.js");
-importScripts("atualiza-pagina-home.js");
-
 function registrarGlicose(id_usuario){
     //prevent submit event
     event.preventDefault();
@@ -36,4 +32,9 @@ function registrarGlicose(id_usuario){
         }
     };
     xhr.send(`valor=${valor}&data=${data}&hora=${hora}&comentario=${comentario}&condicao=${condicao}&idusuario=${id_usuario}`);
+}
+
+function atualizaPaginaHome(id_usuario){
+    ultimaGlicose(id_usuario);
+    pesquisarGlicoses(id_usuario,10,1);
 }

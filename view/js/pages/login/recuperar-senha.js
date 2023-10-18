@@ -1,5 +1,3 @@
-importScripts("alert.js");
-
 function recuperarSenha(inputID,submitID){
 
     event.preventDefault(); // evita o submit do formulário
@@ -33,5 +31,4 @@ function recuperarSenha(inputID,submitID){
         }
     };
     xhr.send(`emailusuario=${emailusuario}`);
-
 }

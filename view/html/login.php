@@ -68,10 +68,10 @@
         </main>
 
         <!--ÁREA DE SCRIPTS-->
-        <script src="../js/alert.js"></script>
-        <script src="../js/overlay-backdrop.js"></script>
+        <script src="../js/pages/login/recuperar-senha.js"></script>
         <script src="../js/mostrar-esconder-senha.js"></script>
-        <script src="../js/recuperar-senha.js"></script>
+        <script src="../js/alerta.js"></script>
+        <script src="../js/overlay.js"></script>
 
     </body>
 

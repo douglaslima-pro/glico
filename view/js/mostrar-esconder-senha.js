@@ -7,7 +7,6 @@ function mostrarSenha(passwordInputSelector, openEyeSelector, closedEyeSelector)
     passwordInput.type = 'text';
     openEye.classList.remove('is-none');
     closedEye.classList.add('is-none');
-
 }
 
 function esconderSenha(passwordInputSelector, closedEyeSelector, openEyeSelector){
@@ -19,5 +18,4 @@ function esconderSenha(passwordInputSelector, closedEyeSelector, openEyeSelector
     passwordInput.type = 'password';
     closedEye.classList.remove('is-none');
     openEye.classList.add('is-none');
-
 }

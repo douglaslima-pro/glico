@@ -256,13 +256,13 @@
 
 
         <!--ÁREA DE SCRIPS EM JS-->
-        <script src="../js/atualizar-historico-glicoses.js"></script>
-        <script src="../js/atualiza-pagina-home.js"></script>
+        <script src="../js/pages/home/registrar-glicose.js"></script>
+        <script src="../js/pages/home/ultima-glicose.js"></script>
+        <script src="../js/pages/home/pesquisar-glicoses.js"></script>
         <script src="../js/sidebar.js"></script>
-        <script src="../js/overlay-backdrop.js"></script>
         <script src="../js/user-options.js"></script>
-        <script src="../js/register-glucose.js"></script>
-        <script src="../js/alert.js"></script>
+        <script src="../js/alerta.js"></script>
+        <script src="../js/overlay.js"></script>
         <script>
             //FUNÇÃO QUE INSERE A DATA E HORA ATUAL NOS INPUTS
             function atualizaDataHora() {

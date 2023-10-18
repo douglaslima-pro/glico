@@ -1,11 +1,3 @@
-importScripts("atualizar-historico-glicoses.js");
-
-//atualiza o conteúdo da página home sem dar refresh (Ajax)
-function atualizaPaginaHome(id_usuario){
-    ultimaGlicose(id_usuario);
-    pesquisarGlicoses(id_usuario,10,1);
-}
-
 //pesquisa a última glicose registrada no banco de dados
 function ultimaGlicose(id_usuario){
     let ultimaGlicose = document.getElementById("last-glucose");
