@@ -196,16 +196,29 @@
                             <h2 class="topic__title">Histórico de glicemias</h2>
                         </div>
                         <?php
-                            $limite = 10;
-                            $totalRegistros = $glicoseDAO->contarGlicoses($_SESSION["id_usuario"])["count"];
-                            $paginas = ceil($totalRegistros/$limite);
+                            $limite = 5;
+                            $totalGlicoses = $glicoseDAO->contarGlicoses($_SESSION["id_usuario"])["count"];
+                            $paginas = ceil($totalGlicoses/$limite);
                             $pagina = 1;
                             $inicio = $pagina*$limite-$limite;
 
                             $glicoses = $glicoseDAO->pesquisarGlicoses($_SESSION["id_usuario"],$limite,$inicio);
                         ?>
 
-                            <div class="glucose-history__table-container <?=($glicoses == NULL || empty($glicoses)) ? 'is-none' : ''?>">
+                            <div class="glucose-history__table-container <?=($glicoses == NULL || empty($glicoses)) ? 'is-none' : $qtdGlicoses = sizeof($glicoses)?>">
+                                
+                                <label for="quantidade-registros">
+                                    Mostrar
+                                    <select class="register-glucose__select" name="quantidade-registros" id="quantidade-registros">
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                    </select>
+                                    registros
+                                </label>
+
+                                <div class="l-overflow-x-auto l-padding-3px l-margin-1rem-0">
                                 <div class="glucose-history__table l-table">
 
                                     <div class="glucose-history__table-row l-table-row">
@@ -218,36 +231,40 @@
                                     </div><!--fim do cabeçalho da tabela-->
 
                                     <div class="glucose-history__table-row-container l-table-row-group">
-                                <?php
-                                    if($glicoses != NULL && !empty($glicoses) && $glicoses != 0){
-                                        foreach($glicoses as $glicose):
-                                ?>
-                                    <div id="glicose-<?=$glicose["id_glicose"]?>" class="glucose-history__table-row l-table-row">
-                                        <div class="glucose-history__table-cell glucose-history__table-cell--view  l-table-cell">
-                                            <div class="glucose-history__table-icon"></div>
-                                        </div>
-                                        <div class="glucose-history__table-cell glucose-history__table-cell--value l-table-cell"><?=$glicose["valor"]?></div>
-                                        <div class="glucose-history__table-cell glucose-history__table-cell--date l-table-cell"><?=$glicose["data"]?></div>
-                                        <div class="glucose-history__table-cell glucose-history__table-cell--time l-table-cell"><?=$glicose["hora"]?></div>
-                                        <div class="glucose-history__table-cell glucose-history__table-cell--condition l-table-cell"><span><?=$glicose["condicao"] == '' ? 'Nenhum' : $glicose["condicao"] ?></span></div>
-                                        <div class="glucose-history__table-cell glucose-history__table-cell--comment l-table-cell"><?=$glicose["comentario"] == '' ? '--' : $glicose["comentario"]?></div>
-                                    </div><!--fim da linha da tabela-->
-                                <?php
-                                        endforeach;
-                                    }
-                                ?>
+                                    <?php
+                                        if($glicoses != NULL && !empty($glicoses) && $glicoses != 0){
+                                            foreach($glicoses as $glicose):
+                                    ?>
+                                        <div id="glicose-<?=$glicose["id_glicose"]?>" class="glucose-history__table-row l-table-row">
+                                            <div class="glucose-history__table-cell glucose-history__table-cell--view  l-table-cell">
+                                                <div class="glucose-history__table-icon"></div>
+                                            </div>
+                                            <div class="glucose-history__table-cell glucose-history__table-cell--value l-table-cell"><?=$glicose["valor"]?></div>
+                                            <div class="glucose-history__table-cell glucose-history__table-cell--date l-table-cell"><?=$glicose["data"]?></div>
+                                            <div class="glucose-history__table-cell glucose-history__table-cell--time l-table-cell"><?=$glicose["hora"]?></div>
+                                            <div class="glucose-history__table-cell glucose-history__table-cell--condition l-table-cell"><span><?=$glicose["condicao"] == '' ? 'Nenhum' : $glicose["condicao"] ?></span></div>
+                                            <div class="glucose-history__table-cell glucose-history__table-cell--comment l-table-cell"><?=$glicose["comentario"] == '' ? '--' : $glicose["comentario"]?></div>
+                                        </div><!--fim da linha da tabela-->
+                                    <?php
+                                            endforeach;
+                                        }
+                                    ?>
                                     </div><!--fim do table row group-->
 
                                 </div><!--fim da tabela-->
+                                </div>
+
+                                <div class="glucose-history__pagination l-flex l-flex-align-center l-flex-justify-end <?=($glicoses == NULL || empty($glicoses)) ? 'is-none' : ''?>">
+                                    <button class="glucose-history__pagination-btn glucose-history__pagination-btn--start is-none" onclick="pesquisarGlicoses(<?=$_SESSION['id_usuario']?>,<?=$limite?>,1)">Início</button>
+                                    <button class="glucose-history__pagination-btn glucose-history__pagination-btn--previous is-none" onclick="pesquisarGlicoses(<?=$_SESSION['id_usuario']?>,<?=$limite?>,<?=$pagina-1 < 1 ? 1 : $pagina-1?>)"><<</button>
+                                    <span class="glucose-history__pagination-span"><?=($inicio+1)." - $qtdGlicoses de $totalGlicoses"?></span>
+                                    <button class="glucose-history__pagination-btn glucose-history__pagination-btn--next <?=$pagina >= $paginas ? 'is-none' : ''?>" onclick="pesquisarGlicoses(<?=$_SESSION['id_usuario']?>,<?=$limite?>,<?=$pagina+1 > $paginas ? $paginas : $pagina+1?>)">>></button>
+                                    <button class="glucose-history__pagination-btn glucose-history__pagination-btn--end <?=$pagina >= $paginas ? 'is-none' : ''?>" onclick="pesquisarGlicoses(<?=$_SESSION['id_usuario']?>,<?=$limite?>,<?=$paginas?>)">Fim</button>
+                                </div>
+
                             </div><!--fim do glucose-history__table-container-->
                             
-                            <div class="glucose-history__pagination l-flex l-flex-align-center l-flex-justify-end <?=($glicoses == NULL || empty($glicoses)) ? 'is-none' : ''?>">
-                                <button class="glucose-history__pagination-btn glucose-history__pagination-btn--start is-none" onclick="pesquisarGlicoses(<?=$_SESSION['id_usuario']?>,<?=$limite?>,1)">Início</button>
-                                <button class="glucose-history__pagination-btn glucose-history__pagination-btn--previous is-none" onclick="pesquisarGlicoses(<?=$_SESSION['id_usuario']?>,<?=$limite?>,<?=$pagina-1 < 1 ? 1 : $pagina-1?>)"><<</button>
-                                <span class="glucose-history__pagination-span">Página <?=$pagina?> de <?=$paginas?></span>
-                                <button class="glucose-history__pagination-btn glucose-history__pagination-btn--next <?=$pagina >= $paginas ? 'is-none' : ''?>" onclick="pesquisarGlicoses(<?=$_SESSION['id_usuario']?>,<?=$limite?>,<?=$pagina+1 > $paginas ? $paginas : $pagina+1?>)">>></button>
-                                <button class="glucose-history__pagination-btn glucose-history__pagination-btn--end <?=$pagina >= $paginas ? 'is-none' : ''?>" onclick="pesquisarGlicoses(<?=$_SESSION['id_usuario']?>,<?=$limite?>,<?=$paginas?>)">Fim</button>
-                            </div>
+                            
                             <p id="glucoses-void" class="glucose-history__text <?=($glicoses != NULL && !empty($glicoses)) ? 'is-none' : ''?>">Nenhum registro encontrado!</p>
                     </div><!--fim do histórico de glicoses-->
                 </div><!--fim do content main-->
@@ -282,6 +299,12 @@
                 inputData.value = data;
                 inputHora.value = hora;
             }
+
+            //MUDA A QUANTIDADE DE REGISTROS POR PÁGINA
+            let select = document.getElementById("quantidade-registros");
+            select.addEventListener("change",() => {
+                pesquisarGlicoses(<?=$_SESSION["id_usuario"]?>,select.value,1);
+            });
         </script>
 
     </body>

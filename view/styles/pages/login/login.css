@@ -61,11 +61,6 @@ a {
 
 #main {
   height: 100%;
-  padding: 3rem 1rem;
-}
-
-#main.l-no-padding {
-  padding: 0;
 }
 
 .l-flex {
@@ -105,7 +100,7 @@ a {
   gap: 1rem;
 }
 
-.l-flex-gap-60 {
+.l-flex-gap-3rem {
   gap: 3rem;
 }
 
@@ -155,6 +150,18 @@ a {
 
 .l-overflow-x-auto {
   overflow-x: auto;
+}
+
+.l-no-padding {
+  padding: 0;
+}
+
+.l-padding-3px {
+  padding: 3px;
+}
+
+.l-padding-3rem-1rem {
+  padding: 3rem 1rem;
 }
 
 .description {

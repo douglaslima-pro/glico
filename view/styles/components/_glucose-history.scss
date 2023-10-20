@@ -1,6 +1,5 @@
 .glucose-history {
 
-
     //.glucose-history__table
     &__table {
         background-color: white;
@@ -9,12 +8,6 @@
         max-width: 1300px;
         width: 100%;
         cursor: default;
-
-        //.glucose-history__table-container
-        &-container {
-            padding: 2px;
-            overflow-x: auto;
-        }
     }
 
     //.glucose-history__table-cell
@@ -91,7 +84,6 @@
 
     //.glucose-history__pagination
     &__pagination {
-        margin: 1rem 0;
         gap: 5px;
 
         //.glucose-history__pagination-btn

@@ -39,7 +39,7 @@
         <div class="background-circle"></div>
         
         <!--CONTEÚDO DA PÁGINA-->
-        <main class="l-flex l-flex-center l-flex-wrap l-flex-gap-60" id="main">
+        <main class="l-flex l-flex-center l-flex-wrap l-flex-gap-3rem l-padding-3rem-1rem" id="main">
 
             <section class="description">
                 <h1 class="description__title">Glico</h1>

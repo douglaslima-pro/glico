@@ -22,7 +22,7 @@
         <div class="alerts"><!--A ESTRUTURA HTML DO ALERTA ESTÁ DESCRITA DENTRO DO SCRIPT alert.js !--></div>
 
         <!--CONTEÚDO DA PÁGINA-->
-        <main class="l-flex l-flex-wrap l-no-padding" id="main">
+        <main class="l-flex l-flex-wrap" id="main">
 
             <section class="banner l-flex l-flex-align-end l-flex-3">
                 <div class="banner__description l-full-width">

@@ -28,7 +28,7 @@ function pesquisarGlicoses(id_usuario, limite, pagina) {
                 console.log(glicoses); //debug
                 if(glicoses.length > 0){
                     atualizarTabela(glicoses);
-                    atualizarPaginacaoTabela(id_usuario,limite,pagina,paginas);
+                    atualizarPaginacaoTabela(id_usuario,limite,pagina,paginas,inicio,glicoses.length,glicosesTotal);
                     tableVoid.classList.add('is-none'); // hides message "No data found"
                 }else{
                     table.classList.add('is-none'); // hides table
@@ -115,7 +115,7 @@ function atualizarTabela(glicoses) {
     });
 }//fim do atualizarTabela()
 
-function atualizarPaginacaoTabela(id_usuario,limite,pagina,paginas){
+function atualizarPaginacaoTabela(id_usuario,limite,pagina,paginas,inicio,qtdGlicoses,totalGlicoses){
 
     //remove propriedade none da paginação
     tablePagination.classList.remove('is-none');
@@ -146,7 +146,7 @@ function atualizarPaginacaoTabela(id_usuario,limite,pagina,paginas){
     //updates buttons value and onclick event
     buttonStart.setAttribute("onclick",`pesquisarGlicoses(${id_usuario},${limite},1)`);
     buttonPrevious.setAttribute("onclick",`pesquisarGlicoses(${id_usuario},${limite},${pagina-1 < 1 ? 1 : pagina-1})`);
-    currentPage.innerText = `Página ${pagina} de ${paginas}`;
+    currentPage.innerText = `${inicio+1} - ${inicio+qtdGlicoses} de ${totalGlicoses}`;
     buttonNext.setAttribute("onclick",`pesquisarGlicoses(${id_usuario},${limite},${pagina+1 > paginas ? paginas : pagina+1})`);
     buttonEnd.setAttribute("onclick",`pesquisarGlicoses(${id_usuario},${limite},${paginas})`);
 
