@@ -44,7 +44,7 @@ class glicoseDAO{
     public function pesquisarGlicoses($id_usuario,$limite,$inicio){
         try{
             $sql = "SELECT id_glicose,valor,DATE_FORMAT(data,'%d/%m/%Y') AS data,TIME_FORMAT(hora,'%H:%i') AS hora,condicao,comentario FROM glicose
-                    WHERE id_usuario = :id_usuario AND data BETWEEN DATE_SUB(CURDATE(),INTERVAL 30 DAY) AND CURDATE()
+                    WHERE id_usuario = :id_usuario
                     ORDER BY data DESC, hora DESC, id_glicose DESC
                     LIMIT :limite OFFSET :inicio";
             $stmt = self::$conn->prepare($sql);
