@@ -88,5 +88,19 @@ class glicoseDAO{
         }
     }
 
+    public function editarGlicose($id_glicose,$comentario) {
+        try{
+            $sql = "UPDATE glicose SET comentario = :comentario
+                    WHERE id_glicose = :id_glicose";
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindParam(":comentario",$comentario);
+            $stmt->bindParam(":id_glicose",$id_glicose);
+            $retorno = $stmt->execute();
+            return $retorno;
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
 }
 ?>

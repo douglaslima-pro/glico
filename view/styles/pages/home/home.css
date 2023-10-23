@@ -109,6 +109,14 @@ a {
   flex-wrap: wrap;
 }
 
+.l-flex-gap-5px {
+  gap: 5px;
+}
+
+.l-flex-gap-10px {
+  gap: 10px;
+}
+
 .l-flex-gap-1rem {
   gap: 1rem;
 }
@@ -574,17 +582,19 @@ a {
   font-size: 0.8rem;
   margin: 1rem 0;
 }
+.register-glucose__text--clickable {
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: underline;
+}
+.register-glucose__text--clickable:hover {
+  opacity: 0.9;
+}
 .register-glucose__form {
   color: #7A7A7A;
   font-size: 1rem;
   margin-top: 2rem;
-}
-.register-glucose__input-container {
-  margin: 1.25rem 0;
-}
-.register-glucose__input-container--datetime {
-  min-width: 100px;
-  max-width: 150px;
 }
 .register-glucose__label {
   font-size: 1rem;
@@ -606,23 +616,71 @@ a {
   resize: none;
   width: 100%;
 }
+.register-glucose__textarea--no-border {
+  border: none;
+}
 .register-glucose__input {
   border: 1px solid #7A7A7A;
   border-radius: 5px;
   color: #7A7A7A;
   text-align: center;
 }
-.register-glucose__input--submit {
-  background-color: #8C4B45;
+.register-glucose__input-container {
+  margin: 1.25rem 0;
+}
+.register-glucose__input-container--datetime {
+  min-width: 100px;
+  max-width: 150px;
+}
+.register-glucose__submit, .register-glucose__btn {
   border: none;
+  border-radius: 5px;
   color: #FDFDFD;
   cursor: pointer;
   font-size: 1rem;
+}
+.register-glucose__submit:hover, .register-glucose__btn:hover {
+  opacity: 0.9;
+}
+.register-glucose__submit--align-center, .register-glucose__btn--align-center {
+  display: block;
+  margin: 0 auto;
+}
+.register-glucose__submit--align-center, .register-glucose__btn--align-center {
+  display: block;
+  margin: 0 0 0 auto;
+}
+.register-glucose__submit--blue, .register-glucose__btn--blue {
+  background-color: #4F5F73 !important;
+}
+.register-glucose__submit--grey, .register-glucose__btn--grey {
+  background-color: #7A7A7A !important;
+}
+.register-glucose__submit--red, .register-glucose__btn--red {
+  background-color: #8C4B45 !important;
+}
+.register-glucose__submit {
+  background-color: #8C4B45;
   padding: 5px 0;
   width: 100%;
 }
-.register-glucose__input--submit:hover {
-  opacity: 0.9;
+.register-glucose__submit--small {
+  font-size: 0.875rem;
+  padding: 2px 5px;
+  width: unset;
+}
+.register-glucose__btn {
+  background-color: #4F5F73;
+  font-size: 0.875rem;
+  padding: 2px 5px;
+  width: unset;
+}
+.register-glucose__comment {
+  border: 1px solid #7A7A7A;
+  border-radius: 5px;
+}
+.register-glucose__comment-actions {
+  padding: 0 10px 5px;
 }
 
 .is-none {

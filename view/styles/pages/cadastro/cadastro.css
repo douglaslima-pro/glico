@@ -96,6 +96,14 @@ a {
   flex-wrap: wrap;
 }
 
+.l-flex-gap-5px {
+  gap: 5px;
+}
+
+.l-flex-gap-10px {
+  gap: 10px;
+}
+
 .l-flex-gap-1rem {
   gap: 1rem;
 }

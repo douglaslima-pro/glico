@@ -68,6 +68,7 @@ function atualizarTabela(glicoses) {
         tableCellView.classList.add("glucose-history__table-cell--view");
         let viewIcon = document.createElement("div");
         viewIcon.classList.add("glucose-history__table-icon");
+        viewIcon.setAttribute("onclick",`visualizarGlicose(${glicose.id_glicose}),abrirOverlay("detalhes-glicose")`);
         tableCellView.appendChild(viewIcon);
         tableRow.appendChild(tableCellView); // adds the cell view to table row
 

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Glicemia registrada</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon/favicon.ico">
+    <link rel="stylesheet" href="../styles/pages/home/home.css">
+</head>
+<body>
+    <main id="main" class="l-flex">
+        <!--TELA REGISTRAR GLICOSE-->
+        <section class="overlay-backdrop l-grid l-flex-center">
+            <div class="register-glucose">
+                <span class="register-glucose__close-btn" onclick="fecharOverlay()">X</span>
+                <h2 class="register-glucose__title">Detalhes da glicemia</h2>
+                <p class="register-glucose__text">Glicemia registrada há menos de 1 minuto!</p>
+                <div class="register-glucose__form">
+
+                    <div class="register-glucose__input-container">
+                        <p><span class="register-glucose__label">Condição:</span> Jejum</p>
+                    </div>
+
+                    <div class="register-glucose__input-container l-flex l-flex-gap-1rem l-flex-wrap">
+                        <div class="register-glucose__input-container--datetime l-flex l-flex-column l-flex-1">
+                            <label class="register-glucose__label">Data</label>
+                            <input type="date" class="register-glucose__input" value="2023-10-23" disabled>
+                        </div>
+                        <div class="register-glucose__input-container--datetime l-flex l-flex-column l-flex-1">
+                            <label class="register-glucose__label">Hora</label>
+                            <input type="time" class="register-glucose__input" value="11:50" disabled>
+                        </div>
+                    </div>
+
+                    <form class="register-glucose__input-container" onsubmit="editarGlicose(3)">
+                        <label for="comentario-glicose" class="register-glucose__label">Comentário
+                            <div class="register-glucose__comment">
+                                <textarea class="register-glucose__textarea register-glucose__textarea--no-border" id="comentario-glicose" rows="5" maxlength="500" placeholder="N/A" disabled required></textarea>
+                                <div class="register-glucose__comment-actions l-flex l-flex-justify-end l-flex-gap-5px is-none">
+                                    <button type="button" class="register-glucose__btn register-glucose__btn--grey" onclick="desabilitarComentario()">Cancelar</button>
+                                    <button type="submit" class="register-glucose__submit register-glucose__submit--blue register-glucose__submit--small">Salvar</button>
+                                </div>
+                            </div>
+                        </label>
+                        <span class="register-glucose__text register-glucose__text--clickable" id="editar-comentario" onclick="habilitarComentario()">Editar</span>
+                    </form>         
+
+                    <div class="register-glucose__input-container">
+                        <p><span class="register-glucose__label">Valor:</span> 120 mg/dL</p>
+                    </div>
+
+                    <hr>
+
+                    <button type="button" class="register-glucose__btn register-glucose__btn--red register-glucose__btn--align-center">Excluir glicemia</button>
+                </div>
+            </div>
+        </section><!--FIM DA TELA REGISTRAR GLICOSE-->
+        <!--BARRA LATERAL-->
+        <aside class="sidebar" id="aside">
+            <span class="sidebar--mobile__close-btn is-none">X</span>
+                <nav class="sidebar__nav" id="nav">
+                    <ul class="sidebar__list">
+                        <li class="sidebar__list-item">
+                            <a href="#" class="sidebar__link l-flex">
+                                <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" height="1rem"
+                                    viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    <path
+                                        d="M320 464c8.8 0 16-7.2 16-16V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320zM0 64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64z" />
+                                </svg>
+                                <h3 class="sidebar__guide">Relatórios</h3>
+                            </a>
+                        </li>
+                        <li class="sidebar__list-item">
+                            <a href="#" class="sidebar__link l-flex">
+                                <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" height="1rem"
+                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    <path
+                                        d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192H400V448c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192z" />
+                                </svg>
+                                <h3 class="sidebar__guide">Controle diário</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+        </aside><!--FIM DA BARRA LATERAL-->
+        <!--CONTEÚDO PRINCIPAL DA PÁGINA-->
+        <section class="content">
+            <!--CABEÇALHO-->
+            <header class="header" id="header">
+                <a href="#"><h1 class="header__logo">Glico</h1></a>
+                <div class="l-flex l-flex-center l-flex-gap-1rem">
+                    <div class="header__user-container">
+                        <img class="header__profile-picture" src="../img/png/anonymous-profile.png" alt="Foto de perfil do usuário" title="anonymous">
+                        <nav class="user-options is-hidden">
+                            <h4 class="user-options__username">anonymous</h4>
+                            <ul class="user-options__list">
+                                <li class="user-options__list-item"><a href="perfil.php" class="user-options__link">Editar perfil</a></li>
+                                <li class="user-options__list-item"><a href="../../controller/sair.php" class="user-options__link">Sair</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="header__hamburger-btn l-flex l-flex-column">
+                        <div class="header__hamburger-dash"></div>
+                        <div class="header__hamburger-dash"></div>
+                        <div class="header__hamburger-dash"></div>
+                    </div>
+                </div>
+            </header><!--FIM DO CABEÇALHO-->
+        </section>
+    </main>
+
+    <!--ÁREA DE SCRIPS EM JS-->
+    <script src="../js/pages/home/editar-comentario-glicose.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/user-options.js"></script>
+    <script src="../js/alerta.js"></script>
+    <script src="../js/overlay.js"></script>
+    <script>
+        window.addEventListener("load",atualizaDataHora);
+        //FUNÇÃO QUE INSERE A DATA E HORA ATUAL NOS INPUTS
+        function atualizaDataHora() {
+            let agora = new Date();
+            let inputData = document.getElementById("data");
+            let inputHora = document.getElementById("hora");
+
+            let mes;
+            agora.getUTCMonth() + 1 < 10 ? mes = "0" + (agora.getUTCMonth() + 1) : mes = agora.getUTCMonth() + 1; //date.getUTCMonth() retorna um número entre 0 e 11
+
+            let dia;
+            agora.getUTCDate() < 10 ? dia = "0" + agora.getUTCDate() : dia = agora.getUTCDate(); //date.getUTCDate() retorna um número entre 1 e 31
+
+            let data = agora.getUTCFullYear() /*date.getUTCFullYear retorna o ano completo, exemplo 2023*/ + "-" + mes + "-" + dia; // YYYY-MM-DD
+            let hora = agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+
+            inputData.value = data;
+            inputHora.value = hora;
+        }
+    </script>
+</body>
+</html>

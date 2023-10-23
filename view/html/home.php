@@ -39,9 +39,10 @@
         <div class="alerts alerts--bottom-right"><!--A ESTRUTURA HTML DO ALERTA ESTÁ DESCRITA DENTRO DO SCRIPT alert.js !--></div>
 
         <main class="l-flex l-full-height">
-            <!--TELA REGISTRAR GLICOSE-->
+            <!--OVERLAY-->
             <section class="overlay-backdrop l-grid l-flex-center is-none">
-                <div class="register-glucose">
+                <!--FORMULÁRIO DE REGISTRAR GLICEMIA-->
+                <div class="register-glucose is-none" id="registrar-glicose">
                     <span class="register-glucose__close-btn" onclick="fecharOverlay()">X</span>
                     <h2 class="register-glucose__title">Registrar glicemia</h2>
                     <p class="register-glucose__text">* Preencha os campos obrigatórios e clique em "Registrar".</p>
@@ -81,8 +82,52 @@
                             <input type="number" class="register-glucose__input" id="valor" name="valor" required> mg/dL
                         </div>
 
-                        <input type="submit" class="register-glucose__input register-glucose__input--submit" value="Registrar">
+                        <input type="submit" class="register-glucose__submit" value="Registrar">
                     </form>
+                </div>
+                <!--DETALHES DA GLICEMIA REGISTRADA-->
+                <div class="register-glucose is-none" id="detalhes-glicose">
+                    <span class="register-glucose__close-btn" onclick="fecharOverlay()">X</span>
+                    <h2 class="register-glucose__title">Detalhes da glicemia</h2>
+                    <p class="register-glucose__text" id="glicose-registrada-em"></p>
+                    <div class="register-glucose__form">
+
+                        <div class="register-glucose__input-container">
+                            <p><span class="register-glucose__label">Condição:</span> Jejum</p>
+                        </div>
+
+                        <div class="register-glucose__input-container l-flex l-flex-gap-1rem l-flex-wrap">
+                            <div class="register-glucose__input-container--datetime l-flex l-flex-column l-flex-1">
+                                <label class="register-glucose__label">Data</label>
+                                <input type="date" class="register-glucose__input" disabled>
+                            </div>
+                            <div class="register-glucose__input-container--datetime l-flex l-flex-column l-flex-1">
+                                <label class="register-glucose__label">Hora</label>
+                                <input type="time" class="register-glucose__input" disabled>
+                            </div>
+                        </div>
+
+                        <form class="register-glucose__input-container" onsubmit="editarGlicose(3)">
+                            <label for="comentario-glicose" class="register-glucose__label">Comentário
+                                <div class="register-glucose__comment">
+                                    <textarea class="register-glucose__textarea register-glucose__textarea--no-border" id="comentario-glicose" rows="5" maxlength="500" disabled required></textarea>
+                                    <div class="register-glucose__comment-actions l-flex l-flex-justify-end l-flex-gap-5px is-none">
+                                        <button type="button" class="register-glucose__btn register-glucose__btn--grey" onclick="desabilitarComentario()">Cancelar</button>
+                                        <button type="submit" class="register-glucose__submit register-glucose__submit--blue register-glucose__submit--small">Salvar</button>
+                                    </div>
+                                </div>
+                            </label>
+                            <span class="register-glucose__text register-glucose__text--clickable" id="editar-comentario" onclick="habilitarComentario()">Editar</span>
+                        </form>         
+
+                        <div class="register-glucose__input-container">
+                            <p><span class="register-glucose__label">Valor:</span> -- mg/dL</p>
+                        </div>
+
+                        <hr>
+
+                        <button type="button" class="register-glucose__btn register-glucose__btn--red register-glucose__btn--align-center">Excluir glicemia</button>
+                    </div>
                 </div>
             </section><!--FIM DA TELA REGISTRAR GLICOSE-->
 
@@ -119,7 +164,7 @@
             <section class="content">
                 <!--CABEÇALHO-->
                 <header class="header" id="header">
-                    <a href="home.php"><h1 class="header__logo">Glico</h1></a>
+                    <a href="#"><h1 class="header__logo">Glico</h1></a>
                     <div class="l-flex l-flex-center l-flex-gap-1rem">
                         <div class="header__user-container">
                             <img class="header__profile-picture" src="<?=$_SESSION['foto']?>" alt="Foto de perfil do usuário" title="<?=$_SESSION['nome']?>">
@@ -149,14 +194,10 @@
                         <p class="card__description">Último registro:
                             <?php
                                 $ultimaGlicose = $glicoseDAO->pesquisarUltimaGlicose($_SESSION["id_usuario"]);
-                                if($ultimaGlicose == NULL || empty($ultimaGlicose)){
                             ?>
-                                <span id="last-glucose">--</span>
-                            <?php }else{ ?>
-                                <span id="last-glucose"><?=$ultimaGlicose["valor"]?></span>
-                            <?php } ?>
+                                <span id="last-glucose"><?=($ultimaGlicose == NULL || empty($ultimaGlicose)) ? "--" : $ultimaGlicose["valor"] ?></span>
                             mg/dL</p>
-                        <button class="card__btn" onclick="abrirOverlay(),atualizaDataHora()">Registrar glicemia</button>
+                        <button class="card__btn" onclick="abrirOverlay('registrar-glicose'),atualizaDataHora()">Registrar glicemia</button>
                     </div><!--fim do card registrar glicemia-->
 
                     <!--dados importantes-->
@@ -237,7 +278,7 @@
                                     ?>
                                         <div id="glicose-<?=$glicose["id_glicose"]?>" class="glucose-history__table-row l-table-row">
                                             <div class="glucose-history__table-cell glucose-history__table-cell--view  l-table-cell">
-                                                <div class="glucose-history__table-icon"></div>
+                                                <div class="glucose-history__table-icon" onclick="visualizarGlicose(<?=$glicose['id_glicose']?>),abrirOverlay('detalhes-glicose')"></div>
                                             </div>
                                             <div class="glucose-history__table-cell glucose-history__table-cell--value l-table-cell"><?=$glicose["valor"]?></div>
                                             <div class="glucose-history__table-cell glucose-history__table-cell--date l-table-cell"><?=$glicose["data"]?></div>
@@ -273,6 +314,8 @@
 
 
         <!--ÁREA DE SCRIPS EM JS-->
+        <script src="../js/pages/home/editar-comentario-glicose.js"></script>
+        <script src="../js/pages/home/visualizar-glicose.js"></script>
         <script src="../js/pages/home/registrar-glicose.js"></script>
         <script src="../js/pages/home/ultima-glicose.js"></script>
         <script src="../js/pages/home/pesquisar-glicoses.js"></script>
