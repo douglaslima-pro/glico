@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="../styles/pages/home/home.css">
 </head>
 <body>
+
+    <!--CONFIRM PROMPT-->
+    <div class="confirm is-none">
+        <div class="confirm-modal">
+            <h3 class="confirm-modal__title">Você tem certeza?</h3>
+            <p class="confirm-modal__description">Depois de excluir não é possível recuperar!</p>
+            <div class="confirm-modal__btn-container l-flex l-flex-wrap l-flex-justify-center l-flex-gap-1rem">
+                <button class="confirm-modal__btn" onclick="confirmar(false)">Cancelar</button>
+                <button class="confirm-modal__btn confirm-modal__btn--red" id="confirmar-btn" onclick="confirmar(true,excluirGlicose)">Sim, excluir!</button>
+            </div>
+        </div>
+    </div>
+
     <main id="main" class="l-flex">
         <!--TELA REGISTRAR GLICOSE-->
         <section class="overlay-backdrop l-grid l-flex-center">

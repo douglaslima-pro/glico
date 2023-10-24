@@ -1,0 +1,52 @@
+.confirm {
+    background-color: $sombra;
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+
+    //.confirm-modal
+    &-modal {
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 4px 4px 5px 0 $sombra;
+        color: $cinza;
+        margin: 0 auto;
+        padding: 1rem 3rem;
+        width: fit-content;
+
+        //.confirm-modal__title
+        &__title {
+            font-size: 1.5625rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        //.confirm-modal__description
+        &__description {
+            font-size: 1rem;
+            font-weight: 100;
+            margin-bottom: 1rem;
+        }
+        
+        //.confirm-modal__btn
+        &__btn {
+            background-color: $cinza;
+            border: 1px solid rgba(0,0,0,0.7);
+            border-radius: 2px;
+            color: $cinza-muito-claro;
+            cursor: pointer;
+            padding: 2px 10px;
+
+            //.confirm-modal__btn:hover
+            &:hover {
+                opacity: .9;
+            }
+
+            //.confirm-modal__btn--red
+            &--red {
+                background-color: $vermelho;
+            }
+        }
+    }
+}

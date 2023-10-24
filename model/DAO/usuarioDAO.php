@@ -65,9 +65,9 @@ class usuarioDAO{
     //Verifica se o e-mail que o usuário inseriu existe e se existir retorna true
     public function emailExiste($email){
         try{
-            $sql = "SELECT * FROM usuario WHERE email = ?";
+            $sql = "SELECT * FROM usuario WHERE email = :email";
             $stmt = self::$conn->prepare($sql);
-            $stmt->bindValue(1,$email);
+            $stmt->bindParam(":email",$email);
             $stmt->execute();
             $retorno = $stmt->fetch(PDO::FETCH_ASSOC);
             if($retorno == NULL || empty($retorno) || $retorno == 0){
@@ -82,9 +82,9 @@ class usuarioDAO{
 
     public function usuarioExiste($usuario){
         try{
-            $sql = "SELECT * FROM usuario WHERE usuario = ?";
+            $sql = "SELECT * FROM usuario WHERE usuario = :usuario";
             $stmt = self::$conn->prepare($sql);
-            $stmt->bindValue(1,$usuario);
+            $stmt->bindParam(":usuario",$usuario);
             $stmt->execute();
             $retorno = $stmt->fetch(PDO::FETCH_ASSOC);
             if($retorno == NULL || empty($retorno) || $retorno == 0){

@@ -4,7 +4,7 @@ CREATE TABLE `glicose` (
   `valor` int(3) NOT NULL,
   `data` date NOT NULL,
   `hora` time NOT NULL,
-  `condicao` enum('Jejum','Antes da refeição','2h após a refeição','Antes de dormir') DEFAULT NULL,
+  `condicao` enum('Nenhum','Jejum','Antes da refeição','2h após a refeição','Antes de dormir') DEFAULT 'Nenhum',
   `comentario` text DEFAULT NULL,
   `data_registro` date NOT NULL DEFAULT curdate(),
   `hora_registro` time NOT NULL DEFAULT curtime(),

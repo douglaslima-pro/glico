@@ -122,5 +122,19 @@ class glicoseDAO{
         }
     }
 
+    public function excluirGlicose($id_glicose,$id_usuario){
+        try{
+            $sql = "DELETE FROM glicose
+                    WHERE id_glicose = :id_glicose AND id_usuario = :id_usuario";
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindParam(":id_glicose",$id_glicose);
+            $stmt->bindParam(":id_usuario",$id_usuario);
+            $retorno = $stmt->execute();
+            return $retorno;
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
 }
 ?>

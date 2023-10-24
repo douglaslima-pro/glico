@@ -6,6 +6,7 @@ function visualizarGlicose(id_glicose){
     let glicoseHora = document.getElementById("hora-glicose");
     let glicoseComentario = document.getElementById("comentario-glicose");
     let glicoseValor = document.getElementById("valor-glicose");
+    let excluirBTN = document.getElementById("excluir-glicose-btn");
     
     let xhr = new XMLHttpRequest;
     xhr.open("POST","../../controller/visualizarGlicose.php",true);
@@ -14,7 +15,6 @@ function visualizarGlicose(id_glicose){
         if(xhr.status === 200 && xhr.readyState === 4){
 
             let glicose = JSON.parse(xhr.response);
-            console.log(glicose.condicao);
 
             editarGlicoseForm.setAttribute("onsubmit",`editarGlicose(${glicose.id_glicose})`);
             glicoseCondicao.innerText = glicose.condicao;
@@ -27,6 +27,8 @@ function visualizarGlicose(id_glicose){
                 glicoseComentario.value = "";
             }
             glicoseValor.innerText = glicose.valor;
+            excluirBTN.setAttribute("onclick",`confirmar('Você tem certeza?','Depois de excluir não é possível recuperar!','excluirGlicose(${glicose.id_glicose},${glicose.id_usuario})')`);
+            //onclick=""
         }
     };
     xhr.send(`id_glicose=${id_glicose}`);    

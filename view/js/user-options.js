@@ -2,7 +2,6 @@ var userContainer = document.querySelector(".header__user-container");
 var userOptions = document.querySelector(".user-options");
 
 userContainer.addEventListener('click', () => {
-    console.log('user-container');
     if(!userOptions.contains(event.target)){
         if(userOptions.classList.contains('is-hidden')){
             userOptions.classList.remove('is-hidden');

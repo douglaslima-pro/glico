@@ -38,6 +38,18 @@
         <!--ALERTAS-->
         <div class="alerts alerts--bottom-right"><!--A ESTRUTURA HTML DO ALERTA ESTÁ DESCRITA DENTRO DO SCRIPT alert.js !--></div>
 
+        <!--PROMPT DE CONFIRMAÇÃO-->
+        <div class="confirm is-none">
+            <div class="confirm-modal">
+                <h3 class="confirm-modal__title"></h3>
+                <p class="confirm-modal__description"></p>
+                <div class="confirm-modal__btn-container l-flex l-flex-wrap l-flex-justify-center l-flex-gap-1rem">
+                    <button class="confirm-modal__btn confirm-modal__btn--cancel" onclick="cancelarConfirmacao()">Cancelar</button>
+                    <button class="confirm-modal__btn confirm-modal__btn--red confirm-modal__btn--confirm">Sim, confirmar!</button>
+                </div>
+            </div>
+        </div><!--fim do prompt de confirmação-->
+
         <main class="l-flex l-full-height">
             <!--OVERLAY-->
             <section class="overlay-backdrop l-grid l-flex-center is-none">
@@ -87,7 +99,7 @@
                 </div>
                 <!--DETALHES DA GLICEMIA REGISTRADA-->
                 <div class="register-glucose is-none" id="detalhes-glicose">
-                    <span class="register-glucose__close-btn" onclick="fecharOverlay()">X</span>
+                    <span class="register-glucose__close-btn" onclick="fecharOverlay(),desabilitarComentario()">X</span>
                     <h2 class="register-glucose__title">Detalhes da glicemia</h2>
                     <p class="register-glucose__text" id="glicose-registrada-em"></p>
                     <div class="register-glucose__form">
@@ -126,7 +138,7 @@
 
                         <hr>
 
-                        <button type="button" class="register-glucose__btn register-glucose__btn--red register-glucose__btn--align-center">Excluir glicemia</button>
+                        <button type="button" class="register-glucose__btn register-glucose__btn--red register-glucose__btn--align-center" id="excluir-glicose-btn">Excluir glicemia</button>
                     </div>
                 </div>
             </section><!--FIM DA TELA REGISTRAR GLICOSE-->
@@ -315,6 +327,7 @@
 
         <!--ÁREA DE SCRIPS EM JS-->
         <script src="../js/pages/home/editar-comentario-glicose.js"></script>
+        <script src="../js/pages/home/excluir-glicose.js"></script>
         <script src="../js/pages/home/visualizar-glicose.js"></script>
         <script src="../js/pages/home/registrar-glicose.js"></script>
         <script src="../js/pages/home/ultima-glicose.js"></script>
@@ -324,6 +337,7 @@
         <script src="../js/user-options.js"></script>
         <script src="../js/alerta.js"></script>
         <script src="../js/overlay.js"></script>
+        <script src="../js/confirmacao.js"></script>
         <script>
             //FUNÇÃO QUE INSERE A DATA E HORA ATUAL NOS INPUTS
             function atualizaDataHora() {
@@ -348,6 +362,13 @@
             let select = document.getElementById("quantidade-registros");
             select.addEventListener("change",() => {
                 pesquisarGlicoses(<?=$_SESSION["id_usuario"]?>,select.value,1);
+            });
+
+            //DESABILITA O COMENTÁRIO QUANDO FECHA O OVERLAY
+            document.querySelector('.overlay-backdrop').addEventListener('click', () => {
+                if(!document.getElementById("detalhes-glicose").contains(event.target)){
+                    desabilitarComentario();
+                }
             });
         </script>
 

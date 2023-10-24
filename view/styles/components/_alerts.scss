@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    max-width: 280px;
+    width: 250px;
     position: fixed;
     right: 5px;
     top: 5px;
@@ -16,7 +16,7 @@
     }
 
     .alert {
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(0, 0, 0, 0.9);
         border-radius: 2px;
         cursor: default;
         display: flex;

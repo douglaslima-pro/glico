@@ -72,8 +72,16 @@ a {
   justify-content: space-around;
 }
 
+.l-flex-justify-around {
+  justify-content: space-around;
+}
+
 .l-flex-justify-between {
   justify-content: space-between;
+}
+
+.l-flex-justify-center {
+  justify-content: center;
 }
 
 .l-flex-justify-end {
@@ -164,7 +172,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  max-width: 280px;
+  width: 250px;
   position: fixed;
   right: 5px;
   top: 5px;
@@ -176,7 +184,7 @@ a {
   top: unset;
 }
 .alerts .alert {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.9);
   border-radius: 2px;
   cursor: default;
   display: flex;

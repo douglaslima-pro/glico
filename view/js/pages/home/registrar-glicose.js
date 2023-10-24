@@ -32,7 +32,7 @@ function registrarGlicose(id_usuario){
             }
         }
     };
-    xhr.send(`valor=${valor}&data=${data}&hora=${hora}&comentario=${comentario}&condicao=${condicao}&idusuario=${id_usuario}`);
+    xhr.send(`valor=${valor}&data=${data}&hora=${hora}&comentario=${comentario}&condicao=${condicao}&id_usuario=${id_usuario}`);
 }
 
 function atualizaPaginaHome(id_usuario){

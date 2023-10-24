@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once "../model/DAO/glicoseDAO.php";
 require_once "../model/DTO/glicoseDTO.php";
 
@@ -8,7 +10,7 @@ $data = $_POST["data"];
 $hora = $_POST["hora"];
 $comentario = $_POST["comentario"];
 $condicao = $_POST["condicao"];
-$id_usuario = $_POST["idusuario"];
+$_POST["id_usuario"] == $_SESSION["id_usuario"] ? $id_usuario = $_POST["id_usuario"] : $id_usuario = $_SESSION["id_usuario"];
 
 $glicoseDTO = new glicoseDTO($valor,$data,$hora,$id_usuario);
 $glicoseDTO->setComentario($comentario);
