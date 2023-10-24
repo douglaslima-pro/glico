@@ -12,7 +12,8 @@ class glicoseDAO{
 
     public function registrarGlicose($glicoseDTO){
         try{
-            $sql = "INSERT INTO glicose(id_usuario,valor,data,hora,condicao,comentario) VALUES(?,?,?,?,?,?)";
+            $sql = "INSERT INTO glicose(id_usuario,valor,data,hora,condicao,comentario)
+                    VALUES(?,?,?,?,?,?)";
             $stmt = self::$conn->prepare($sql);
             $stmt->bindValue(1,$glicoseDTO->getId_usuario());
             $stmt->bindValue(2,$glicoseDTO->getValor());
@@ -29,7 +30,9 @@ class glicoseDAO{
 
     public function pesquisarUltimaGlicose($id_usuario){
         try{
-            $sql = "SELECT valor FROM glicose WHERE id_usuario = :id_usuario ORDER BY data_registro DESC,hora_registro DESC LIMIT 1";
+            $sql = "SELECT valor FROM glicose
+                    WHERE id_usuario = :id_usuario
+                    ORDER BY data_registro DESC,hora_registro DESC LIMIT 1";
             $stmt = self::$conn->prepare($sql);
             $stmt->bindParam(':id_usuario',$id_usuario);
             $stmt->execute();
@@ -62,7 +65,8 @@ class glicoseDAO{
     //RETORNA O NÚMERO TOTAL DE REGISTROS
     public function contarGlicoses($id_usuario){
         try{
-            $sql = "SELECT COUNT(*) AS count FROM glicose WHERE id_usuario = :id_usuario";
+            $sql = "SELECT COUNT(*) AS count FROM glicose
+                    WHERE id_usuario = :id_usuario";
             $stmt = self::$conn->prepare($sql);
             $stmt->bindParam(':id_usuario',$id_usuario);
             $stmt->execute();
@@ -88,14 +92,30 @@ class glicoseDAO{
         }
     }
 
-    public function editarGlicose($id_glicose,$comentario) {
+    public function editarGlicose($id_glicose,$id_usuario,$comentario){
         try{
             $sql = "UPDATE glicose SET comentario = :comentario
-                    WHERE id_glicose = :id_glicose";
+                    WHERE id_glicose = :id_glicose AND id_usuario = :id_usuario";
             $stmt = self::$conn->prepare($sql);
             $stmt->bindParam(":comentario",$comentario);
             $stmt->bindParam(":id_glicose",$id_glicose);
+            $stmt->bindParam(":id_usuario",$id_usuario);
             $retorno = $stmt->execute();
+            return $retorno;
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function visualizarGlicose($id_glicose,$id_usuario){
+        try{
+            $sql = "SELECT * FROM glicose
+                    WHERE id_glicose = :id_glicose AND id_usuario = :id_usuario";
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindParam(":id_glicose",$id_glicose);
+            $stmt->bindParam(":id_usuario",$id_usuario);
+            $stmt->execute();
+            $retorno = $stmt->fetch(PDO::FETCH_ASSOC);
             return $retorno;
         }catch(PDOException $e){
             echo $e->getMessage();

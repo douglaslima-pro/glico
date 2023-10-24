@@ -51,7 +51,7 @@
                         <div class="register-glucose__input-container">
                             <label for="condicao" class="register-glucose__label">Condição:</label>
                             <select class="register-glucose__select" name="condicao" id="condicao">
-                                <option value="">Nenhum</option>
+                                <option value="Nenhum" id="condicao-default">Nenhum</option>
                                 <option value="Jejum">Jejum</option>
                                 <option value="Antes da refeição">Antes da refeição</option>
                                 <option value="2h após a refeição">2h após a refeição</option>
@@ -74,11 +74,11 @@
                         <div class="register-glucose__input-container">
                             <label for="comentario" class="register-glucose__label">Comentário</label>
                             <textarea name="comentario" class="register-glucose__textarea" id="comentario" rows="5" maxlength="500"
-                                placeholder="Exemplo: Apliquei 20ui de insulina fixa e comi uma maçã (120g)."></textarea>
+                                placeholder="Exemplo: Apliquei 20ui de insulina fixa e comi uma maçã (120g)." oninput="removeEspacosBrancos('comentario')"></textarea>
                         </div>
 
                         <div class="register-glucose__input-container">
-                            <label for="valor" class="register-glucose__label">Valor:</label>
+                            <label for="valor" class="register-glucose__label">Valor*:</label>
                             <input type="number" class="register-glucose__input" id="valor" name="valor" required> mg/dL
                         </div>
 
@@ -93,24 +93,24 @@
                     <div class="register-glucose__form">
 
                         <div class="register-glucose__input-container">
-                            <p><span class="register-glucose__label">Condição:</span> Jejum</p>
+                            <p><span class="register-glucose__label">Condição: </span><span id="condicao-glicose"></span></p>
                         </div>
 
                         <div class="register-glucose__input-container l-flex l-flex-gap-1rem l-flex-wrap">
                             <div class="register-glucose__input-container--datetime l-flex l-flex-column l-flex-1">
                                 <label class="register-glucose__label">Data</label>
-                                <input type="date" class="register-glucose__input" disabled>
+                                <input type="date" class="register-glucose__input" id="data-glicose" disabled>
                             </div>
                             <div class="register-glucose__input-container--datetime l-flex l-flex-column l-flex-1">
                                 <label class="register-glucose__label">Hora</label>
-                                <input type="time" class="register-glucose__input" disabled>
+                                <input type="time" class="register-glucose__input" id="hora-glicose" disabled>
                             </div>
                         </div>
 
-                        <form class="register-glucose__input-container" onsubmit="editarGlicose(3)">
+                        <form class="register-glucose__input-container" id="editar-glicose-form">
                             <label for="comentario-glicose" class="register-glucose__label">Comentário
                                 <div class="register-glucose__comment">
-                                    <textarea class="register-glucose__textarea register-glucose__textarea--no-border" id="comentario-glicose" rows="5" maxlength="500" disabled required></textarea>
+                                    <textarea class="register-glucose__textarea register-glucose__textarea--no-border" id="comentario-glicose" rows="5" maxlength="500" oninput="removeEspacosBrancos('comentario-glicose')" disabled required></textarea>
                                     <div class="register-glucose__comment-actions l-flex l-flex-justify-end l-flex-gap-5px is-none">
                                         <button type="button" class="register-glucose__btn register-glucose__btn--grey" onclick="desabilitarComentario()">Cancelar</button>
                                         <button type="submit" class="register-glucose__submit register-glucose__submit--blue register-glucose__submit--small">Salvar</button>
@@ -121,7 +121,7 @@
                         </form>         
 
                         <div class="register-glucose__input-container">
-                            <p><span class="register-glucose__label">Valor:</span> -- mg/dL</p>
+                            <p><span class="register-glucose__label">Valor:</span> <span id="valor-glicose"></span> mg/dL</p>
                         </div>
 
                         <hr>
@@ -283,8 +283,8 @@
                                             <div class="glucose-history__table-cell glucose-history__table-cell--value l-table-cell"><?=$glicose["valor"]?></div>
                                             <div class="glucose-history__table-cell glucose-history__table-cell--date l-table-cell"><?=$glicose["data"]?></div>
                                             <div class="glucose-history__table-cell glucose-history__table-cell--time l-table-cell"><?=$glicose["hora"]?></div>
-                                            <div class="glucose-history__table-cell glucose-history__table-cell--condition l-table-cell"><span><?=$glicose["condicao"] == '' ? 'Nenhum' : $glicose["condicao"] ?></span></div>
-                                            <div class="glucose-history__table-cell glucose-history__table-cell--comment l-table-cell"><?=$glicose["comentario"] == '' ? '--' : $glicose["comentario"]?></div>
+                                            <div class="glucose-history__table-cell glucose-history__table-cell--condition l-table-cell"><span><?=$glicose["condicao"]?></span></div>
+                                            <div class="glucose-history__table-cell glucose-history__table-cell--comment l-table-cell"><?=($glicose["comentario"] == "" || str_replace(" ","",$glicose["comentario"]) == "") ? '--' : $glicose["comentario"]?></div>
                                         </div><!--fim da linha da tabela-->
                                     <?php
                                             endforeach;
@@ -319,6 +319,7 @@
         <script src="../js/pages/home/registrar-glicose.js"></script>
         <script src="../js/pages/home/ultima-glicose.js"></script>
         <script src="../js/pages/home/pesquisar-glicoses.js"></script>
+        <script src="../js/remove-espacos-brancos.js"></script>
         <script src="../js/sidebar.js"></script>
         <script src="../js/user-options.js"></script>
         <script src="../js/alerta.js"></script>
@@ -326,17 +327,17 @@
         <script>
             //FUNÇÃO QUE INSERE A DATA E HORA ATUAL NOS INPUTS
             function atualizaDataHora() {
-                let agora = new Date();
                 let inputData = document.getElementById("data");
                 let inputHora = document.getElementById("hora");
 
-                let mes;
-                agora.getUTCMonth() + 1 < 10 ? mes = "0" + (agora.getUTCMonth() + 1) : mes = agora.getUTCMonth() + 1; //date.getUTCMonth() retorna um número entre 0 e 11
+                let agora = new Date();
+                let dataLocal = agora.toLocaleDateString("pt-BR");
 
-                let dia;
-                agora.getUTCDate() < 10 ? dia = "0" + agora.getUTCDate() : dia = agora.getUTCDate(); //date.getUTCDate() retorna um número entre 1 e 31
+                let dia = dataLocal.split("/")[0];
+                let mes = dataLocal.split("/")[1];
+                let ano = dataLocal.split("/")[2];
 
-                let data = agora.getUTCFullYear() /*date.getUTCFullYear retorna o ano completo, exemplo 2023*/ + "-" + mes + "-" + dia; // YYYY-MM-DD
+                let data = `${ano}-${mes}-${dia}`;
                 let hora = agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 
                 inputData.value = data;

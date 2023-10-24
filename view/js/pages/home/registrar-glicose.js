@@ -13,7 +13,8 @@ function registrarGlicose(id_usuario){
     document.getElementById("data").value = "";
     document.getElementById("hora").value = "";
     document.getElementById("comentario").value = "";
-    document.getElementById("condicao").value = "";
+    document.querySelector("#condicao > option:not(#condicao-default)").selected = false;
+    document.getElementById("condicao-default").selected = true;
     
     //fecha o overlay-backdrop
     fecharOverlay();

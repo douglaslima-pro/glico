@@ -10,16 +10,14 @@ function abrirOverlay(contentID){
 
 function fecharOverlay(){
     overlay.classList.add('is-none');
-    document.querySelector(".overlay-backdrop > *").classList.add("is-none");
+    document.querySelector(".overlay-backdrop > *:not(.is-none)").classList.add("is-none");
     //sets body height equal to viewport height and overflow hidden
     document.body.classList.remove('l-full-viewport-height');
     document.body.classList.remove('l-overflow-y-hidden');
 }
 
 overlay.addEventListener('click', () => {
-    if(!document.querySelector(".overlay-backdrop > *").classList.contains("is-none")){
-        if(!document.querySelector('.overlay-backdrop > *').contains(event.target)){
-            fecharOverlay();
-        }
+    if(!document.querySelector(".overlay-backdrop > *:not(.is-none)").contains(event.target)){
+        fecharOverlay();
     }
 });
