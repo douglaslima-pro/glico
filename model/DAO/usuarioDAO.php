@@ -12,15 +12,14 @@ class usuarioDAO{
 
     public function cadastrarUsuario($usuarioDTO){
         try{
-            $sql = "INSERT INTO usuario(nome,usuario,email,senha,data_nascimento,data_cadastro,cpf) VALUES(?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO usuario(nome,usuario,email,senha,data_nascimento,cpf) VALUES(?,?,?,?,NULLIF(?,''),NULLIF(?,''))";
             $stmt = self::$conn->prepare($sql);
             $stmt->bindValue(1,$usuarioDTO->getNome());
             $stmt->bindValue(2,$usuarioDTO->getUsuario());
             $stmt->bindValue(3,$usuarioDTO->getEmail());
             $stmt->bindValue(4,$usuarioDTO->getSenha());
             $stmt->bindValue(5,$usuarioDTO->getData_nascimento());
-            $stmt->bindValue(6,$usuarioDTO->getData_cadastro());
-            $stmt->bindValue(7,$usuarioDTO->getCpf());
+            $stmt->bindValue(6,$usuarioDTO->getCpf());
             $retorno = $stmt->execute();
             return $retorno;
         }catch(PDOException $e){

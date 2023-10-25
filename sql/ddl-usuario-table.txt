@@ -10,10 +10,10 @@ CREATE TABLE `usuario` (
   `peso` decimal(5,2) DEFAULT NULL,
   `altura` decimal(3,2) DEFAULT NULL,
   `data_nascimento` date DEFAULT NULL,
-  `data_cadastro` date NOT NULL,
+  `data_cadastro` date NOT NULL DEFAULT curdate(),
   `perfil` enum('U','A') NOT NULL DEFAULT 'U',
   `situacao` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `usuario` (`usuario`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci

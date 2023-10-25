@@ -8,4 +8,4 @@ CREATE TABLE `diabetes` (
   UNIQUE KEY `id_usuario` (`id_usuario`),
   KEY `fk_diabetes_usuario_id_usuario` (`id_usuario`),
   CONSTRAINT `fk_diabetes_usuario_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci

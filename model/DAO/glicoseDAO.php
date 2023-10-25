@@ -13,7 +13,7 @@ class glicoseDAO{
     public function registrarGlicose($glicoseDTO){
         try{
             $sql = "INSERT INTO glicose(id_usuario,valor,data,hora,condicao,comentario)
-                    VALUES(?,?,?,?,?,?)";
+                    VALUES(?,?,?,?,?,NULLIF(?,''))";
             $stmt = self::$conn->prepare($sql);
             $stmt->bindValue(1,$glicoseDTO->getId_usuario());
             $stmt->bindValue(2,$glicoseDTO->getValor());

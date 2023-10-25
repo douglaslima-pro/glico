@@ -24,9 +24,9 @@ function pesquisarGlicoses(id_usuario, limite, pagina) {
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = () => {
             if (xhr.status === 200 && xhr.readyState === 4) {
-                let glicoses = JSON.parse(xhr.response);
-                console.log(glicoses); //debug
-                if(glicoses.length > 0){
+                if(xhr.response !== ""){
+                    let glicoses = JSON.parse(xhr.response);
+                    console.log(glicoses); //debug
                     atualizarTabela(glicoses);
                     atualizarPaginacaoTabela(id_usuario,limite,pagina,paginas,inicio,glicoses.length,glicosesTotal);
                     tableVoid.classList.add('is-none'); // hides message "No data found"

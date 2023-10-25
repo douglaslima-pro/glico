@@ -1,0 +1,8 @@
+DELIMITER $$
+CREATE TRIGGER `tgr_usuario_after_insert` AFTER INSERT
+ON `usuario`
+FOR EACH ROW
+BEGIN
+	INSERT INTO diabetes(id_usuario,meta_max,meta_min) VALUES(NEW.id_usuario,160,70);
+END$$
+DELIMITER ;

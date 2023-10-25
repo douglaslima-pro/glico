@@ -11,14 +11,10 @@ if(isset($_POST["submit"])){
     $usuario = $_POST["usuario"];
     //CRIA UM HASH DA SENHA ANTES DE ARMAZENAR NO BANCO
     $senha = password_hash($_POST["senha"],PASSWORD_DEFAULT);
-    //PEGA A DATA ATUAL E COLOCA NA VARIÁVEL DATA_CADASTRO
-    date_default_timezone_set("America/Sao_Paulo");
-    $data_cadastro = date("Y-m-d");
     $data_nascimento = $_POST["data_nascimento"];
     $cpf = $_POST["cpf"];
 
     $usuarioDTO = new usuarioDTO($nome,$usuario,$email,$senha);
-    $usuarioDTO->setData_cadastro($data_cadastro);
     $usuarioDTO->setData_nascimento($data_nascimento);
     $usuarioDTO->setCpf($cpf);
 
