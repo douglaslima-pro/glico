@@ -209,6 +209,10 @@ a {
   margin: 1rem 0;
 }
 
+.l-margin-2rem-0 {
+  margin: 2rem 0;
+}
+
 .alerts {
   display: flex;
   flex-direction: column;
@@ -222,6 +226,13 @@ a {
 .alerts--bottom-right {
   bottom: 5px;
   flex-direction: column-reverse;
+  top: unset;
+}
+.alerts--bottom-left {
+  bottom: 5px;
+  flex-direction: column-reverse;
+  left: 5px;
+  right: unset;
   top: unset;
 }
 .alerts .alert {
@@ -323,6 +334,13 @@ a {
 }
 .card__important:hover {
   color: #4F5F73;
+}
+.card__important--grey {
+  color: #7A7A7A;
+  cursor: default;
+}
+.card__important--grey:hover {
+  color: #5A5A5A;
 }
 .card__btn {
   background-color: #8C4B45;

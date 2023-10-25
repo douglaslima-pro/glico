@@ -108,7 +108,7 @@ function atualizarTabela(glicoses) {
         if (glicose.comentario == null || glicose.comentario == "") {
             tableCellComment.innerText = "--";
         } else {
-            tableCellComment.innerText = glicose.comentario;
+            tableCellComment.innerText = glicose.comentario.replaceAll(/(\n)/gm," ");
         }
         tableRow.appendChild(tableCellComment); // adds the cell comment to table row
 

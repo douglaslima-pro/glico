@@ -38,5 +38,6 @@ function registrarGlicose(id_usuario){
 function atualizaPaginaHome(id_usuario){
     let limite = document.getElementById("quantidade-registros").value;
     ultimaGlicose(id_usuario);
+    exibirDadosImportantes(id_usuario);
     pesquisarGlicoses(id_usuario,limite,1);
 }

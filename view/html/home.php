@@ -36,7 +36,7 @@
     <body <?php if(isset($msg)){ ?> onload="mostrarAlerta('<?=$msg['alertClass']?>','<?=$msg['iconClass']?>','<?=$msg['title']?>','<?=$msg['text']?>')<?php } ?>">
 
         <!--ALERTAS-->
-        <div class="alerts alerts--bottom-right"><!--A ESTRUTURA HTML DO ALERTA ESTÁ DESCRITA DENTRO DO SCRIPT alert.js !--></div>
+        <div class="alerts alerts--bottom-left"><!--A ESTRUTURA HTML DO ALERTA ESTÁ DESCRITA DENTRO DO SCRIPT alert.js !--></div>
 
         <!--PROMPT DE CONFIRMAÇÃO-->
         <div class="confirm is-none">
@@ -133,7 +133,8 @@
                         </form>         
 
                         <div class="register-glucose__input-container">
-                            <p><span class="register-glucose__label">Valor:</span> <span id="valor-glicose"></span> mg/dL</p>
+                            <p class="register-glucose__label">Valor:</p>
+                            <p class="card__important card__important--grey"><span id="valor-glicose"></span> mg/dL</p>
                         </div>
 
                         <hr>
@@ -225,15 +226,15 @@
                         <div class="cards l-flex l-flex-wrap">
                             <div class="card l-flex-1">
                                 <p class="card__description">Glicemia média</p>
-                                <span class="card__important">N/A</span>
+                                <span class="card__important card__important--media">N/A</span>
                             </div>
                             <div class="card l-flex-1">
                                 <p class="card__description">Hipoglicemias</p>
-                                <span class="card__important">N/A</span>
+                                <span class="card__important card__important--hipoglicemias">N/A</span>
                             </div>
                             <div class="card l-flex-1">
                                 <p class="card__description">Hiperglicemias</p>
-                                <span class="card__important">N/A</span>
+                                <span class="card__important card__important--hiperglicemias">N/A</span>
                             </div>
                         </div>
                     </div><!--fim do dados importantes-->
@@ -331,6 +332,7 @@
         <script src="../js/pages/home/visualizar-glicose.js"></script>
         <script src="../js/pages/home/registrar-glicose.js"></script>
         <script src="../js/pages/home/ultima-glicose.js"></script>
+        <script src="../js/pages/home/exibir-dados-importantes.js"></script>
         <script src="../js/pages/home/pesquisar-glicoses.js"></script>
         <script src="../js/remove-espacos-brancos.js"></script>
         <script src="../js/sidebar.js"></script>

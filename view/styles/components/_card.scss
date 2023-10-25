@@ -50,6 +50,15 @@
         &:hover {
             color: $azul;
         }
+
+        &--grey {
+            color: $cinza;
+            cursor: default;
+
+            &:hover {
+                color: #5A5A5A;
+            }
+        }
     }
 
     //.card__btn

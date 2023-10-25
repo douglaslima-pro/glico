@@ -20,7 +20,7 @@ function editarGlicose(id_glicose){
                 //atualiza o comentário na tabela
                 let tabelaComentario = document.querySelector(`#glicose-${id_glicose} .glucose-history__table-cell--comment`);
                 if(comentario != null && comentario.replaceAll(" ","") != ""){
-                    tabelaComentario.innerText = comentario;
+                    tabelaComentario.innerText = comentario.replaceAll(/(\n)/gm," ");
                     comentarioInput.value = comentario;
                  }else{
                     tabelaComentario.innerText = "--";

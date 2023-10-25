@@ -371,6 +371,13 @@ a {
   flex-direction: column-reverse;
   top: unset;
 }
+.alerts--bottom-left {
+  bottom: 5px;
+  flex-direction: column-reverse;
+  left: 5px;
+  right: unset;
+  top: unset;
+}
 .alerts .alert {
   background: rgba(0, 0, 0, 0.9);
   border-radius: 2px;
