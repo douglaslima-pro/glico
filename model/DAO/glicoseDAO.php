@@ -45,7 +45,7 @@ class glicoseDAO{
 
     public function pesquisarGlicoses($id_usuario,$limite,$inicio){
         try{
-            $sql = "SELECT id_glicose,valor,DATE_FORMAT(data,'%d/%m/%Y') AS data,TIME_FORMAT(hora,'%H:%i') AS hora,condicao,comentario FROM glicose
+            $sql = "SELECT id_glicose,valor,DATE_FORMAT(data,'%d/%m/%Y') AS data,TIME_FORMAT(hora,'%H:%i') AS hora,condicao,comentario,data_registro,hora_registro FROM glicose
                     WHERE id_usuario = :id_usuario
                     ORDER BY data DESC, hora DESC, id_glicose DESC
                     LIMIT :limite OFFSET :inicio";

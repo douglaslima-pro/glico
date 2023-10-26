@@ -226,15 +226,27 @@
                         <div class="cards l-flex l-flex-wrap">
                             <div class="card l-flex-1">
                                 <p class="card__description">Glicemia média</p>
-                                <span class="card__important card__important--media">N/A</span>
+                                <span class="card__important card__important--media">
+                                    <?php
+                                        echo $glicoseDAO->mediaGlicoses($_SESSION["id_usuario"]);
+                                    ?> mg/dL
+                                </span>
                             </div>
                             <div class="card l-flex-1">
                                 <p class="card__description">Hipoglicemias</p>
-                                <span class="card__important card__important--hipoglicemias">N/A</span>
+                                <span class="card__important card__important--hipoglicemias">
+                                    <?php
+                                        echo str_replace(".",",",$glicoseDAO->calcularHipoglicemias($_SESSION["id_usuario"]));
+                                    ?> %
+                                </span>
                             </div>
                             <div class="card l-flex-1">
                                 <p class="card__description">Hiperglicemias</p>
-                                <span class="card__important card__important--hiperglicemias">N/A</span>
+                                <span class="card__important card__important--hiperglicemias">
+                                    <?php
+                                        echo str_replace(".",",",$glicoseDAO->calcularHiperglicemias($_SESSION["id_usuario"]));
+                                    ?> %
+                                </span>
                             </div>
                         </div>
                     </div><!--fim do dados importantes-->
