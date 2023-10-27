@@ -1,0 +1,400 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body, ul, li, p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #F0F2F5;
+  line-height: 1;
+  position: relative;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+svg {
+  fill: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+* {
+  font-family: "Open sans", sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p, label {
+  font-size: 1rem;
+}
+
+a {
+  font-size: 0.75rem;
+}
+
+#main {
+  height: 100%;
+}
+
+.l-flex {
+  display: flex;
+}
+
+.l-flex-center {
+  align-items: center;
+  justify-content: space-around;
+}
+
+.l-flex-justify-around {
+  justify-content: space-around;
+}
+
+.l-flex-justify-between {
+  justify-content: space-between;
+}
+
+.l-flex-justify-center {
+  justify-content: center;
+}
+
+.l-flex-justify-end {
+  justify-content: end;
+}
+
+.l-flex-align-center {
+  align-items: center;
+}
+
+.l-flex-align-end {
+  align-items: end;
+}
+
+.l-flex-column {
+  flex-direction: column;
+}
+
+.l-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.l-flex-gap-5px {
+  gap: 5px;
+}
+
+.l-flex-gap-10px {
+  gap: 10px;
+}
+
+.l-flex-gap-1rem {
+  gap: 1rem;
+}
+
+.l-flex-gap-3rem {
+  gap: 3rem;
+}
+
+.l-flex-1 {
+  flex: 1;
+}
+
+.l-flex-2 {
+  flex: 2;
+}
+
+.l-flex-3 {
+  flex: 3;
+}
+
+.l-grid {
+  display: grid;
+}
+
+.l-table {
+  display: table;
+}
+
+.l-table-row {
+  display: table-row;
+}
+
+.l-table-row-group {
+  display: table-row-group;
+}
+
+.l-table-cell {
+  display: table-cell;
+}
+
+.l-full-height {
+  height: 100%;
+}
+
+.l-full-viewport-height {
+  height: 100vh;
+}
+
+.l-overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.l-overflow-x-auto {
+  overflow-x: auto;
+}
+
+.l-no-padding {
+  padding: 0;
+}
+
+.l-padding-3px {
+  padding: 3px;
+}
+
+.l-padding-3rem-1rem {
+  padding: 3rem 1rem;
+}
+
+.background-circle {
+  background: #8C4B45;
+  width: 100%;
+  height: 100%;
+  -webkit-clip-path: circle(50% at right 100%);
+          clip-path: circle(50% at right 100%);
+  z-index: -1;
+  position: absolute;
+}
+
+.login {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.25);
+  padding: 2.5rem;
+  max-width: 450px;
+}
+.login__title {
+  color: #7A7A7A;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+.login__label {
+  color: #7A7A7A;
+  font-weight: 600;
+}
+.login__input {
+  color: #7A7A7A;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 4px;
+  width: 100%;
+}
+.login__input, .login__password-container {
+  border: 1px solid #7A7A7A;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+.login__password-container {
+  padding: 0 4px;
+}
+.login__input--password {
+  border: none;
+  margin: 0;
+}
+.login__forgot-password {
+  color: black;
+  display: block;
+  font-size: 0.9rem;
+  margin: 2rem 0;
+  text-align: center;
+  text-decoration: underline;
+}
+.login__btn {
+  background: #4F5F73;
+  border: none;
+  border-radius: 10px;
+  color: #FDFDFD;
+  cursor: pointer;
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  padding: 0.3rem 1.5rem;
+}
+.login__btn:hover {
+  opacity: 0.9;
+}
+.login__eye-icon {
+  cursor: pointer;
+  fill: #7A7A7A;
+  height: 1.3rem;
+  width: 1.3rem;
+}
+.login__eye-icon:hover {
+  opacity: 0.9;
+}
+
+.alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 250px;
+  position: fixed;
+  right: 5px;
+  top: 5px;
+  z-index: 100;
+}
+.alerts--bottom-right {
+  bottom: 5px;
+  flex-direction: column-reverse;
+  top: unset;
+}
+.alerts--bottom-left {
+  bottom: 5px;
+  flex-direction: column-reverse;
+  left: 5px;
+  right: unset;
+  top: unset;
+}
+.alerts .alert {
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 2px;
+  cursor: default;
+  display: flex;
+  gap: 10px;
+  padding: 10px 20px;
+  transition: 1.5s all ease-in-out;
+  opacity: 0;
+}
+.alerts .alert__icon {
+  color: #FDFDFD;
+  display: none;
+  margin: auto 0;
+}
+.alerts .alert__title {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+.alerts .alert__title, .alerts .alert__text {
+  color: #FDFDFD;
+  font-size: 0.9rem;
+}
+.alerts .alert--success .fa-check {
+  content: "f00c";
+  display: inline;
+}
+.alerts .alert--error .fa-xmark {
+  content: "f00d";
+  display: inline;
+}
+.alerts .alert--info .fa-info {
+  content: "f129";
+  display: inline;
+}
+
+.cadastro {
+  background-color: white;
+  box-shadow: -4px 0 10px 0 rgba(0, 0, 0, 0.25);
+  color: #7A7A7A;
+  padding: 0.75rem 2.5rem;
+  min-width: 320px;
+}
+.cadastro__voltar-link {
+  color: #8C4B45;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: underline;
+}
+.cadastro__form {
+  max-width: 600px;
+}
+.cadastro__title {
+  font-size: 2.5rem;
+  margin: 2rem 0;
+}
+.cadastro__subtitle {
+  font-size: 1.75rem;
+  margin: 2rem 0;
+}
+.cadastro__label {
+  font-weight: 600;
+}
+.cadastro__input {
+  border: 1px solid #7A7A7A;
+  border-radius: 2px;
+  color: #7A7A7A;
+  margin-bottom: 1rem;
+  min-width: 155px;
+  padding: 4px;
+  width: 100%;
+}
+.cadastro__input--senha {
+  border: none;
+  margin: 0;
+  min-width: unset;
+  padding: 0;
+}
+.cadastro__input-container {
+  width: 100%;
+  gap: 10px;
+}
+.cadastro__eye-icon {
+  cursor: pointer;
+  fill: #7A7A7A;
+  height: 1.3rem;
+  width: 1.3rem;
+}
+.cadastro__eye-icon:hover {
+  opacity: 0.9;
+}
+.cadastro__aviso {
+  color: red;
+  font-size: 0.75rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+.cadastro__btn {
+  background-color: #4F5F73;
+  border: none;
+  border-radius: 10px;
+  color: #FDFDFD;
+  cursor: pointer;
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 2rem auto;
+  padding: 5px 2rem;
+}
+.cadastro__btn:hover {
+  opacity: 0.9;
+}
+
+.is-none {
+  display: none;
+}/*# sourceMappingURL=alterar-senha.css.map */

@@ -16,8 +16,7 @@ function recuperarSenha(inputID,submitID){
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xhr.onreadystatechange = () => {
         if(xhr.status === 200 && xhr.readyState === 4){
-            console.log(xhr.responseText);
-            if(xhr.responseText == "true"){
+            if(JSON.parse(xhr.response).status == true){
                 console.log("sucesso");
                 //habilita o submit
                 submit.disabled = false;

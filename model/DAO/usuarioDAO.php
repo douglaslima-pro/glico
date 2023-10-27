@@ -96,5 +96,19 @@ class usuarioDAO{
         }
     }
 
+    public function alterarSenha($id_usuario,$senha){
+        try{
+            $sql = "UPDATE usuario SET senha = :senha
+                    WHERE id_usuario = :id_usuario";
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindParam(":id_usuario",$id_usuario);
+            $stmt->bindParam(":senha",$senha);
+            $retorno = $stmt->execute();
+            return $retorno;
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
 }
 ?>

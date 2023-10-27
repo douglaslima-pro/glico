@@ -3,7 +3,6 @@ var sidebar = document.querySelector(".sidebar");
 var sidebarCloseBTN = document.querySelector(".sidebar--mobile__close-btn");
 
 hamburgerBTN.addEventListener('click', () => {
-    console.log('hambg-btn');
     sidebar.classList.add('sidebar--mobile');
     sidebarCloseBTN.classList.remove('is-none');
 });
