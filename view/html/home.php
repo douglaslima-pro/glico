@@ -184,7 +184,7 @@
                             <nav class="user-options is-hidden">
                                 <h4 class="user-options__username"><?=$_SESSION['usuario']?></h4>
                                 <ul class="user-options__list">
-                                    <li class="user-options__list-item"><a href="perfil.php" class="user-options__link">Editar perfil</a></li>
+                                    <li class="user-options__list-item"><a href="editar-perfil.php" class="user-options__link">Editar perfil</a></li>
                                     <li class="user-options__list-item"><a href="../../controller/sair.php" class="user-options__link">Sair</a></li>
                                 </ul>
                             </nav>
