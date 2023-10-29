@@ -142,7 +142,7 @@
                         <button type="button" class="register-glucose__btn register-glucose__btn--red register-glucose__btn--align-center" id="excluir-glicose-btn">Excluir glicemia</button>
                     </div>
                 </div>
-            </section><!--FIM DA TELA REGISTRAR GLICOSE-->
+            </section><!--FIM DO OVERLAY-->
 
             <!--BARRA LATERAL-->
             <aside class="sidebar" id="aside">
