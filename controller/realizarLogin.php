@@ -31,6 +31,11 @@ if(isset($_POST["submit"])){
         $_SESSION["data_nascimento"] = $retorno["data_nascimento"];
         $_SESSION["data_cadastro"] = $retorno["data_cadastro"];
         $_SESSION["perfil"] = $retorno["perfil"];
+        $_SESSION["tipo_diabetes"] = $retorno["tipo_diabetes"];
+        $_SESSION["terapia"] = $retorno["terapia"];
+        $_SESSION["data_diagnostico"] = $retorno["data_diagnostico"];
+        $_SESSION["meta_max"] = $retorno["meta_max"];
+        $_SESSION["meta_min"] = $retorno["meta_min"];
         $msg = alertMessage("alert--success","fa-check","Sucesso","Login efetuado com sucesso!");
         header("location:../view/html/home.php?msg=$msg");
     }

@@ -29,7 +29,11 @@ class usuarioDAO{
 
     public function realizarLogin($usuarioDTO){
         try{
-            $sql = "SELECT * FROM usuario WHERE email = ? OR usuario = ? AND situacao = 1";
+            $sql = "SELECT u.*,d.*
+                    FROM usuario u
+                    INNER JOIN diabetes d ON
+                    u.id_usuario = d.id_usuario
+                    WHERE u.email = ? OR u.usuario = ? AND u.situacao = 1";
             $stmt = self::$conn->prepare($sql);
             $stmt->bindValue(1,$usuarioDTO->getEmail());
             $stmt->bindValue(2,$usuarioDTO->getUsuario());
@@ -121,6 +125,42 @@ class usuarioDAO{
             $stmt->bindParam(":id_usuario",$id_usuario);
             $stmt->execute();
             $retorno = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $retorno;
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function alterarDadosDeAcesso($usuarioDTO){
+        try{
+            $sql = "UPDATE usuario
+                    SET email=?,usuario=?
+                    WHERE id_usuario=?";
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindValue(1,$usuarioDTO->getEmail());
+            $stmt->bindValue(2,$usuarioDTO->getUsuario());
+            $stmt->bindValue(3,$usuarioDTO->getId_usuario());
+            $retorno = $stmt->execute();
+            return $retorno;
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function alterarDadosPessoais($usuarioDTO){
+        try{
+            $sql = "UPDATE usuario
+                    SET nome=?,cpf=NULLIF(?,''),data_nascimento=NULLIF(?,''),sexo=NULLIF(?,''),peso=NULLIF(?,''),altura=NULLIF(?,'')
+                    WHERE id_usuario=?";
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindValue(1,$usuarioDTO->getNome());
+            $stmt->bindValue(2,$usuarioDTO->getCpf());
+            $stmt->bindValue(3,$usuarioDTO->getData_nascimento());
+            $stmt->bindValue(4,$usuarioDTO->getSexo());
+            $stmt->bindValue(5,$usuarioDTO->getPeso());
+            $stmt->bindValue(6,$usuarioDTO->getAltura());
+            $stmt->bindValue(7,$usuarioDTO->getId_usuario());
+            $retorno = $stmt->execute();
             return $retorno;
         }catch(PDOException $e){
             echo $e->getMessage();

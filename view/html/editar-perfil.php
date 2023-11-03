@@ -11,9 +11,6 @@
     </head>
     
     <?php
-        // imports de script
-        require_once "../../model/DAO/usuarioDAO.php";
-
         // inicia a sessão
         session_start();
         
@@ -27,10 +24,6 @@
         if(isset($_GET["msg"])){
             $msg = unserialize(urldecode($_GET["msg"]));
         }
-
-        // objetos DAO da página
-        $usuarioDAO = new usuarioDAO();
-        $usuario = $usuarioDAO->pesquisarUsuario($_SESSION["id_usuario"]);
     ?>
 
     <body <?php if(isset($msg)){ ?> onload="mostrarAlerta('<?=$msg['alertClass']?>','<?=$msg['iconClass']?>','<?=$msg['title']?>','<?=$msg['text']?>')" <?php } ?>>
@@ -80,9 +73,9 @@
                     <a href="#"><h1 class="header__logo">Glico</h1></a>
                     <div class="l-flex l-flex-center l-flex-gap-1rem">
                         <div class="header__user-container">
-                            <img class="header__profile-picture" src="<?=$usuario["foto"]?>" alt="Foto de perfil do usuário" title="<?=$usuario["nome"]?>">
+                            <img class="header__profile-picture" src="<?=$_SESSION["foto"]?>" alt="Foto de perfil do usuário" title="<?=$_SESSION["nome"]?>">
                             <nav class="user-options is-hidden">
-                                <h4 class="user-options__username"><?=$usuario["usuario"]?></h4>
+                                <h4 class="user-options__username"><?=$_SESSION["usuario"]?></h4>
                                 <ul class="user-options__list">
                                     <li class="user-options__list-item"><a href="editar-perfil.php" class="user-options__link">Editar perfil</a></li>
                                     <li class="user-options__list-item"><a href="../../controller/sair.php" class="user-options__link">Sair</a></li>
@@ -110,7 +103,7 @@
                                     <p class="profile__header-title">Foto de perfil</p>
                                 </div>
                                 <div class="profile__container">
-                                    <img class="profile__picture" src="<?=$usuario["foto"]?>" alt="Foto de perfil">
+                                    <img class="profile__picture" src="<?=$_SESSION["foto"]?>" alt="Foto de perfil">
                                     <label class="profile__btn profile__btn--blue profile__btn--center" for="foto">Alterar foto</label>
                                     <input class="is-none" id="foto" type="file">
                                 </div>
@@ -120,11 +113,11 @@
                                     <p class="profile__header-title">Informações de acesso</p>
                                 </div>
                                 <div class="profile__container">
-                                    <form class="profile__form" id="account-form">
+                                    <form class="profile__form" id="account-form" onsubmit="alterarDadosDeAcesso()">
                                         <label class="profile__label" for="email">E-mail</label>
-                                        <input class="profile__input" type="email" name="email" id="email" maxlength="50" oninput="removeEspacosBrancos('email')" disabled required value="<?=$usuario["email"]?>">
+                                        <input class="profile__input" type="email" name="email" id="email" maxlength="50" oninput="removeEspacosBrancos('email')" disabled required value="<?=$_SESSION["email"]?>">
                                         <label class="profile__label" for="usuario">Nome de usuário</label>
-                                        <input class="profile__input" disabled type="text" name="usuario" id="usuario" oninput="removeEspacosBrancos('usuario')" maxlength="30" required value="<?=$usuario["usuario"]?>">
+                                        <input class="profile__input" disabled type="text" name="usuario" id="usuario" oninput="removeEspacosBrancos('usuario')" maxlength="30" required value="<?=$_SESSION["usuario"]?>">
                                         <button class="profile__btn profile__btn--edit" type="button" onclick="editarFormulario('#account-form .profile__actions-container')">Editar</button>
                                         <div class="profile__actions-container l-flex l-flex-gap-1rem is-none">
                                             <button class="profile__btn" type="button" onclick="fecharEdicao('#account-form .profile__actions-container')">Cancelar</button>
@@ -141,27 +134,27 @@
                                 <p class="profile__header-title">Dados pessoais</p>
                             </div>
                             <div class="profile__container">
-                                <form class="profile__form" id="personal-data-form">
+                                <form class="profile__form" id="personal-data-form" onsubmit="alterarDadosPessoais()">
                                     <div class="l-flex l-flex-gap-1rem l-flex-wrap">
                                         <div class="l-flex-1">
                                             <label class="profile__label" for="nome">Nome completo</label>
-                                            <input class="profile__input" type="text" id="nome" name="nome" maxlength="100" oninput="removeEspacosBrancos('nome')" disabled required value="<?=$usuario["nome"]?>">
+                                            <input class="profile__input" type="text" id="nome" name="nome" maxlength="100" oninput="removeEspacosBrancos('nome')" disabled required value="<?=$_SESSION["nome"]?>">
                                             <label class="profile__label" for="cpf">CPF</label>
-                                            <input class="profile__input" type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" maxlength="14" oninput="mascaraCPF('cpf'),colarFalse(),removeEspacosBrancos('cpf')" disabled value="<?=$usuario["cpf"]?>">
+                                            <input class="profile__input" type="text" id="cpf" name="cpf" placeholder="xxx.xxx.xxx-xx" maxlength="14" oninput="mascaraCPF('cpf'),colarFalse(),removeEspacosBrancos('cpf')" disabled value="<?=$_SESSION["cpf"]?>">
                                             <label class="profile__label" for="nascimento">Data de nascimento</label>
-                                            <input class="profile__input" type="date" id="nascimento" name="nascimento" disabled value="<?=$usuario["data_nascimento"]?>">
+                                            <input class="profile__input" type="date" id="nascimento" name="nascimento" disabled value="<?=$_SESSION["data_nascimento"]?>">
                                         </div>
                                         <div class="l-flex-1">
                                             <label class="profile__label" for="sexo">Sexo</label>
                                             <select class="profile__input" id="sexo" name="sexo" disabled>
-                                                <option value="N">Nenhum</option>
+                                                <option value="">Nenhum</option>
                                                 <option value="M">Masculino</option>
                                                 <option value="F">Feminino</option>
                                             </select>
                                             <label class="profile__label" for="peso">Peso (kg)</label>
-                                            <input class="profile__input" type="number" id="peso" name="peso" disabled value="<?=$usuario["peso"]?>">
+                                            <input class="profile__input" type="number" id="peso" name="peso" disabled value="<?=$_SESSION["peso"]?>">
                                             <label class="profile__label" for="altura">Altura (m)</label>
-                                            <input class="profile__input" type="number" id="altura" name="altura" step=".01" disabled value="<?=$usuario["altura"]?>">
+                                            <input class="profile__input" type="number" id="altura" name="altura" step=".01" disabled value="<?=$_SESSION["altura"]?>">
                                         </div>
                                     </div>
                                     <button class="profile__btn profile__btn--edit" type="button" onclick="editarFormulario('#personal-data-form .profile__actions-container')">Editar</button>
@@ -197,15 +190,15 @@
                                         <option value="Outro">Outro</option>
                                     </select>
                                     <label class="profile__label" for="diagnostico">Data do diagnóstico</label>
-                                    <input class="profile__input" type="date" name="diagnostico" id="diagnostico" disabled value="<?=$usuario["data_diagnostico"]?>">
+                                    <input class="profile__input" type="date" name="diagnostico" id="diagnostico" disabled value="<?=$_SESSION["data_diagnostico"]?>">
                                     <div class="l-flex l-flex-gap-1rem l-flex-wrap">
                                         <div class="l-flex-1">
                                             <label class="profile__label" for="meta-min">Meta mínima (mg/dL)</label>
-                                            <input class="profile__input" type="number" name="meta-min" id="meta-min" step="1" disabled required value="<?=$usuario["meta_min"]?>">
+                                            <input class="profile__input" type="number" name="meta-min" id="meta-min" step="1" disabled required value="<?=$_SESSION["meta_min"]?>">
                                         </div>
                                         <div class="l-flex-1">
                                             <label class="profile__label" for="meta-max">Meta máxima (mg/dL)</label>
-                                            <input class="profile__input" type="number" name="meta-max" id="meta-max" step="1" disabled required value="<?=$usuario["meta_max"]?>">
+                                            <input class="profile__input" type="number" name="meta-max" id="meta-max" step="1" disabled required value="<?=$_SESSION["meta_max"]?>">
                                         </div>
                                     </div>
                                     <button class="profile__btn profile__btn--edit" type="button" onclick="editarFormulario('#diabetes-form .profile__actions-container')">Editar</button>
@@ -225,6 +218,8 @@
         </main>
 
         <!--ÁREA DE SCRIPS EM JS-->
+        <script src="../js/pages/editar-perfil/alterar-dados-de-acesso.js"></script>
+        <script src="../js/pages/editar-perfil/alterar-dados-pessoais.js"></script>
         <script src="../js/pages/editar-perfil/botao-editar.js"></script>
         <script src="../js/pages/cadastro/mascara-cpf.js"></script>
         <script src="../js/remove-espacos-brancos.js"></script>
