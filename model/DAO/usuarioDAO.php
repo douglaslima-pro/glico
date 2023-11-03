@@ -110,5 +110,22 @@ class usuarioDAO{
         }
     }
 
+    public function pesquisarUsuario($id_usuario){
+        try{
+            $sql = "SELECT u.*,d.*
+                    FROM usuario u
+                    INNER JOIN diabetes d ON
+                    u.id_usuario = d.id_usuario
+                    WHERE u.id_usuario = :id_usuario";
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindParam(":id_usuario",$id_usuario);
+            $stmt->execute();
+            $retorno = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $retorno;
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
 }
 ?>

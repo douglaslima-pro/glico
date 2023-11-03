@@ -1,0 +1,112 @@
+.profile {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 4px 0 $sombra;
+    max-width: 1000px;
+    padding: 2rem 1.5rem;
+
+    //.profile__section
+    &__section {
+        background-color: rgba(33,40,50,.01);
+        border: 1px solid $cinza-claro;
+        border-radius: 2px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    //.profile__header
+    &__header {
+        background-color: rgba(33,40,50,.03);
+        color: $cinza;
+        border-bottom: 1px solid $cinza-claro;
+        font-weight: 600;
+        padding: .5rem;
+    }
+
+    //.profile__container
+    &__container {
+        height: 100%;
+        padding: 1rem;
+    }
+
+    //.profile__picture
+    &__picture {
+        border-radius: 50%;
+        display: block;
+        height: 150px;
+        margin: 0 auto 1rem;
+        object-fit: cover;
+        object-position: top;
+        width: 150px;
+    }
+
+    //.profile__label
+    &__label {
+        color: $cinza;
+        display: block;
+        font-weight: 400;
+        width: 100%;
+    }
+
+    //.profile__input
+    &__input {
+        border: 1px solid $cinza;
+        border-radius: 2px;
+        color: $cinza;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        min-width: 200px;
+        padding: 2px;
+        width: 100%;
+    }
+
+    //.profile__btn
+    &__btn{
+        background-color: $cinza-btn;
+        border: none;
+        color: black;
+        cursor: pointer;
+        display: block;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: .375rem 1rem;
+        margin: .625rem 0;
+        width: max-content;
+
+        //.profile__btn:hover
+        &:hover {
+            opacity: .9;
+        }
+
+        //.profile__btn--blue
+        &--blue {
+            background-color: $azul;
+            color: $cinza-muito-claro;
+        }
+
+        //.profile__btn--red
+        &--red {
+            background-color: $vermelho;
+            color: $cinza-muito-claro;
+        }
+
+        //.profile__btn--center
+        &--center {
+            margin: .625rem auto;
+        }
+    }
+
+    #account-form {
+        max-width: 400px;
+    }
+
+    #personal-data-form {
+        max-width: 800px;
+    }
+
+    #diabetes-form {
+        max-width: 600px;
+    }
+    
+}
