@@ -167,5 +167,20 @@ class usuarioDAO{
         }
     }
 
+    public function alterarFoto($foto,$id_usuario){
+        try{
+            $sql = "UPDATE usuario
+                    SET foto = NULLIF(:foto,'')
+                    WHERE id_usuario = :id_usuario";
+            $stmt = self::$conn->prepare($sql);
+            $stmt->bindParam(":foto",$foto);
+            $stmt->bindParam(":id_usuario",$id_usuario);
+            $retorno = $stmt->execute();
+            return $retorno;
+        }catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
 }
 ?>

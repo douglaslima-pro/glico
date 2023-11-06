@@ -377,6 +377,11 @@ a {
   font-weight: bold;
 }
 
+@media screen and (max-width: 400px) {
+  .content__main {
+    padding: 3rem 0.625rem;
+  }
+}
 .confirm {
   background-color: rgba(0, 0, 0, 0.25);
   height: 100vh;

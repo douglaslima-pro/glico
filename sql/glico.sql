@@ -26,8 +26,8 @@ DROP TABLE IF EXISTS `diabetes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `diabetes` (
   `id_usuario` int(11) NOT NULL,
-  `tipo_diabetes` enum('pre-diabetes','tipo 1','tipo 2','gestacional') DEFAULT NULL,
-  `terapia` enum('caneta','seringa','bomba de insulina') DEFAULT NULL,
+  `tipo_diabetes` enum('Nenhum','Pré-diabetes','Diabetes Mellitus Tipo 1','Diabetes Mellitus Tipo 2','Diabetes gestacional') DEFAULT 'Nenhum',
+  `terapia` enum('Nenhum','Insulina (caneta)','Insulina (seringa)','Insulina (bomba)','Medicação oral','Outro') DEFAULT 'Nenhum',
   `data_diagnostico` date DEFAULT NULL,
   `meta_max` int(3) DEFAULT NULL,
   `meta_min` int(3) DEFAULT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE `usuario` (
   `senha` varchar(255) NOT NULL,
   `cpf` char(14) DEFAULT NULL,
   `foto` text DEFAULT '../img/png/anonymous-profile.png',
-  `sexo` enum('H','M') DEFAULT NULL,
+  `sexo` enum('M','F') DEFAULT NULL,
   `peso` decimal(5,2) DEFAULT NULL,
   `altura` decimal(3,2) DEFAULT NULL,
   `data_nascimento` date DEFAULT NULL,
@@ -207,4 +207,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-27 17:31:57
+-- Dump completed on 2023-11-06 12:31:51

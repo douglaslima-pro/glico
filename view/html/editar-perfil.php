@@ -11,6 +11,9 @@
     </head>
     
     <?php
+        // imports de script
+        require_once "../../controller/alertMessage.php";
+
         // inicia a sessão
         session_start();
         
@@ -105,7 +108,7 @@
                                 <div class="profile__container">
                                     <img class="profile__picture" src="<?=$_SESSION["foto"]?>" alt="Foto de perfil">
                                     <label class="profile__btn profile__btn--blue profile__btn--center" for="foto">Alterar foto</label>
-                                    <input class="is-none" id="foto" type="file">
+                                    <input class="is-none" accept="image/*" id="foto" type="file" onchange="alterarFoto()">
                                 </div>
                             </div>
                             <div class="profile__section l-flex-2">
@@ -147,9 +150,9 @@
                                         <div class="l-flex-1">
                                             <label class="profile__label" for="sexo">Sexo</label>
                                             <select class="profile__input" id="sexo" name="sexo" disabled>
-                                                <option value="">Nenhum</option>
-                                                <option value="M">Masculino</option>
-                                                <option value="F">Feminino</option>
+                                                <option value="" <?=$_SESSION["sexo"] == "" ? "selected" : "" ?>>Nenhum</option>
+                                                <option value="M" <?=$_SESSION["sexo"] == "M" ? "selected" : "" ?>>Masculino</option>
+                                                <option value="F" <?=$_SESSION["sexo"] == "F" ? "selected" : "" ?>>Feminino</option>
                                             </select>
                                             <label class="profile__label" for="peso">Peso (kg)</label>
                                             <input class="profile__input" type="number" id="peso" name="peso" disabled value="<?=$_SESSION["peso"]?>">
@@ -171,26 +174,26 @@
                                 <p class="profile__header-title">Dados da diabetes</p>
                             </div>
                             <div class="profile__container">
-                                <form class="profile__form" id="diabetes-form">
-                                    <label class="profile__label" for="diabetes">Tipo de diabetes</label>
-                                    <select class="profile__input" name="diabetes" id="diabetes" disabled>
-                                        <option value="Nenhum">Nenhum</option>
-                                        <option value="Pré-diabetes">Pré-diabetes</option>
-                                        <option value="Diabetes Mellitus Tipo 1">Diabetes Mellitus Tipo 1</option>
-                                        <option value="Diabetes Mellitus Tipo 2">Diabetes Mellitus Tipo 2</option>
-                                        <option value="Diabetes gestacional">Diabetes gestacional</option>
+                                <form class="profile__form" id="diabetes-form" onsubmit="alterarDiabetes()">
+                                    <label class="profile__label" for="tipo-diabetes">Tipo de diabetes</label>
+                                    <select class="profile__input" name="tipo-diabetes" id="tipo-diabetes" disabled>
+                                        <option value="Nenhum" <?=$_SESSION["tipo_diabetes"] == "Nenhum" ? "selected" : "" ?>>Nenhum</option>
+                                        <option value="Pré-diabetes" <?=$_SESSION["tipo_diabetes"] == "Pré-diabetes" ? "selected" : "" ?>>Pré-diabetes</option>
+                                        <option value="Diabetes Mellitus Tipo 1" <?=$_SESSION["tipo_diabetes"] == "Diabetes Mellitus Tipo 1" ? "selected" : "" ?>>Diabetes Mellitus Tipo 1</option>
+                                        <option value="Diabetes Mellitus Tipo 2" <?=$_SESSION["tipo_diabetes"] == "Diabetes Mellitus Tipo 2" ? "selected" : "" ?>>Diabetes Mellitus Tipo 2</option>
+                                        <option value="Diabetes gestacional" <?=$_SESSION["tipo_diabetes"] == "Diabetes gestacional" ? "selected" : "" ?>>Diabetes gestacional</option>
                                     </select>
                                     <label class="profile__label" for="terapia">Terapia</label>
                                     <select class="profile__input" name="terapia" id="terapia" disabled>
-                                        <option value="Nenhum">Nenhum</option>
-                                        <option value="Insulina (caneta)">Insulina (caneta)</option>
-                                        <option value="Insulina (seringa)">Insulina (seringa)</option>
-                                        <option value="Insulina (bomba)">Insulina (bomba)</option>
-                                        <option value="Medicação oral">Medicação oral</option>
-                                        <option value="Outro">Outro</option>
+                                        <option value="Nenhum" <?=$_SESSION["terapia"] == "Nenhum" ? "selected" : "" ?>>Nenhum</option>
+                                        <option value="Insulina (caneta)" <?=$_SESSION["terapia"] == "Insulina (caneta)" ? "selected" : "" ?>>Insulina (caneta)</option>
+                                        <option value="Insulina (seringa)" <?=$_SESSION["terapia"] == "Insulina (seringa)" ? "selected" : "" ?>>Insulina (seringa)</option>
+                                        <option value="Insulina (bomba)" <?=$_SESSION["terapia"] == "Insulina (bomba)" ? "selected" : "" ?>>Insulina (bomba)</option>
+                                        <option value="Medicação oral" <?=$_SESSION["terapia"] == "Medicação oral" ? "selected" : "" ?>>Medicação oral</option>
+                                        <option value="Outro" <?=$_SESSION["terapia"] == "Outro" ? "selected" : "" ?>>Outro</option>
                                     </select>
-                                    <label class="profile__label" for="diagnostico">Data do diagnóstico</label>
-                                    <input class="profile__input" type="date" name="diagnostico" id="diagnostico" disabled value="<?=$_SESSION["data_diagnostico"]?>">
+                                    <label class="profile__label" for="data-diagnostico">Data do diagnóstico</label>
+                                    <input class="profile__input" type="date" name="data-diagnostico" id="data-diagnostico" disabled value="<?=$_SESSION["data_diagnostico"]?>">
                                     <div class="l-flex l-flex-gap-1rem l-flex-wrap">
                                         <div class="l-flex-1">
                                             <label class="profile__label" for="meta-min">Meta mínima (mg/dL)</label>
@@ -220,6 +223,8 @@
         <!--ÁREA DE SCRIPS EM JS-->
         <script src="../js/pages/editar-perfil/alterar-dados-de-acesso.js"></script>
         <script src="../js/pages/editar-perfil/alterar-dados-pessoais.js"></script>
+        <script src="../js/pages/editar-perfil/alterar-diabetes.js"></script>
+        <script src="../js/pages/editar-perfil/alterar-foto.js"></script>
         <script src="../js/pages/editar-perfil/botao-editar.js"></script>
         <script src="../js/pages/cadastro/mascara-cpf.js"></script>
         <script src="../js/remove-espacos-brancos.js"></script>

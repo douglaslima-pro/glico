@@ -59,6 +59,11 @@
         min-width: 200px;
         padding: 2px;
         width: 100%;
+
+        //.profile__input:focus
+        &:focus {
+            box-shadow: 1px 1px 5px 0 $sombra;
+        }
     }
 
     //.profile__btn
