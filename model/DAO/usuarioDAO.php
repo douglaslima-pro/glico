@@ -167,7 +167,7 @@ class usuarioDAO{
         }
     }
 
-    public function alterarFoto($foto,$id_usuario){
+    public function alterarFoto($id_usuario,$foto){
         try{
             $sql = "UPDATE usuario
                     SET foto = NULLIF(:foto,'')
