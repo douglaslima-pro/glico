@@ -169,13 +169,12 @@ class usuarioDAO{
 
     public function alterarFoto($id_usuario,$foto){
         try{
-            $sql = "UPDATE usuario
-                    SET foto = NULLIF(:foto,'')
-                    WHERE id_usuario = :id_usuario";
+            $sql = "CALL usp_atualizarFoto(:id_usuario,:foto)";
             $stmt = self::$conn->prepare($sql);
             $stmt->bindParam(":foto",$foto);
             $stmt->bindParam(":id_usuario",$id_usuario);
-            $retorno = $stmt->execute();
+            $stmt->execute();
+            $retorno = $stmt->fetchColumn();
             return $retorno;
         }catch(PDOException $e){
             echo $e->getMessage();

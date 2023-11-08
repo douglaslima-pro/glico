@@ -17,7 +17,7 @@ function visualizarGlicose(id_glicose){
 
             let glicose = JSON.parse(xhr.response);
 
-            glicoseTempoRegistro.innerText = `Registro realizado há ${calcularIntervaloDeDatas(`${glicose.data_registro} ${glicose.hora_registro}`)}!`;
+            glicoseTempoRegistro.innerText = `Registro realizado há mais de ${calcularIntervaloDeDatas(`${glicose.data_registro} ${glicose.hora_registro}`)}!`;
 
             console.log(calcularIntervaloDeDatas(`${glicose.data_registro} ${glicose.hora_registro}`));
 

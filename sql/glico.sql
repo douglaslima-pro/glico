@@ -38,6 +38,16 @@ CREATE TABLE `diabetes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `diabetes`
+--
+
+LOCK TABLES `diabetes` WRITE;
+/*!40000 ALTER TABLE `diabetes` DISABLE KEYS */;
+INSERT INTO `diabetes` VALUES (1,'Diabetes Mellitus Tipo 1','Insulina (caneta)','2015-01-01',160,70);
+/*!40000 ALTER TABLE `diabetes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `glicose`
 --
 
@@ -61,6 +71,16 @@ CREATE TABLE `glicose` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `glicose`
+--
+
+LOCK TABLES `glicose` WRITE;
+/*!40000 ALTER TABLE `glicose` DISABLE KEYS */;
+INSERT INTO `glicose` VALUES (2,1,79,'2023-10-25','11:02:00','Antes da refeição','insulina: apidra\ndose: 10ui\n-------------------------\nmarmita pronta','2023-10-25','12:29:58'),(6,1,207,'2023-10-25','06:06:00','Antes da refeição','insulina: apidra\ndose: 16ui\n-------------------------\n1 chícara de café c/ leite','2023-10-25','12:33:47'),(7,1,190,'2023-10-24','19:10:00','Nenhum','insulina: apidra\ndose: 18ui\n-----------------------\n1 coxinha de frango\n1 churros de doce de leite','2023-10-25','12:35:17'),(9,1,116,'2023-10-24','17:32:00','Jejum',NULL,'2023-10-25','12:38:13'),(10,1,203,'2023-10-24','11:02:00','Antes da refeição','insulina: apidra\ndose: 10ui\n-----------------------\nmarmita pronta','2023-10-25','12:38:59'),(11,1,115,'2023-10-24','08:41:00','2h após a refeição',NULL,'2023-10-25','12:39:49'),(12,1,168,'2023-10-24','06:40:00','Antes da refeição',NULL,'2023-10-25','12:41:21'),(13,1,241,'2023-10-23','19:41:00','Nenhum',NULL,'2023-10-25','12:42:05'),(14,1,186,'2023-10-23','17:49:00','Nenhum',NULL,'2023-10-25','12:44:35'),(15,1,82,'2023-10-23','13:49:00','2h após a refeição',NULL,'2023-10-25','12:44:59'),(16,1,141,'2023-10-23','10:55:00','Antes da refeição',NULL,'2023-10-25','13:26:39'),(17,1,196,'2023-10-23','08:26:00','2h após a refeição',NULL,'2023-10-25','13:27:10'),(18,1,151,'2023-10-23','06:07:00','Antes da refeição',NULL,'2023-10-25','13:27:54'),(19,1,107,'2023-10-22','18:59:00','Antes da refeição',NULL,'2023-10-25','13:37:37'),(20,1,102,'2023-10-22','13:38:00','2h após a refeição',NULL,'2023-10-25','13:37:56'),(21,1,132,'2023-10-22','10:10:00','Antes da refeição',NULL,'2023-10-25','13:38:28'),(22,1,241,'2023-10-21','21:16:00','Antes de dormir',NULL,'2023-10-25','13:38:58'),(23,1,193,'2023-10-21','18:40:00','Antes da refeição',NULL,'2023-10-25','13:39:22'),(24,1,133,'2023-10-21','14:07:00','2h após a refeição',NULL,'2023-10-25','13:39:51'),(25,1,159,'2023-10-21','10:04:00','2h após a refeição',NULL,'2023-10-25','13:40:26'),(26,1,50,'2023-10-21','00:18:00','Nenhum',NULL,'2023-10-25','13:41:03'),(27,1,34,'2023-10-21','00:11:00','Nenhum',NULL,'2023-10-25','13:41:26'),(43,1,155,'2023-10-25','17:37:00','Nenhum',NULL,'2023-10-26','12:10:02'),(44,1,162,'2023-10-25','19:07:00','Antes da refeição',NULL,'2023-10-26','12:10:20'),(45,1,212,'2023-10-25','22:26:00','Antes de dormir','insulina: glargina\ndose: 30ui','2023-10-26','12:10:52'),(46,1,87,'2023-10-26','06:12:00','Antes da refeição','insulina: apidra\ndose: 16ui\n-----------------------\n2 chícaras de café com açúcar','2023-10-26','12:11:17'),(47,1,101,'2023-10-26','08:42:00','2h após a refeição','.','2023-10-26','12:11:36'),(48,1,181,'2023-10-26','09:30:00','Nenhum',NULL,'2023-10-26','12:11:52'),(49,1,201,'2023-10-26','11:02:00','Antes da refeição','insulina: apidra\ndose: 14ui\n----------------------------\nmarmita pronta','2023-10-26','12:12:19'),(53,1,182,'2023-10-26','19:27:00','Nenhum',NULL,'2023-10-27','09:52:49'),(54,1,150,'2023-10-26','22:21:00','Antes de dormir',NULL,'2023-10-27','09:53:19'),(55,1,250,'2023-10-27','06:06:00','Antes da refeição','não lembro ...','2023-10-27','09:54:18'),(56,1,199,'2023-10-27','08:40:00','2h após a refeição','2h depois do café da manhã','2023-10-27','09:54:47');
+/*!40000 ALTER TABLE `glicose` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `recuperacao`
 --
 
@@ -73,6 +93,15 @@ CREATE TABLE `recuperacao` (
   KEY `id_usuario` (`id_usuario`,`chave`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `recuperacao`
+--
+
+LOCK TABLES `recuperacao` WRITE;
+/*!40000 ALTER TABLE `recuperacao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `recuperacao` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `usuario`
@@ -88,7 +117,7 @@ CREATE TABLE `usuario` (
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `cpf` char(14) DEFAULT NULL,
-  `foto` text DEFAULT '../img/png/anonymous-profile.png',
+  `foto` text NOT NULL DEFAULT '../img/png/anonymous-profile.png',
   `sexo` enum('M','F') DEFAULT NULL,
   `peso` decimal(5,2) DEFAULT NULL,
   `altura` decimal(3,2) DEFAULT NULL,
@@ -101,6 +130,16 @@ CREATE TABLE `usuario` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'Douglas Souza de Lima','douglaslima','douglaslima-pro@outlook.com','$2y$10$GENoeaCbkSMh4EXSgRuLDuxnXJ53CwDDvYzO.O7PHgYrprmapVm7C','048.516.061-76','../img/users/1286419205654be35e1d55b8.65646794.gif','M',77.00,1.80,'2003-01-11','2023-10-25','A',1);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -129,6 +168,28 @@ DELIMITER ;
 --
 -- Dumping routines for database 'glico'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `usp_atualizarFoto` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_atualizarFoto`(IN id INT,IN src TEXT)
+BEGIN
+
+SELECT foto FROM usuario WHERE id_usuario = id FOR UPDATE;
+UPDATE usuario SET foto = src WHERE id_usuario = id;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `usp_calcularHiperglicemias` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -207,4 +268,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-06 12:31:51
+-- Dump completed on 2023-11-08 17:04:41
