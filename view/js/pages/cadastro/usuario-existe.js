@@ -15,8 +15,8 @@ function usuarioExiste(){
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xhr.onreadystatechange = () => {
         if(xhr.status == 200 && xhr.readyState == 4){
-            console.log(xhr.responseText);
-            xhr.responseText == "true" ? usuarioExisteTrue() : usuarioExisteFalse();
+            let resposta = JSON.parse(xhr.response);
+            resposta.status ? usuarioExisteTrue() : usuarioExisteFalse();
         }
     };
     xhr.send(`usuario=${usuario}`);

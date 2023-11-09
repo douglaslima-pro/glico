@@ -7,6 +7,16 @@ $email = $_POST["email"];
 $usuarioDAO = new usuarioDAO();
 $emailExiste = $usuarioDAO->emailExiste($email);
 
-echo $emailExiste ? 'true' : 'false';
+if($emailExiste){
+    $resposta = array(
+        "status" => true
+    );
+}else{
+    $resposta = array(
+        "status" => false
+    );
+}
+
+echo json_encode($resposta);
 
 ?>

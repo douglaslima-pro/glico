@@ -48,5 +48,10 @@ function fecharEdicao(selector){
     }
     acoesForm.classList.add("is-none");
     editarBtn.classList.remove("is-none");
+    let aviso = document.querySelectorAll(`${selector.split(" ")[0]} .cadastro__aviso`);
+    for(i=0;i<aviso.length;i++){
+        aviso[i].classList.add("is-none");
+    }
+    document.querySelector(`${selector.split(" ")[0]} input[type=submit]`).disabled = false;
 
 }

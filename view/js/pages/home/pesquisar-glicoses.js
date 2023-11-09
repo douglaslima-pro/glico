@@ -16,8 +16,6 @@ function pesquisarGlicoses(id_usuario, limite, pagina) {
 
         //quantidade de páginas
         let paginas = Math.ceil(glicosesTotal / limite);
-        console.log(`qtd. glicoses: ${glicosesTotal}`); //debug
-        console.log(`qtd. páginas: ${paginas}`); //debug
 
         let xhr = new XMLHttpRequest;
         xhr.open("POST", "../../controller/pesquisarGlicoses.php", true);
@@ -26,7 +24,6 @@ function pesquisarGlicoses(id_usuario, limite, pagina) {
             if (xhr.status === 200 && xhr.readyState === 4) {
                 if(xhr.response !== ""){
                     let glicoses = JSON.parse(xhr.response);
-                    console.log(glicoses); //debug
                     atualizarTabela(glicoses);
                     atualizarPaginacaoTabela(id_usuario,limite,pagina,paginas,inicio,glicoses.length,glicosesTotal);
                     tableVoid.classList.add('is-none'); // hides message "No data found"

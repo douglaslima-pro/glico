@@ -5,8 +5,18 @@ require_once "../model/DAO/usuarioDAO.php";
 $usuario = $_POST["usuario"];
 
 $usuarioDAO = new usuarioDAO();
-$retorno = $usuarioDAO->usuarioExiste($usuario);
+$usuarioExiste = $usuarioDAO->usuarioExiste($usuario);
 
-echo $retorno ? 'true' : 'false';
+if($usuarioExiste){
+    $resposta = array(
+        "status" => true
+    );
+}else{
+    $resposta = array(
+        "status" => false
+    );
+}
+
+echo json_encode($resposta);
 
 ?>

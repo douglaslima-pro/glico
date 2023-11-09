@@ -15,8 +15,8 @@ function emailExiste(){
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xhr.onreadystatechange = () => {
         if(xhr.status == 200 && xhr.readyState == 4){
-            console.log(xhr.response);
-            xhr.responseText == 'true' ? emailExisteTrue() : emailExisteFalse();
+            let resposta = JSON.parse(xhr.response);
+            resposta.status ? emailExisteTrue() : emailExisteFalse();
         }
     };
     xhr.send(`email=${email}`);
