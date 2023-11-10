@@ -38,7 +38,8 @@
 
             <!--OVERLAY-->
             <section class="overlay-backdrop l-grid l-flex-center is-none">
-                <div class="register-glucose" id="alterar-senha">
+                <img class="profile__picture profile__picture--fullview is-none" src="<?=$_SESSION["foto"]?>" id="foto-perfil" alt="Foto de perfil">
+                <div class="register-glucose is-none" id="alterar-senha">
                     <span class="register-glucose__close-btn" onclick="fecharOverlay()">X</span>
                     <h2 class="register-glucose__title l-margin-right-1rem l-margin-bottom-2rem">Alterar senha</h2>
                     <form class="login__form" onsubmit="alterarSenha()">
@@ -139,7 +140,7 @@
                                     <p class="profile__header-title">Foto de perfil</p>
                                 </div>
                                 <div class="profile__container">
-                                    <img class="profile__picture" src="<?=$_SESSION["foto"]?>" alt="Foto de perfil">
+                                    <img class="profile__picture" src="<?=$_SESSION["foto"]?>" alt="Foto de perfil" onclick="abrirOverlay('foto-perfil')">
                                     <label class="profile__btn profile__btn--blue profile__btn--center" for="foto">Alterar foto</label>
                                     <input class="is-none" accept="image/*" id="foto" type="file" onchange="alterarFoto()">
                                 </div>

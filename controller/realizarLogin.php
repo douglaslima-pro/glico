@@ -3,6 +3,7 @@
 require_once "./alertMessage.php";
 require_once "../model/DTO/usuarioDTO.php";
 require_once "../model/DAO/usuarioDAO.php";
+require_once "../model/DAO/recuperacaoDAO.php";
 
 if(isset($_POST["submit"])){
 
@@ -37,6 +38,10 @@ if(isset($_POST["submit"])){
         $_SESSION["data_diagnostico"] = $retorno["data_diagnostico"];
         $_SESSION["meta_max"] = $retorno["meta_max"];
         $_SESSION["meta_min"] = $retorno["meta_min"];
+        //exclui todas as solicitações de recuperação de senha do usuário
+        $recuperacaoDAO = new recuperacaoDAO();
+        $recuperacaoDAO->excluirRecuperacao($_SESSION["id_usuario"]);
+        //manda o usuário para a página inicial
         $msg = alertMessage("alert--success","fa-check","Sucesso","Login efetuado com sucesso!");
         header("location:../view/html/home.php?msg=$msg");
     }

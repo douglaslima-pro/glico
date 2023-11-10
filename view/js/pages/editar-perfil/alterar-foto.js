@@ -28,7 +28,10 @@ function alterarFoto(){
 function mostrarImagem(img){
     let reader = new FileReader;
     reader.onload = (e) => {
-        document.querySelector(".profile__picture").src = e.target.result;
+        let fotoPerfil = document.querySelectorAll(".profile__picture");
+        for(i=0;i<fotoPerfil.length;i++){
+            fotoPerfil[i].src = e.target.result;
+        }
     }
     reader.readAsDataURL(img);
 }
