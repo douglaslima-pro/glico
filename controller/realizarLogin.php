@@ -23,6 +23,7 @@ if(isset($_POST["submit"])){
         $_SESSION["nome"] = $retorno["nome"];
         $_SESSION["email"] = $retorno["email"];
         $_SESSION["usuario"] = $retorno["usuario"];
+        $_SESSION["senha"] = $retorno["senha"];
         $_SESSION["cpf"] = $retorno["cpf"];
         $_SESSION["foto"] = $retorno["foto"];
         $_SESSION["sexo"] = $retorno["sexo"];
